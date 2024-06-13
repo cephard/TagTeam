@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 2305166246155201652}
   - component: {fileID: 2305166246155201659}
   m_Layer: 5
-  m_Name: Ann
+  m_Name: Associate2_Ann
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

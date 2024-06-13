@@ -1,0 +1,19 @@
+CEO:
+Hello there!
+How can I help you today?
+End CEO
+
+Manager:
+Sure, let me check that for you.
+Here's what I found.
+End Manager
+
+Associate1:
+I'll get right on it.
+This shouldn't take long.
+End Associate1
+
+Associate2:
+I'm sorry, I'll need more time to look into that.
+I'll keep you updated.
+End Associate2
