@@ -6,6 +6,7 @@ using TMPro;
 
 public class ReadDialogue : MonoBehaviour
 {
+    //making fields serialissable to enable access in unity
     [SerializeField] private TextMeshProUGUI dialogue;
     [SerializeField] private TextMeshProUGUI avatarName;
     [SerializeField] private GameObject avatarDialogue;
@@ -13,10 +14,11 @@ public class ReadDialogue : MonoBehaviour
     private int currentLine = 0;
     private string[] lines;
 
-    private void Start()
+    /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
+    skipping blank lines to ensure seamless conversation
+    */private void Start()
     {
         TextAsset textAsset = Resources.Load<TextAsset>("Conversation");
-        //avatarDialogue.SetActive(false);
         playerResponce.SetActive(false);
         if (textAsset != null)
         {
@@ -25,7 +27,8 @@ public class ReadDialogue : MonoBehaviour
         }
         else
         {
-            dialogue.text = "File not found!";
+            //in case i the file responce is not found this text will be displayed insted
+            dialogue.text = "Oops! Sorry I'll get back to you soon I have an urgent meeting!";
         }
     }
 
