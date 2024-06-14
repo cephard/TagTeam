@@ -1,3 +1,7 @@
+/*
+Class that takes care of the storyline of the game by loading scripts and avatars to their correct responces
+*/
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,53 +15,20 @@ public class ReadDialogue : MonoBehaviour
     [SerializeField] private TextMeshProUGUI avatarName;
     [SerializeField] private GameObject avatarDialogue;
     [SerializeField] private GameObject playerResponce;
-    [SerializeField] private GameObject ceoAvatar;
-    [SerializeField] private GameObject managerAvatar;
-    [SerializeField] private GameObject associate1Avatar;
-    [SerializeField] private GameObject associate2Avatar;
-    [SerializeField] private GameObject femaleAvatar;
-    [SerializeField] private GameObject maleAvatar;
-    private bool gender = false;
+    private AvatarManager avatarManager;
+
 
     private int currentLine = 0;
     private string[] lines;
-    private Dictionary<string, GameObject> nonPlayCharacters;
-
-    //initialising all the NPCs
-    private void InitiliseAvatar()
-    {
-        nonPlayCharacters = new Dictionary<string, GameObject>{
-            {"Dylan", ceoAvatar},
-            {"Stacy",managerAvatar},
-            {"Warren",associate1Avatar},
-            {"Ann",associate2Avatar},
-            {"Player",player(gender)}
-        };
-    }
-
-    //switch players based on the choice they made
-    private GameObject player(bool gender)
-    {
-        maleAvatar.SetActive(false);
-        femaleAvatar.SetActive(false);
-        if (gender == true)
-        {
-            return femaleAvatar;
-        }
-        else
-        {
-            return maleAvatar;
-        }
-    }
-
 
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
     skipping blank lines to ensure seamless conversation
     */
     private void Start()
     {
-        InitiliseAvatar();
-        DeactivateAvatars();
+        avatarManager = GetComponent<AvatarManager>();
+        avatarManager.InitiliseAvatar();
+        avatarManager.DeactivateAvatars();
         LoadScript("General");
     }
 
@@ -113,18 +84,9 @@ public class ReadDialogue : MonoBehaviour
         if (lines != null && lineIndex < lines.Length)
         {
             string line = lines[lineIndex];
-            string[] parts = line.Split(new[] { ':' }, 2);
+            string[] sentenceParts = line.Split(new[] { ':' }, 2);
+            SplitSentence(line,sentenceParts);
 
-            if (parts.Length == 2)
-            {
-                avatarName.text = parts[0].Trim();
-                dialogue.text = parts[1].Trim();
-                ActivateAvatar(avatarName.text);
-            }
-            else
-            {
-                dialogue.text = line;
-            }
         }
         else
         {
@@ -133,27 +95,19 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
-    // Activates the relevant avatar based on the name and deactivates others
-    private void ActivateAvatar(string avatarName)
+    public void SplitSentence(string line,string[] sentenceParts)
     {
-        DeactivateAvatars();
-
-        if (nonPlayCharacters.ContainsKey(avatarName))
+        if (sentenceParts.Length == 2)
         {
-            nonPlayCharacters[avatarName].SetActive(true);
+            avatarName.text = sentenceParts[0].Trim();
+            dialogue.text = sentenceParts[1].Trim();
+            avatarManager.ActivateAvatar(avatarName.text);
         }
-
-    }
-
-    // Deactivating avatars to ensure no overlays
-    private void DeactivateAvatars()
-    {
-        foreach (var avatar in nonPlayCharacters.Values)
+        else
         {
-            avatar.SetActive(false);
+            dialogue.text = line;
         }
     }
-
     public void InovkeResponce()
     {
         //if ()
