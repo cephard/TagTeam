@@ -15,6 +15,10 @@ public class ReadDialogue : MonoBehaviour
     [SerializeField] private GameObject managerAvatar;
     [SerializeField] private GameObject associate1Avatar;
     [SerializeField] private GameObject associate2Avatar;
+    [SerializeField] private GameObject femaleAvatar;
+    [SerializeField] private GameObject maleAvatar;
+    private bool gender = false;
+
     private int currentLine = 0;
     private string[] lines;
     private Dictionary<string, GameObject> nonPlayCharacters;
@@ -26,18 +30,41 @@ public class ReadDialogue : MonoBehaviour
             {"Dylan", ceoAvatar},
             {"Stacy",managerAvatar},
             {"Warren",associate1Avatar},
-            {"Ann",associate2Avatar}
+            {"Ann",associate2Avatar},
+            {"Player",player(gender)}
         };
     }
+
+    //switch players based on the choice they made
+    private GameObject player(bool gender)
+    {
+        maleAvatar.SetActive(false);
+        femaleAvatar.SetActive(false);
+        if (gender == true)
+        {
+            return femaleAvatar;
+        }
+        else
+        {
+            return maleAvatar;
+        }
+    }
+
+
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
     skipping blank lines to ensure seamless conversation
     */
     private void Start()
     {
-        TextAsset textAsset = Resources.Load<TextAsset>("General");
-        playerResponce.SetActive(false);
         InitiliseAvatar();
         DeactivateAvatars();
+        LoadScript("General");
+    }
+
+    public void LoadScript(string scriptName)
+    {
+        TextAsset textAsset = Resources.Load<TextAsset>(scriptName);
+        playerResponce.SetActive(false);
         if (textAsset != null)
         {
             lines = textAsset.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -101,8 +128,8 @@ public class ReadDialogue : MonoBehaviour
         }
         else
         {
-            avatarName.text = "Unknown";
-            dialogue.text = "No Lines To Read";
+            avatarName.text = "Office";
+            dialogue.text = "There is no one in the office!";
         }
     }
 
@@ -111,7 +138,8 @@ public class ReadDialogue : MonoBehaviour
     {
         DeactivateAvatars();
 
-        if(nonPlayCharacters.ContainsKey(avatarName)){
+        if (nonPlayCharacters.ContainsKey(avatarName))
+        {
             nonPlayCharacters[avatarName].SetActive(true);
         }
 
@@ -120,8 +148,14 @@ public class ReadDialogue : MonoBehaviour
     // Deactivating avatars to ensure no overlays
     private void DeactivateAvatars()
     {
-        foreach(var avatar in nonPlayCharacters.Values){
+        foreach (var avatar in nonPlayCharacters.Values)
+        {
             avatar.SetActive(false);
         }
+    }
+
+    public void InovkeResponce()
+    {
+        //if ()
     }
 }
