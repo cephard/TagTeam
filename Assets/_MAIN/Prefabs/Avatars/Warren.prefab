@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1850255786690055736}
   - component: {fileID: 1850255786690055743}
   m_Layer: 5
-  m_Name: Associate1_Warren
+  m_Name: Warren
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
