@@ -814,8 +814,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 87.757385, y: -27.43991}
-  m_SizeDelta: {x: -624.6067, y: -111.0858}
+  m_AnchoredPosition: {x: 47.72702, y: -27.43991}
+  m_SizeDelta: {x: -544.54596, y: -111.0858}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &750536283
 MonoBehaviour:
@@ -1140,8 +1140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -434, y: 116.97}
-  m_SizeDelta: {x: -1668.1172, y: -233.95}
+  m_AnchoredPosition: {x: -474.0293, y: 116.97}
+  m_SizeDelta: {x: -1588.0586, y: -233.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464805937
 MonoBehaviour:
@@ -1747,6 +1747,26 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 586225820420973947, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820420973947, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1567436741}
+    - target: {fileID: 586225820420973947, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerDecision
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820420973947, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ReadDialogue, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820420973947, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 586225820686346669, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0
@@ -1758,6 +1778,26 @@ PrefabInstance:
     - target: {fileID: 586225820686346669, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820686346669, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820686346669, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1567436741}
+    - target: {fileID: 586225820686346669, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerDecision
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820686346669, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ReadDialogue, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820686346669, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 586225820929309396, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
@@ -1771,6 +1811,26 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 586225820929309396, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820929309396, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1567436741}
+    - target: {fileID: 586225820929309396, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerDecision
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820929309396, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ReadDialogue, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225820929309396, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 586225821440075571, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0
@@ -1782,6 +1842,26 @@ PrefabInstance:
     - target: {fileID: 586225821440075571, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225821440075571, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225821440075571, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1567436741}
+    - target: {fileID: 586225821440075571, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerDecision
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225821440075571, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ReadDialogue, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 586225821440075571, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 586225821914740773, guid: 9f34e545cf16f28479584712077b57c0, type: 3}
       propertyPath: m_Name
