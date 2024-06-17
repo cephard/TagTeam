@@ -14,7 +14,7 @@ public class AvatarManager : MonoBehaviour
     [SerializeField] private GameObject associate2Avatar;
     [SerializeField] private GameObject femaleAvatar;
     [SerializeField] private GameObject maleAvatar;
-    private bool gender;
+    private static bool gender;
 
     private Dictionary<string, GameObject> nonPlayCharacters;
 
@@ -32,7 +32,7 @@ public class AvatarManager : MonoBehaviour
 
     public void SetGender(bool gender)
     {
-        this.gender = gender;
+        AvatarManager.gender = gender;
     }
 
     //switch players based on the choice they made
@@ -40,7 +40,7 @@ public class AvatarManager : MonoBehaviour
     {
         maleAvatar.SetActive(false);
         femaleAvatar.SetActive(false);
-        return this.gender ? femaleAvatar : maleAvatar;
+        return AvatarManager.gender ? femaleAvatar : maleAvatar;
 
     }
 

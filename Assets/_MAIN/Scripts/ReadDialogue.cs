@@ -16,6 +16,7 @@ public class ReadDialogue : MonoBehaviour
     [SerializeField] private GameObject avatarDialogue;
     [SerializeField] private GameObject playerResponce;
     private AvatarManager avatarManager;
+    int playerChoice;
 
 
     private int currentLine = 0;
@@ -85,7 +86,7 @@ public class ReadDialogue : MonoBehaviour
         {
             string line = lines[lineIndex];
             string[] sentenceParts = line.Split(new[] { ':' }, 2);
-            SplitSentence(line,sentenceParts);
+            SplitSentence(line, sentenceParts);
 
         }
         else
@@ -95,12 +96,13 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
-    public void SplitSentence(string line,string[] sentenceParts)
+    public void SplitSentence(string line, string[] sentenceParts)
     {
         if (sentenceParts.Length == 2)
         {
             avatarName.text = sentenceParts[0].Trim();
             dialogue.text = sentenceParts[1].Trim();
+            InovkeResponce();
             avatarManager.ActivateAvatar(avatarName.text);
         }
         else
@@ -110,6 +112,28 @@ public class ReadDialogue : MonoBehaviour
     }
     public void InovkeResponce()
     {
-        //if ()
+        if (String.Equals("Player", avatarName.text))
+        {
+            avatarDialogue.SetActive(false);
+            playerResponce.SetActive(true);
+        }
+    }
+
+    //based on the players responce the player avatar will skip to that response then skip ahead
+    public void PlayerDecision(int playerChoice)
+    {
+
+        currentLine += playerChoice;
+        avatarDialogue.SetActive(true);
+        playerResponce.SetActive(false);
+        SetNameAndDialogue(currentLine);
+        currentLine = SkipRemainingChoice(currentLine, playerChoice);
+    }
+
+    //The scripts avoids the multiple choice options after the player selects one to ensure a seamless storyline
+    private int SkipRemainingChoice(int currentLine, int playerChoice)
+    {
+        int playerOptions = 4;
+        return currentLine += (playerOptions - playerChoice);
     }
 }
