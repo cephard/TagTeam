@@ -23,6 +23,8 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+
+/*
     public void ExitGame()
     {
 #if UNITY_EDITOR
@@ -31,6 +33,7 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
 #endif
     }
+    */
 
 }
 
