@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ReadDialogue : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class ReadDialogue : MonoBehaviour
     [SerializeField] private TextMeshProUGUI avatarName;
     [SerializeField] private GameObject avatarDialogue;
     [SerializeField] private GameObject playerResponce;
+    [SerializeField] private Text playerReponceOne;
+    [SerializeField] private Text playerReponceTwo;
+    [SerializeField] private Text playerReponceThree;
+    [SerializeField] private Text playerReponceFour;
     private AvatarManager avatarManager;
     int playerChoice;
 
@@ -96,13 +101,25 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
+    //split the sentence in a  way that the first part is the avatar's name and the other is the dialogue
     public void SplitSentence(string line, string[] sentenceParts)
     {
         if (sentenceParts.Length == 2)
         {
             avatarName.text = sentenceParts[0].Trim();
             dialogue.text = sentenceParts[1].Trim();
-            InovkeResponce();
+
+            if (String.Equals("Player", avatarName.text))
+            {
+                avatarDialogue.SetActive(false);
+                playerResponce.SetActive(true);
+     
+            }
+       
+               
+
+            
+          InovkeResponce();
             avatarManager.ActivateAvatar(avatarName.text);
         }
         else
@@ -116,6 +133,25 @@ public class ReadDialogue : MonoBehaviour
         {
             avatarDialogue.SetActive(false);
             playerResponce.SetActive(true);
+            LoadPlayerResponses(currentLine + 1);
+        }
+    }
+
+
+    private void LoadPlayerResponses(int startLine)
+    {
+
+        if (startLine < lines.Length)
+        {
+            playerReponceOne.text = GetLineIndex(startLine);
+            playerReponceTwo.text = GetLineIndex(startLine + 1);
+            playerReponceThree.text = GetLineIndex(startLine + 2);
+            playerReponceFour.text = GetLineIndex(startLine + 3);
+        }
+        else
+        {
+            // If there are not enough lines left, deactivate player responses
+            playerResponce.SetActive(false);
         }
     }
 
@@ -124,10 +160,10 @@ public class ReadDialogue : MonoBehaviour
     {
 
         currentLine += playerChoice;
+        currentLine = SkipRemainingChoice(currentLine, playerChoice);
         avatarDialogue.SetActive(true);
         playerResponce.SetActive(false);
-        SetNameAndDialogue(currentLine);
-        currentLine = SkipRemainingChoice(currentLine, playerChoice);
+        NextLine();
     }
 
     //The scripts avoids the multiple choice options after the player selects one to ensure a seamless storyline

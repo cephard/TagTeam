@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private static string name;
+    private static string playerName;
     private static string gender;
 
     // Start is called before the first frame update
