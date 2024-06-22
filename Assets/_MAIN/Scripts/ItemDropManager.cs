@@ -3,51 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class ItemDropManager : MonoBehaviour, IDropHandler
 {
-    public Text slotText;
-    public static int correctDropCounter = 0;
-    public void OnDrop(PointerEventData eventData)
+    [SerializeField] private Text slotText;
+    [SerializeField] private Text motivationText;
+    private static int correctTask = 0;
+
+
+    private string GetCorrectTaskCount(int taskCount)
     {
-        if (eventData.pointerDrag != null){
-            eventData.pointerDrag.GetComponent<RectTransform> ().anchoredPosition = GetComponent<RectTransform> ().anchoredPosition;
-        }
-        Text draggedText = eventData.pointerDrag.GetComponentInChildren<Text>();
-        if (draggedText.text == slotText.text)
-        {
-            correctDropCounter++;
-            Debug.Log("Correct drop! Counter: " + correctDropCounter);
-        }
+        return taskCount.ToString();
     }
-}  
-/*
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-
-public class ItemDropManager : MonoBehaviour, IDropHandler
-{
-    public Text slotText; // Assign this in the Inspector
-    public static int correctDropCounter = 0;
-
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
         {
-            Text draggedText = eventData.pointerDrag.GetComponentInChildren<Text>();
-            if (draggedText != null && slotText != null)
+            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        }
+        Text draggedText = eventData.pointerDrag.GetComponentInChildren<Text>();
+        if (draggedText.text == slotText.text)
+        {
+            correctTask++;
+            motivationText.text = "Correct tasks "! + GetCorrectTaskCount(correctTask);
+        }
+        else
+        {
+            if(correctTask < 0)
             {
-                if (draggedText.text == slotText.text)
-                {
-                    correctDropCounter++;
-                    Debug.Log("Correct drop! Counter: " + correctDropCounter);
-                }
-                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+                correctTask = 0;
             }
+            correctTask--;
+            motivationText.text = "Correct tasks "! + GetCorrectTaskCount(correctTask);
+
         }
     }
 }
-*/

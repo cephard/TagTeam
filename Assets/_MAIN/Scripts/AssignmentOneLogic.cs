@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class AssignmentOneLogic : MonoBehaviour
@@ -20,6 +21,7 @@ public class AssignmentOneLogic : MonoBehaviour
     [SerializeField] private Image TaskFive;
     [SerializeField] private Image TaskSix;
     [SerializeField] private Image TaskSeven;
+ 
 
     private int counter;
 
@@ -48,16 +50,7 @@ public class AssignmentOneLogic : MonoBehaviour
         Text taskTextFive = TaskFive.GetComponentInChildren<Text>();
         Text taskTextSix = TaskSix.GetComponentInChildren<Text>();
         Text taskTextSeven = TaskSeven.GetComponentInChildren<Text>();
-
-        // Compare the texts and update the counter
-        if (slotTextOne.text == taskTextOne.text) counter++;
-        if (slotTextTwo.text == taskTextTwo.text) counter++;
-        if (slotTextThree.text == taskTextThree.text) counter++;
-        if (slotTextFour.text == taskTextFour.text) counter++;
-        if (slotTextFive.text == taskTextFive.text) counter++;
-        if (slotTextSix.text == taskTextSix.text) counter++;
-        if (slotTextSeven.text == taskTextSeven.text) counter++;
-
-        Debug.Log("Matching texts count: " + counter);
     }
+
 }
+
