@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class ReadDialogue : MonoBehaviour
 {
@@ -15,14 +16,14 @@ public class ReadDialogue : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogue;
     [SerializeField] private TextMeshProUGUI avatarName;
     [SerializeField] private GameObject avatarDialogue;
-    [SerializeField] private GameObject playerResponce;
-    [SerializeField] private Text playerReponceOne;
-    [SerializeField] private Text playerReponceTwo;
-    [SerializeField] private Text playerReponceThree;
-    [SerializeField] private Text playerReponceFour;
+    [SerializeField] private GameObject playerResponse;
+    [SerializeField] private Text playerReponseOne;
+    [SerializeField] private Text playerReponseTwo;
+    [SerializeField] private Text playerReponseThree;
+    [SerializeField] private Text playerReponseFour;
+    [SerializeField] private CoinManager coinManager;
     private AvatarManager avatarManager;
     int playerChoice;
-
 
     private int currentLine = 0;
     private string[] lines;
@@ -32,16 +33,21 @@ public class ReadDialogue : MonoBehaviour
     */
     private void Start()
     {
+        currentLine = PlayerPrefs.GetInt("CurrentLine", 0);
+        currentLine = 0; // this is temporaray for testing alone t paypass the saved line
+
         avatarManager = GetComponent<AvatarManager>();
+        coinManager.GetComponent<CoinManager>();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
         LoadScript("General");
+        //SaveNextLine();
     }
 
     public void LoadScript(string scriptName)
     {
         TextAsset textAsset = Resources.Load<TextAsset>(scriptName);
-        playerResponce.SetActive(false);
+        playerResponse.SetActive(false);
         if (textAsset != null)
         {
             lines = textAsset.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -50,7 +56,7 @@ public class ReadDialogue : MonoBehaviour
         }
         else
         {
-            //in case the file responce is not found this text will be displayed insted
+            //in case the file response is not found this text will be displayed insted
             dialogue.text = "Oops! Sorry I'll get back to you soon I have an urgent meeting!";
         }
     }
@@ -80,7 +86,7 @@ public class ReadDialogue : MonoBehaviour
         else
         {
             avatarDialogue.SetActive(false);
-            playerResponce.SetActive(true);
+            playerResponse.SetActive(true);
         }
     }
 
@@ -112,27 +118,30 @@ public class ReadDialogue : MonoBehaviour
             if (String.Equals("Player", avatarName.text))
             {
                 avatarDialogue.SetActive(false);
-                playerResponce.SetActive(true);
-     
-            }
-       
-               
+                playerResponse.SetActive(true);
 
-            
-          InovkeResponce();
+            }
+
+            InovkeResponse();
             avatarManager.ActivateAvatar(avatarName.text);
         }
         else
         {
             dialogue.text = line;
         }
+
+        if (String.Equals("Task", avatarName.text))
+        {
+            SaveNextLine();
+        }
     }
-    public void InovkeResponce()
+
+    public void InovkeResponse()
     {
         if (String.Equals("Player", avatarName.text))
         {
             avatarDialogue.SetActive(false);
-            playerResponce.SetActive(true);
+            playerResponse.SetActive(true);
             LoadPlayerResponses(currentLine + 1);
         }
     }
@@ -143,26 +152,30 @@ public class ReadDialogue : MonoBehaviour
 
         if (startLine < lines.Length)
         {
-            playerReponceOne.text = GetLineIndex(startLine);
-            playerReponceTwo.text = GetLineIndex(startLine + 1);
-            playerReponceThree.text = GetLineIndex(startLine + 2);
-            playerReponceFour.text = GetLineIndex(startLine + 3);
+            playerReponseOne.text = GetLineIndex(startLine);
+            playerReponseTwo.text = GetLineIndex(startLine + 1);
+            playerReponseThree.text = GetLineIndex(startLine + 2);
+            playerReponseFour.text = GetLineIndex(startLine + 3);
         }
         else
         {
             // If there are not enough lines left, deactivate player responses
-            playerResponce.SetActive(false);
+            playerResponse.SetActive(false);
         }
     }
 
-    //based on the players responce the player avatar will skip to that response then skip ahead
+    //based on the players response the player avatar will skip to that response then skip ahead
     public void PlayerDecision(int playerChoice)
     {
-
         currentLine += playerChoice;
+        // Extract the integer from the current line
+    
+        coinManager.ExtractExpenditure(GetLineIndex(currentLine));
+
+
         currentLine = SkipRemainingChoice(currentLine, playerChoice);
         avatarDialogue.SetActive(true);
-        playerResponce.SetActive(false);
+        playerResponse.SetActive(false);
         NextLine();
     }
 
@@ -171,5 +184,20 @@ public class ReadDialogue : MonoBehaviour
     {
         int playerOptions = 4;
         return currentLine += (playerOptions - playerChoice);
+    }
+
+    public void SaveNextLine()
+    {
+        PlayerPrefs.SetInt("CurrentLine", currentLine += 2);
+        PlayerPrefs.Save();
+    }
+
+
+    //switch the actice layer based on the script
+    private void SwitchActiveObject(GameObject avatarDialogue, GameObject playerResponse)
+    {
+        bool isAvatarDialogueActive = avatarDialogue.activeSelf;
+        avatarDialogue.SetActive(!isAvatarDialogueActive);
+        playerResponse.SetActive(isAvatarDialogueActive);
     }
 }

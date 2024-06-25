@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class ItemDropManager : MonoBehaviour, IDropHandler
 {
     [SerializeField] private Text slotText;
     [SerializeField] private Text motivationText;
     private static int correctTask = 0;
+    MainMenuController mainMenuController;
+
+    static CoinManager coinManager;
 
 
     private string GetCorrectTaskCount(int taskCount)
@@ -22,21 +24,43 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
         {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
         }
+        CompareTask(eventData);
+    }
+
+    private void CompareTask(PointerEventData eventData)
+    {
         Text draggedText = eventData.pointerDrag.GetComponentInChildren<Text>();
         if (draggedText.text == slotText.text)
         {
+            SetCompleteBackground();
+            motivationText.text = "Correct task "!;
+            eventData.pointerDrag.SetActive(false);
             correctTask++;
-            motivationText.text = "Correct tasks "! + GetCorrectTaskCount(correctTask);
         }
         else
         {
-            if(correctTask < 0)
-            {
-                correctTask = 0;
-            }
-            correctTask--;
-            motivationText.text = "Correct tasks "! + GetCorrectTaskCount(correctTask);
+            motivationText.text = "Try Again!";
 
+        }
+    }
+
+    //Helper method for player to differentiate between completed and incomplete task
+    private void SetCompleteBackground()
+    {
+        Image imageComponent = GetComponent<Image>();
+        imageComponent.color = Color.blue;
+    }
+
+    //Allows player to load next scene only sfter all tasks are complete
+    public void Proceed(string sceneName)
+    {
+        if (correctTask >= 7)
+        {
+            mainMenuController = GetComponent<MainMenuController>();
+            mainMenuController.LoadNextScene(sceneName);
+            coinManager = GetComponent<CoinManager>();
+            coinManager.AddCoins();
+            
         }
     }
 }
