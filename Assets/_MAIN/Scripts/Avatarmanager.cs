@@ -16,6 +16,7 @@ public class AvatarManager : MonoBehaviour
     [SerializeField] private GameObject maleAvatar;
     [SerializeField] private GameObject info;
     [SerializeField] private GameObject task;
+    [SerializeField] private GameObject feedback;
     private static bool gender;
 
     private Dictionary<string, GameObject> nonPlayCharacters;
@@ -30,7 +31,8 @@ public class AvatarManager : MonoBehaviour
             {"Ann",associate2Avatar},
             {"Player",SelectedPlayer()},
             {"", info },
-            {"Task",task }
+            {"Task",task },
+            {"Feedback",feedback }
         };
     }
 

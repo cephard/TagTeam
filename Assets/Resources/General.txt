@@ -9,7 +9,7 @@ The board has been pleased by the manager's confidence in you, and I hope you wi
 Player: 
 I will surely run the company to the required standards.
 Thank you, sir, I won’t let you down I promise. 
-I will brief the team right away and lead them through pending and upcoming tasks. 
+I will immediately brief the team and lead them through pending and upcoming tasks. 
 With my leadership experience, I will be able to fill in our manager's shoes with no doubt. 
 
 Dylan: And one last thing, kindly fill in this form and send it back via email before the end of the day. Good luck. 
@@ -24,9 +24,9 @@ Player:
 I promise to make you proud, by delivering my utmost best. 
 In case we are faced with any challenges I will let you know.  
 I will always seek your guidance when I am uncertain. 
-I think we will be fine; I believe we have the best team for the job.
+I think we will be fine; we have the best team for the job.
 
-:You bid her a safe journey and good luck with the contract. 
+: You bid her a safe journey and good luck with the contract. 
 
 Stacy: Thank you. And please do not be too hard on yourself. We have a very capable team that is always willing to help. 
 
@@ -36,7 +36,7 @@ You have called the associates into your office. After greeting them you proceed
 
 Player: 
 Let us focus on these duties individually and for anyone lagging, my office is open for guidance and support. 
-The CEO is relying on me so kindly leave all the major duties to me and focus on any easier duties you have so that we fast track production. 
+The CEO is relying on me so kindly leave all the major duties to me and focus on any easier duties you have so that we fast-track production. 
 I promised our manager that we have the best team so, please make sure you find the best solutions to all issues without relying on my help. 
 Kindly work on these duties first and report any issues to me immediately. I am also expecting a report on everyone's progress by the end of the day.
 
@@ -55,15 +55,118 @@ Thanks for the offer, but I need to check on Ann to see if she needs help with h
 A cappuccino will do. Please do me a favour, can you kindly see what Ann's stack is on? If it's too complex let me know right away. 
 I will have it later, but first, can you assist Ann with her duties, then after that, we can all have a coffee break together.
 
-: You head towards Ann to see what is holding her behind and you see the task on her computer.
+: You head towards Ann to see what is holding her behind and see the task on her computer.
 
 Task task
 You can always rely on your team
 
-: Three office printers require toner replacement. There is a significant workload with lots of printing in the next few weeks.
-
+: It is 4 pm and you are about to go home and you receive a significant workload with lots of printing in the next few days that need to start tomorrow morning.
+You notice that some office printers are late on toner replacement. Stacy was in charge of this duty but unfortunately, it was not done.
+She left the country for the contract, on the same day she was meant to replace them.
+The maintenance guy usually works under Stacy's supervision but he just finished his shift 1 hour ago.
 Player:
 Subcontract it to a third party: 200
 Replace the printer yourself
-Call the maintenance guy to come over: 30
+Call the maintenance guy to come over : 30
 Ask Stacy for advice
+
+Feedback: Calling the maintenance guy is the best decision that ensures the quality of services, good time management and that you trust your colleagues from other department 
+
+
+: The CEO is mad at you and he sends you an email concerning the printer issues you know Stacy forgot to inform you if you report her she might get a strike if you do not you might take a strike.
+Dylan: Our client is on my neck, he can't stop calling. What happened to the printers?
+
+Player:
+[Blame it on Stacy]
+[Take the fault]
+[Blame it on the maintenance guy]
+[Ignore the message]
+
+Dylan: Let us just hope that this printer mishap doesn't occur again.
+
+Player:
+Okay, sir.
+I am sorry sir.
+This won't happen again sir.
+I will do better next time sir.
+
+Feedback : 
+
+
+Stacy: Hello Player sorry have been busy with the contract. I had just wanted to remind you that the printers need toner replacement. It had slipped my mind and the CEO just contacted me.
+
+Player:
+Tell her you took care of it and she should not worry.
+Tell her it's her fault that you were in trouble.
+It's okay I know the contract was short notice and it might have been hard to keep track of everything.
+[Ignore her]
+
+
+ 
+: Now the printers are fixed and the printing job is underway. 	You would like Ann all hands on deck tomorrow because of the pressure you are receiving from the CEO.
+
+Ann: Boss I need to attend my son's(Jimmy) school presentation tomorrow at noon. This means the world to him and I don't want to let him down. Can I please get a two-hour off tomorrow from 11 am to 2 pm?
+
+Player:
+We still have a lot of workload at the moment, so I will give you 1 hour instead.
+Okay, just make sure that your daily duties are completed timely, I will ask Warren to help out, I know he won't mind.
+Sure, since it is your son's special day I recommend you take the day off we will handle the workload with Warren.
+I will allow you to go only if you are willing to compensate for those two hours by coming in 2 hours earlier tomorrow.
+
+: (The day after Ann's son's school presentation) You are about to take the lift to your office. Ann and Warren approach and you over here their conversation.
+
+Ann: The date yesterday with Jimmy's dad was amazing It has been a while since we have felt this youthful.
+: Warren chuckles and before he says a word they see you and they both keep quiet and walk in separate directions. You feel like that was odd and now you feel like Ann lied to you about the off.
+What will you do in this situation?
+
+Player:
+[Report Ann to the CEO]
+[Ask Stacy for advice]
+[Call Ann into the Office]
+[Wait until team break and casually ask Warren about the conversation they were having]
+
+: Before you finalise your decision on Ann's behaviour you hear a knock at the door. You let them in and to your surprise it is Ann. She politely asks you to be patient and that she will clear everything out with you during the break.
+You decide to trust her and wait for break time.
+
+Ann: I made you a flat white boss just how you like it. Can we please talk about this in private?
+Player:
+Are you trying to bribe your way out of trouble, sit down and better be quick.
+Let us please be professional and finish discussing this matter in the office.
+I just want to know why you lied to me, now take it easy and explain yourself.
+Thanks. Let's take a walk outside.
+
+: Ann explains the whole situation and you realise that Ann, her son and her husband took a takeaway meal at McDonald's and they had small their snacks at the office car park when they dropped her off after the presentation.
+Warren and some other colleagues know about this, they were just afraid to tell you because you or now their boss and they are a bit scared of you.
+: How do you feel about the way you treated Ann was it fair and just?
+
+Feedback: Always give your colleagues the benefit of the doubt and ensure correct communication with them before jumping to conclusions. Always show empathy to your colleagues at work to make their environment friendly and approachable.
+
+
+: (Days later)
+Warren is shouting at his assistant for coming in 30 minutes late for the fourth day in a row.
+He knows that you are meant to hold him accountable for his junior's actions and now he says that he is fed up with this behaviour and will take action if his assistant doesn't come to work to minutes early tomorrow.
+Usually, these are trivial matters for Stacy when she is around.
+
+Player: 
+[Tell Warren to back away and talk to his assistant]
+[Support Warren and condemn his assistant]
+[Ask Warren to explain what is going on]
+[Ask Warren's assistant why he is late again]
+
+Feedback: Asking Warren what is going on fosters good communication and shows that you are willing to understand the situation first.
+
+: Stacy has just closed the deal but she might not be coming back to work since the CEO wants her to pioneer the new Annex branch that has just been opened in Liverpool(Your home city).
+The new branch requires someone with a lot of company knowledge.
+The management has been satisfied with you but they are still considering if either you or Stacy will go to the Annex branch.
+You did a managerial role for 4 years before joining Orbit Corp last year but Stacy was a manager for 2 years before joining Orbit Corp and has been Orbit Corp's manager for just three years.
+Remember that either way you become a manager of either branch but the Liverpool role has a 15% higher pay than the main branch. 
+
+Dylan: I am pleased to let you know that Stacy was able to secure the deal and we were thinking of offering you the Liverpool job instead of her.
+
+Player: 
+[Take the deal]
+[Back Stacy up and let her take the Liverpool office]
+[Let him decide on his own]
+[Tell him that the board's decision is final]
+
+Feedback: To show selflessness, humility and prioritizing team success of the company over personal gains, by considering that Stacy has more company knowledge than you and that she closed the deal she should take the Liverpool Office.
