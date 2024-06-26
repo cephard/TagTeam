@@ -1,15 +1,69 @@
-Dylan: I called you in to let you know that we have sent our manager Stacy on an international trip to secure a new contract with one of our biggest allies. So, you are expected to step in for her until the day she resumes.
-We have received good information about you, and I hope you will live up to the praises.
-End CEO
+: You are an assistant manager in a consultancy company called Orbit Corp. You manager is travelling on a business trip and her responsibilities now lay on your shoulders. 
 
-Stacy: Hae, I know that you have been briefed on my trip. I would like to wish you best of luck. Whenever I get the chance, I will be able to offer you some advice on what to do when you need help.
-I assured the CEO that you’re the right person for the job so don’t let me down.
-End Manager
+It is uncertain when she will be back but till then you will be in charge of her duties. You have just been called into the CEO's office for an urgent briefing. 
 
-Warren: I'll get right on it.
-This shouldn't take long.
-End Associate1
+Dylan: I called you to let you know that we sent our manager Stacy on an international trip to secure a new contract with one of our biggest allies. So, you are expected to step in for her until the day she resumes. 
 
-Ann: I'm sorry, I'll need more time to look into that.
-I'll keep you updated.
-End Associate2
+The board has been pleased by the manager's confidence in you, and I hope you will live up to the praises. 
+
+Player: 
+I will surely run the company to the required standards.
+Thank you, sir, I won’t let you down I promise. 
+I will brief the team right away and lead them through pending and upcoming tasks. 
+With my leadership experience, I will be able to fill in our manager's shoes with no doubt. 
+
+Dylan: And one last thing, kindly fill in this form and send it back via email before the end of the day. Good luck. 
+
+Task task
+You can always rely on your team 
+
+Stacy: Hi, I know that you have been briefed on my trip. I would like to wish you the best of luck. Whenever I get the chance, I will be able to offer you some advice on what to do when you need help. 
+I assured the CEO that you’re the right person for the job so don’t let me down. 
+
+Player: 
+I promise to make you proud, by delivering my utmost best. 
+In case we are faced with any challenges I will let you know.  
+I will always seek your guidance when I am uncertain. 
+I think we will be fine; I believe we have the best team for the job.
+
+:You bid her a safe journey and good luck with the contract. 
+
+Stacy: Thank you. And please do not be too hard on yourself. We have a very capable team that is always willing to help. 
+
+: The manager has advised you to work with your colleagues and not rely on yourself when solving a non-trivial task. 
+
+You have called the associates into your office. After greeting them you proceed with these instructions concerning the duties with fast-approaching deadlines. 
+
+Player: 
+Let us focus on these duties individually and for anyone lagging, my office is open for guidance and support. 
+The CEO is relying on me so kindly leave all the major duties to me and focus on any easier duties you have so that we fast track production. 
+I promised our manager that we have the best team so, please make sure you find the best solutions to all issues without relying on my help. 
+Kindly work on these duties first and report any issues to me immediately. I am also expecting a report on everyone's progress by the end of the day.
+
+
+Warren: Okay boss.   
+Ann: Okay boss. 
+
+:(Two days later) Warren has already completed his tasks for the day. You are going for your 30mins coffee break. You find Warren in the canteen while Ann is in the office still struggling with her tasks in the boardroom.
+You approach him and he starts a conversation.
+
+Warren: Would you like a cup of coffee? 
+
+Player: 
+Yes, meanwhile let me invite Ann over then after the break we can work together to ensure she completes has daily tasks. 
+Thanks for the offer, but I need to check on Ann to see if she needs help with her tasks first. 
+A cappuccino will do. Please do me a favour, can you kindly see what Ann's stack is on? If it's too complex let me know right away. 
+I will have it later, but first, can you assist Ann with her duties, then after that, we can all have a coffee break together.
+
+: You head towards Ann to see what is holding her behind and you see the task on her computer.
+
+Task task
+You can always rely on your team
+
+: Three office printers require toner replacement. There is a significant workload with lots of printing in the next few weeks.
+
+Player:
+Subcontract it to a third party: 200
+Replace the printer yourself
+Call the maintenance guy to come over: 30
+Ask Stacy for advice
