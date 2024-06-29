@@ -9,10 +9,16 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     [SerializeField] private Text slotText;
     [SerializeField] private Text motivationText;
     private static int correctTask = 0;
-    MainMenuController mainMenuController;
+    private MainMenuController mainMenuController;
+    private CoinManager coinManager;
+    private ConfidentialFileManager confidentialFileManager;    
 
-    static CoinManager coinManager;
-
+    public void Start()
+    {
+        mainMenuController = GetComponent<MainMenuController>();
+        coinManager = GetComponent<CoinManager>();
+        confidentialFileManager = FindObjectOfType<ConfidentialFileManager>();
+    }
 
     private string GetCorrectTaskCount(int taskCount)
     {
@@ -25,22 +31,34 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
         }
         CompareTask(eventData);
+
+        Image confidentialImage = eventData.pointerDrag.GetComponent<Image>();
+        if (confidentialImage == null || confidentialFileManager == null)
+        {
+            Debug.Log("Item is null");
+        }
+        confidentialFileManager.ChangeState(confidentialImage);
+        confidentialFileManager.StartTimer();
     }
 
     private void CompareTask(PointerEventData eventData)
     {
         Text draggedText = eventData.pointerDrag.GetComponentInChildren<Text>();
-        if (draggedText.text == slotText.text)
+        if (slotText.text != null && draggedText != null)
         {
-            SetCompleteBackground();
-            motivationText.text = "Correct task "!;
-            eventData.pointerDrag.SetActive(false);
-            correctTask++;
-        }
-        else
-        {
-            motivationText.text = "Try Again!";
+            
+            if (draggedText.text == slotText.text)
+            {
+                SetCompleteBackground();
+                motivationText.text = "Correct task "!;
+                eventData.pointerDrag.SetActive(false);
+                correctTask++;
+            }
+            else
+            {
+                motivationText.text = "Try Again!";
 
+            }
         }
     }
 
@@ -56,11 +74,8 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     {
         if (correctTask >= 7)
         {
-            mainMenuController = GetComponent<MainMenuController>();
             mainMenuController.LoadNextScene(sceneName);
-            coinManager = GetComponent<CoinManager>();
             coinManager.AddCoins();
-            
         }
     }
 }

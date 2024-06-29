@@ -1,4 +1,4 @@
-: You are an assistant manager in a consultancy company called Orbit Corp. You manager is travelling on a business trip and her responsibilities now lay on your shoulders. 
+: You are an assistant manager in a consultancy company called Orbit Corp. Your manager is travelling on a business trip and her responsibilities now lay on your shoulders. 
 
 It is uncertain when she will be back but till then you will be in charge of her duties. You have just been called into the CEO's office for an urgent briefing. 
 
@@ -12,11 +12,11 @@ Thank you, sir, I won’t let you down I promise.
 I will immediately brief the team and lead them through pending and upcoming tasks. 
 With my leadership experience, I will be able to fill in our manager's shoes with no doubt. 
 
-Feedback: As a leader it is best to brief your team first and allocated duties on time sensitive tasks first.
+Feedback: As a leader, it is best to brief your team first and allocate duties on time-sensitive tasks first.
 
 Dylan: And one last thing, kindly fill in this form and send it back via email before the end of the day. Good luck. 
 
-Task TaskOne
+Task  task
 You can always rely on your team 
 
 Stacy: Hi, I know that you have been briefed on my trip. I would like to wish you the best of luck. Whenever I get the chance, I will be able to offer you some advice on what to do when you need help. 
@@ -32,16 +32,17 @@ I think we will be fine; we have the best team for the job.
 
 Stacy: Thank you. And please do not be too hard on yourself. We have a very capable team that is always willing to help. 
 
-Feedback: While all the other choices prove you are a good team player, in this case promising Stacy that you are the right fit for the job proves good self efficasy and confidence to lead a team.
+Feedback: While all the other choices prove you are a good team player, in this case promising Stacy that you are the right fit for the job proves good self-efficacy and confidence to lead a team.
 
 : The manager has advised you to work with your colleagues and not rely on yourself when solving a non-trivial task. 
 You have called the associates into your office. After greeting them you proceed with these instructions concerning the duties with fast-approaching deadlines. 
 
 Player: 
-Let us focus on these duties individually and for anyone lagging, my office is open for guidance and support. 
-The CEO is relying on me so kindly leave all the major duties to me and focus on any easier duties you have so that we fast-track production. 
-I promised our manager that we have the best team so, please make sure you find the best solutions to all issues without relying on my help. 
-Kindly work on these duties first and report any issues to me immediately. I am also expecting a report on everyone's progress by the end of the day.
+
+[Let them choose tasks individually and seek assistance when need be]
+[Take on time-sensitive duties and allocate other duties to them]
+[The manager said they are capable and they do not require any help whatsoever]
+[Assign time-sensitive duties and request daily reports from everyone]
 
 Warren: Okay boss.   
 Ann: Okay boss.
@@ -63,7 +64,7 @@ I will have it later, but first, can you assist Ann with her duties, then after 
 
 Feedback:
 
-Task Ann'sTask
+Task task
 You can always rely on your team
 
 : It is 4 pm and you are about to go home and you receive a significant workload with lots of printing in the next few days that need to start tomorrow morning.
@@ -76,7 +77,7 @@ Replace the printer yourself
 Call the maintenance guy to come over : 30
 Ask Stacy for advice
 
-Feedback: Calling the maintenance guy is the best decision that ensures the quality of services, good time management and that you trust your colleagues from other department 
+Feedback: Calling the maintenance guy is the best decision that ensures the quality of services, good time management and that you trust your colleagues from another department 
 
 : The CEO is mad at you and he sends you an email concerning the printer issues you know Stacy forgot to inform you if you report her she might get a strike if you do not you might take a strike.
 Dylan: Our client is on my neck, he can't stop calling. What happened to the printers?
@@ -92,12 +93,12 @@ Dylan: Let us just hope that this printer mishap doesn't occur again.
 Player:
 Okay, sir.
 I am sorry sir.
-This won't happen again sir.
+This won't happen again, sir.
 I will do better next time sir.
 
 Feedback : 
 
-Stacy: Hello Player sorry have been busy with the contract. I had just wanted to remind you that the printers need toner replacement. It had slipped my mind and the CEO just contacted me.
+Stacy: Hello Player sorry have been busy with the contract. I just wanted to remind you that the printers need toner replacement. It had slipped my mind and the CEO just contacted me.
 
 Player:
 Tell her you took care of it and she should not worry.
@@ -117,7 +118,7 @@ Okay, just make sure that your daily duties are completed timely, I will ask War
 Sure, since it is your son's special day I recommend you take the day off we will handle the workload with Warren.
 I will allow you to go only if you are willing to compensate for those two hours by coming in 2 hours earlier tomorrow.
 
-: (The day after Ann's son's school presentation) You are about to take the lift to your office. Ann and Warren approach and you over here their conversation.
+: (The day after Ann's son's school presentation) You are about to take the lift to your office. Ann and Warren approach and you over hear their conversation.
 
 Ann: The date yesterday with Jimmy's dad was amazing It has been a while since we have felt this youthful.
 : Warren chuckles and before he says a word they see you and they both keep quiet and walk in separate directions. You feel like that was odd and now you feel like Ann lied to you about the off.
@@ -147,7 +148,7 @@ Feedback: Always give your colleagues the benefit of the doubt and ensure correc
 
 : (Days later)
 Warren is shouting at his assistant for coming in 30 minutes late for the fourth day in a row.
-He knows that you are meant to hold him accountable for his junior's actions and now he says that he is fed up with this behaviour and will take action if his assistant doesn't come to work to minutes early tomorrow.
+He knows that you are meant to hold him accountable for his junior's actions and now he says that he is fed up with this behaviour and will take action if his assistant doesn't come to work ten minutes early tomorrow.
 Usually, these are trivial matters for Stacy when she is around.
 
 Player: 
@@ -157,6 +158,21 @@ Player:
 [Ask Warren's assistant why he is late again]
 
 Feedback: Asking Warren what is going on fosters good communication and shows that you are willing to understand the situation first.
+
+: Warren's assistant explanation indicates that his car broke down early this week when he was running an official errand and he is $100 low on the repairs, Warren affirms it is true and is willing to chip in the expenses.
+
+Player:
+[Tell Warren to pay for repairs]
+[Ask the finance office to compensate him] : 100
+[Compensate him from your pocket]
+[Share the costs with Warren]
+
+: Now that the assistant is settled you need to handle Warren internally for using personal vehicles for company business.
+Player:
+[Give him a written warning]
+[Give him a vocal warning]
+[Trust that his actions were necessary]
+[Let him explain himself]
 
 : Stacy has just closed the deal but she might not be coming back to work since the CEO wants her to pioneer the new Annex branch that has just been opened in Liverpool(Your home city).
 The new branch requires someone with a lot of company knowledge.

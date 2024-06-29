@@ -9,6 +9,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 
 public class ReadDialogue : MonoBehaviour
 {
@@ -23,19 +24,21 @@ public class ReadDialogue : MonoBehaviour
     [SerializeField] private Text playerReponseFour;
     [SerializeField] private CoinManager coinManager;
     private AvatarManager avatarManager;
-    int playerChoice;
-
+    private int playerChoice;
     private int currentLine = 0;
     private string[] lines;
+    private MainMenuController mainMenuController;
+    private Dictionary<string, int> taskProgress;
+
 
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
     skipping blank lines to ensure seamless conversation
     */
     private void Start()
     {
+        mainMenuController = GetComponent<MainMenuController>();
         currentLine = PlayerPrefs.GetInt("CurrentLine", 0);
-        currentLine = 0; // this is temporaray for testing alone t paypass the saved line
-
+        currentLine = 0; // this is temporaray for testing alone t bypass the saved line
         avatarManager = GetComponent<AvatarManager>();
         coinManager.GetComponent<CoinManager>();
         avatarManager.InitiliseAvatar();
@@ -61,17 +64,15 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
-    //returns the line on the specifi index
-    private string GetLineIndex(int lineIndex)
+    //returns the line on the specific index
+    private string GetLine(int lineIndex)
     {
-        if (lines != null && lineIndex < lines.Length)
+        if (lines == null || lineIndex >= lines.Length)
         {
-            return lines[lineIndex];
+            mainMenuController.LoadNextScene("Stats");
+            return "The End";
         }
-        else
-        {
-            return "No Lines To Read";
-        }
+        return lines[lineIndex];
     }
 
     //reading the next line and dsabling the parent game object if there are no lines to read.
@@ -93,18 +94,14 @@ public class ReadDialogue : MonoBehaviour
     // Sets the dialogue and avatar name based on the current line index
     private void SetNameAndDialogue(int lineIndex)
     {
-        if (lines != null && lineIndex < lines.Length)
-        {
-            string line = lines[lineIndex];
-            string[] sentenceParts = line.Split(new[] { ':' }, 2);
-            SplitSentence(line, sentenceParts);
-
-        }
-        else
+        if (lines == null || lineIndex >= lines.Length)
         {
             avatarName.text = "Office";
             dialogue.text = "There is no one in the office!";
         }
+        string line = lines[lineIndex];
+        string[] sentenceParts = line.Split(new[] { ':' }, 2);
+        SplitSentence(line, sentenceParts);
     }
 
     //split the sentence in a  way that the first part is the avatar's name and the other is the dialogue
@@ -133,6 +130,7 @@ public class ReadDialogue : MonoBehaviour
         if (String.Equals("Task", avatarName.text))
         {
             SaveNextLine();
+            mainMenuController.LoadNextScene(dialogue.text);
         }
     }
 
@@ -149,13 +147,12 @@ public class ReadDialogue : MonoBehaviour
 
     private void LoadPlayerResponses(int startLine)
     {
-
         if (startLine < lines.Length)
         {
-            playerReponseOne.text = GetLineIndex(startLine);
-            playerReponseTwo.text = GetLineIndex(startLine + 1);
-            playerReponseThree.text = GetLineIndex(startLine + 2);
-            playerReponseFour.text = GetLineIndex(startLine + 3);
+            playerReponseOne.text = GetLine(startLine);
+            playerReponseTwo.text = GetLine(startLine + 1);
+            playerReponseThree.text = GetLine(startLine + 2);
+            playerReponseFour.text = GetLine(startLine + 3);
         }
         else
         {
@@ -165,18 +162,19 @@ public class ReadDialogue : MonoBehaviour
     }
 
     //based on the players response the player avatar will skip to that response then skip ahead
+    // Extract the integer from the current line
     public void PlayerDecision(int playerChoice)
     {
         currentLine += playerChoice;
-        // Extract the integer from the current line
-    
-        coinManager.ExtractExpenditure(GetLineIndex(currentLine));
 
+        PlayerReport.UpdateDecisions(GetLine(currentLine));
 
+        coinManager.ExtractExpenditure(GetLine(currentLine));
         currentLine = SkipRemainingChoice(currentLine, playerChoice);
         avatarDialogue.SetActive(true);
         playerResponse.SetActive(false);
         NextLine();
+
     }
 
     //The scripts avoids the multiple choice options after the player selects one to ensure a seamless storyline

@@ -22,5 +22,15 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
 }
 
