@@ -16,7 +16,7 @@ Feedback: As a leader it is best to brief your team first and allocated duties o
 
 Dylan: And one last thing, kindly fill in this form and send it back via email before the end of the day. Good luck. 
 
-Task TaskOne
+Task :TaskOne
 You can always rely on your team 
 
 Stacy: Hi, I know that you have been briefed on my trip. I would like to wish you the best of luck. Whenever I get the chance, I will be able to offer you some advice on what to do when you need help. 
@@ -63,7 +63,7 @@ I will have it later, but first, can you assist Ann with her duties, then after 
 
 Feedback:
 
-Task Ann'sTask
+Task :Ann'sTask
 You can always rely on your team
 
 : It is 4 pm and you are about to go home and you receive a significant workload with lots of printing in the next few days that need to start tomorrow morning.

@@ -28,7 +28,7 @@ public class ReadDialogue : MonoBehaviour
     private int currentLine = 0;
     private string[] lines;
     private MainMenuController mainMenuController;
-    private Dictionary<string, int> taskProgress;
+    private static Dictionary<string, int> taskProgress;
 
 
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
@@ -36,6 +36,7 @@ public class ReadDialogue : MonoBehaviour
     */
     private void Start()
     {
+        taskProgress = new Dictionary<string, int>();
         mainMenuController = GetComponent<MainMenuController>();
         currentLine = PlayerPrefs.GetInt("CurrentLine", 0);
         currentLine = 0; // this is temporaray for testing alone t bypass the saved line
@@ -51,17 +52,14 @@ public class ReadDialogue : MonoBehaviour
     {
         TextAsset textAsset = Resources.Load<TextAsset>(scriptName);
         playerResponse.SetActive(false);
-        if (textAsset != null)
-        {
-            lines = textAsset.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            SetNameAndDialogue(currentLine);
-
-        }
-        else
+        if (textAsset == null)
         {
             //in case the file response is not found this text will be displayed insted
             dialogue.text = "Oops! Sorry I'll get back to you soon I have an urgent meeting!";
         }
+
+        lines = textAsset.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        SetNameAndDialogue(currentLine);
     }
 
     //returns the line on the specific index
@@ -111,14 +109,6 @@ public class ReadDialogue : MonoBehaviour
         {
             avatarName.text = sentenceParts[0].Trim();
             dialogue.text = sentenceParts[1].Trim();
-
-            if (String.Equals("Player", avatarName.text))
-            {
-                avatarDialogue.SetActive(false);
-                playerResponse.SetActive(true);
-
-            }
-
             InovkeResponse();
             avatarManager.ActivateAvatar(avatarName.text);
         }
@@ -130,6 +120,7 @@ public class ReadDialogue : MonoBehaviour
         if (String.Equals("Task", avatarName.text))
         {
             SaveNextLine();
+            taskProgress.Add(dialogue.text, currentLine);
             mainMenuController.LoadNextScene(dialogue.text);
         }
     }
