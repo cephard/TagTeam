@@ -25,7 +25,7 @@ public class ReadDialogue : MonoBehaviour
     [SerializeField] private CoinManager coinManager;
     private AvatarManager avatarManager;
     private int playerChoice;
-    private int currentLine = 0;
+    private static int currentLine = 0;
     private string[] lines;
     private MainMenuController mainMenuController;
     private static Dictionary<string, int> taskProgress;
@@ -37,15 +37,31 @@ public class ReadDialogue : MonoBehaviour
     private void Start()
     {
         taskProgress = new Dictionary<string, int>();
+        taskProgress["TaskOne"] = 13;
+        taskProgress["Ann'sTask"] = 45;
         mainMenuController = GetComponent<MainMenuController>();
-        currentLine = PlayerPrefs.GetInt("CurrentLine", 0);
-        currentLine = 0; // this is temporaray for testing alone t bypass the saved line
         avatarManager = GetComponent<AvatarManager>();
         coinManager.GetComponent<CoinManager>();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
+        Debug.Log(mainMenuController.GetSceneName());
+        LoadDialogueForScene(mainMenuController.GetSceneName());
+    }
+
+    public void LoadDialogueForScene(string sceneName)
+    {
+        if (taskProgress.ContainsKey(sceneName))
+        {
+            currentLine = taskProgress[sceneName];
+            Debug.Log("HEY " + currentLine);
+        }
+        else
+        {
+            currentLine = 0;
+            Debug.Log(currentLine);
+
+        }
         LoadScript("General");
-        //SaveNextLine();
     }
 
     public void LoadScript(string scriptName)
@@ -56,6 +72,7 @@ public class ReadDialogue : MonoBehaviour
         {
             //in case the file response is not found this text will be displayed insted
             dialogue.text = "Oops! Sorry I'll get back to you soon I have an urgent meeting!";
+            return;
         }
 
         lines = textAsset.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -116,15 +133,19 @@ public class ReadDialogue : MonoBehaviour
         {
             dialogue.text = line;
         }
+        LoadTaskScene();
+    }
 
+    public void LoadTaskScene()
+    {
         if (String.Equals("Task", avatarName.text))
         {
             SaveNextLine();
-            taskProgress.Add(dialogue.text, currentLine);
+            taskProgress[dialogue.text] = currentLine;
+            Debug.Log(dialogue.text +" "+ currentLine);
             mainMenuController.LoadNextScene(dialogue.text);
         }
     }
-
     public void InovkeResponse()
     {
         if (String.Equals("Player", avatarName.text))
@@ -134,7 +155,6 @@ public class ReadDialogue : MonoBehaviour
             LoadPlayerResponses(currentLine + 1);
         }
     }
-
 
     private void LoadPlayerResponses(int startLine)
     {

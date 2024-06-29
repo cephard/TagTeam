@@ -5,16 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private ReadDialogue readDialogue;
+    private static string currentScene;
+
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        readDialogue = GetComponent<ReadDialogue>();
     }
 
     //mehod to navigate between scenes
@@ -23,14 +19,23 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void UpdateSceneName(string sceneName)
+    {
+        currentScene = sceneName;
+    }
+
+    public string GetSceneName()
+    {
+        return currentScene;
+    }
 
     public void ExitGame()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
         Application.Quit();
-        #endif
+#endif
     }
 }
 
