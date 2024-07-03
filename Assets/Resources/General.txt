@@ -173,3 +173,7 @@ Player:
 [Tell him that the board's decision is final]
 
 Feedback: To show selflessness, humility and prioritizing team success of the company over personal gains, by considering that Stacy has more company knowledge than you and that she closed the deal she should take the Liverpool Office.
+
+Task :UnlockLaptop
+
+: The END!

@@ -13,7 +13,6 @@ public class AssignmentOneLogic : MonoBehaviour
     [SerializeField] private Image SlotFive;
     [SerializeField] private Image SlotSix;
     [SerializeField] private Image SlotSeven;
-
     [SerializeField] private Image TaskOne;
     [SerializeField] private Image TaskTwo;
     [SerializeField] private Image TaskThree;
@@ -22,7 +21,6 @@ public class AssignmentOneLogic : MonoBehaviour
     [SerializeField] private Image TaskSix;
     [SerializeField] private Image TaskSeven;
  
-
     private int counter;
 
     void Start()
@@ -51,6 +49,5 @@ public class AssignmentOneLogic : MonoBehaviour
         Text taskTextSix = TaskSix.GetComponentInChildren<Text>();
         Text taskTextSeven = TaskSeven.GetComponentInChildren<Text>();
     }
-
 }
 

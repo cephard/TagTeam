@@ -8,8 +8,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 
 public class ReadDialogue : MonoBehaviour
 {
@@ -37,14 +35,15 @@ public class ReadDialogue : MonoBehaviour
     private void Start()
     {
         taskProgress = new Dictionary<string, int>();
+        taskProgress["pause"] = 0;
         taskProgress["TaskOne"] = 13;
         taskProgress["Ann'sTask"] = 45;
-        mainMenuController = GetComponent<MainMenuController>();
+        taskProgress["UnlockLaptop"] = 127;
+       mainMenuController = GetComponent<MainMenuController>();
         avatarManager = GetComponent<AvatarManager>();
         coinManager.GetComponent<CoinManager>();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
-        Debug.Log(mainMenuController.GetSceneName());
         LoadDialogueForScene(mainMenuController.GetSceneName());
     }
 
@@ -53,12 +52,10 @@ public class ReadDialogue : MonoBehaviour
         if (taskProgress.ContainsKey(sceneName))
         {
             currentLine = taskProgress[sceneName];
-            Debug.Log("HEY " + currentLine);
         }
         else
         {
             currentLine = 0;
-            Debug.Log(currentLine);
 
         }
         LoadScript("General");
@@ -96,6 +93,7 @@ public class ReadDialogue : MonoBehaviour
         if (lines != null && currentLine < lines.Length - 1)
         {
             currentLine++;
+            Debug.Log(currentLine);
             SetNameAndDialogue(currentLine);
 
         }
@@ -142,7 +140,6 @@ public class ReadDialogue : MonoBehaviour
         {
             SaveNextLine();
             taskProgress[dialogue.text] = currentLine;
-            Debug.Log(dialogue.text +" "+ currentLine);
             mainMenuController.LoadNextScene(dialogue.text);
         }
     }

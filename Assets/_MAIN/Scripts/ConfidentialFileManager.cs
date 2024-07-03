@@ -12,9 +12,9 @@ public class ConfidentialFileManager : MonoBehaviour
     [SerializeField] private Text timerMessage;
     private Dictionary<Image, bool> secretCode;
     private Coroutine timerCoroutine;
-    private const int TIMER_DELAY = 2;
-    private int timer = TIMER_DELAY; //seconds
-    MainMenuController mainMenuController;
+    private const int TIMER_DELAY = 1;
+    private int timer = TIMER_DELAY;
+    private MainMenuController mainMenuController;
 
 
     public void Start()
@@ -74,15 +74,17 @@ public class ConfidentialFileManager : MonoBehaviour
             secretCode[image] = !secretCode[image];
 
         }
-        Debug.Log("Image state toggled: " + image.name + " to " + secretCode[image]);
         CheckFileIntegrity();
-
     }
 
     //when a private key and public key stay for 5 seconds player fails 
     public IEnumerator TimerCountDown()
     {
-        if (secretCode[privateKey] != secretCode[publicKey])
+        if (secretCode[privateKey] == secretCode[publicKey])
+        {
+            ResetTimer();
+        }
+        else
         {
             while (timer > 0)
             {
@@ -108,7 +110,6 @@ public class ConfidentialFileManager : MonoBehaviour
             feedback.color = Color.yellow;
             UpdateFeedBack("Too Late Confidential File Has Been Corrupted");
             mainMenuController.LoadNextScene("Ann'sTask");
-
         }
     }
 

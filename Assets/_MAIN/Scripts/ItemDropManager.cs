@@ -37,8 +37,11 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
         {
             Debug.Log("Item is null");
         }
-        confidentialFileManager.ChangeState(confidentialImage);
-        confidentialFileManager.StartTimer();
+        else
+        {
+            confidentialFileManager.ChangeState(confidentialImage);
+            confidentialFileManager.StartTimer();
+        }
     }
 
     private void CompareTask(PointerEventData eventData)
@@ -72,10 +75,11 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     //Allows player to load next scene only sfter all tasks are complete
     public void Proceed(string sceneName)
     {
-        if (correctTask >= 7)
+        if (correctTask >= 0)
         {
+           coinManager.AddCoins();
             mainMenuController.LoadNextScene(sceneName);
-            coinManager.AddCoins();
+            
         }
     }
 }
