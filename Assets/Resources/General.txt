@@ -129,7 +129,8 @@ Player:
 [Call Ann into the Office]
 [Wait until team break and casually ask Warren about the conversation they were having]
 
-: Before you finalise your decision on Ann's behaviour you hear a knock at the door. You let them in and to your surprise it is Ann. She politely asks you to be patient and that she will clear everything out with you during the break.
+: Before you finalise your decision on Ann's behaviour you hear a knock at the door. You let them in and to your surprise it is Ann.
+She politely asks you to be patient and that she will clear everything out with you during the break.
 You decide to trust her and wait for break time.
 
 Ann: I made you a flat white boss just how you like it. Can we please talk about this in private?

@@ -20,7 +20,6 @@ public class AssignmentOneLogic : MonoBehaviour
     [SerializeField] private Image TaskFive;
     [SerializeField] private Image TaskSix;
     [SerializeField] private Image TaskSeven;
- 
     private int counter;
 
     void Start()

@@ -37,9 +37,9 @@ public class ReadDialogue : MonoBehaviour
         taskProgress = new Dictionary<string, int>();
         taskProgress["pause"] = 0;
         taskProgress["TaskOne"] = 13;
-        taskProgress["Ann'sTask"] = 45;
+        taskProgress["Ann'sTask"] = 49;
         taskProgress["UnlockLaptop"] = 127;
-       mainMenuController = GetComponent<MainMenuController>();
+        mainMenuController = GetComponent<MainMenuController>();
         avatarManager = GetComponent<AvatarManager>();
         coinManager.GetComponent<CoinManager>();
         avatarManager.InitiliseAvatar();
@@ -58,7 +58,7 @@ public class ReadDialogue : MonoBehaviour
             currentLine = 0;
 
         }
-        LoadScript("General");
+        LoadScript("General2");
     }
 
     public void LoadScript(string scriptName)
@@ -174,15 +174,12 @@ public class ReadDialogue : MonoBehaviour
     public void PlayerDecision(int playerChoice)
     {
         currentLine += playerChoice;
-
         PlayerReport.UpdateDecisions(GetLine(currentLine));
-
         coinManager.ExtractExpenditure(GetLine(currentLine));
         currentLine = SkipRemainingChoice(currentLine, playerChoice);
         avatarDialogue.SetActive(true);
         playerResponse.SetActive(false);
         NextLine();
-
     }
 
     //The scripts avoids the multiple choice options after the player selects one to ensure a seamless storyline
