@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
-
     private static int availableCoins = 1000;
     private static int diamondBadge = 20;
     [SerializeField] private Text coinText;
@@ -44,7 +43,6 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-
     //a coroutine that makes an effect to make the players money spenditure purnishment feel more severe
     private IEnumerator CoinReductionEffect(int spentCoins)
     {
@@ -55,12 +53,7 @@ public class CoinManager : MonoBehaviour
             coinText.text = i.ToString();
             yield return new WaitForSeconds(0.0000001f);
         }
-
     }
-
-
-
-
 }
 
 

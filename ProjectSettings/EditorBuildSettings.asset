@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_MAIN/Scenes/PauseMenu.unity
     guid: 70d71b8695f3f3849b9c43530ef3a928
+  - enabled: 1
+    path: Assets/_MAIN/Scenes/Stats.unity
+    guid: 724306e1206d911408cffaca03a948d2
+  - enabled: 1
+    path: Assets/_MAIN/Scenes/Ann'sTask.unity
+    guid: 5a816fc2941ad6e438be2db0793124e5
+  - enabled: 1
+    path: Assets/_MAIN/Scenes/UnlockLaptop.unity
+    guid: 726cd6109ecd3884d8751801c42d4b67
   m_configObjects: {}
