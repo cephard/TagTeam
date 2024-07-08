@@ -23,13 +23,13 @@ public class UserAuthenticationManager : MonoBehaviour
     [SerializeField] private Text switchAuthType;
     [SerializeField] InputField loginMail;
     [SerializeField] InputField loginPassword;
-    private MainMenuController mainMenuController;
+    private static MainMenuController mainMenuController;
     private static bool authenticationScreen;
 
     private void Start()
     {
         loginGameObject.SetActive(authenticationScreen);
-        mainMenuController = GetComponent<MainMenuController>();
+        mainMenuController = FindObjectOfType<MainMenuController>();
     }
 
     public void OnRegPressed()
@@ -54,7 +54,10 @@ public class UserAuthenticationManager : MonoBehaviour
             Password = password,
             RequireBothUsernameAndEmail = false,
         };
-        SwitchScreen();
+        PlayFabClientAPI.RegisterPlayFabUser(request,
+            successResult => LogIn(email, password),
+            PlayFabFailure
+        );
     }
     #endregion
 
@@ -88,8 +91,8 @@ public class UserAuthenticationManager : MonoBehaviour
                 PlayerPrefs.SetString(LAST_PASSWORD, password);
                 PlayerPrefs.SetString("Username", successResult.InfoResultPayload.PlayerProfile.DisplayName);
                 Debug.Log("Successfully Logged In User: " + PlayerPrefs.GetString("Username"));
-                mainMenuController.LoadNextScene("WelcomeScene");
                 mainMenuController.UpdateSceneName("MainMenu");
+                mainMenuController.LoadNextScene("WelcomeScene");
             },
             PlayFabFailure
         );
