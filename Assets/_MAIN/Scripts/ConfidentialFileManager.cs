@@ -1,132 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ConfidentialFileManager : MonoBehaviour
 {
-    [SerializeField] private Image privateKey;
-    [SerializeField] private Image publicKey;
-    [SerializeField] private Image secretMessage;
-    [SerializeField] private Text feedback;
-    [SerializeField] private Text timerMessage;
-    private Dictionary<Image, bool> secretCode;
-    private Coroutine timerCoroutine;
-    private const int TIMER_DELAY = 1;
-    private int timer = TIMER_DELAY;
+    private const int SECRET_VALUE = 14;
+    [SerializeField] private Text puzzleClue;
+    [SerializeField] private Text motivationText;
+    [SerializeField] private GameObject cluePanel;
+    [SerializeField] private InputField secretValue;
     private MainMenuController mainMenuController;
 
-
-    public void Start()
+    private void Start()
     {
         mainMenuController = GetComponent<MainMenuController>();
-        timerMessage.text = timer.ToString();
-        secretCode = new Dictionary<Image, bool>
-        {
-            { privateKey, false },
-            { publicKey, false },
-            { secretMessage, false }
-        };
+        HideClue();
     }
 
-    public void Update()
+    public void HideClue()
     {
-        timerMessage.text = timer.ToString();
-
+        cluePanel.SetActive(false);
+    }
+    public void RevealFileClue()
+    {
+        cluePanel.SetActive(true);
+        puzzleClue.text = "Help Ann to unlock the confidential file.\n" +
+            "Every Key has its own value. Private keys are RED and Public keys are BLUE.\n" +
+            "Both keys and files are encoded with a secret value.";
     }
 
-    private void PrivateKeyExposed()
+    public void SubmitValue()
     {
-        if (secretCode[secretMessage] && secretCode[publicKey] && !secretCode[privateKey])
-        {
-            feedback.color = Color.red;
-            UpdateFeedBack("Private has been exposed ! ");
+        if (secretValue.text == null) {
+            motivationText.text = "Value cannot be null!";
         }
-    }
+        int enteredValue;
+        bool isInteger = int.TryParse(secretValue.text, out enteredValue);
 
-    private void PublicKeyExposed()
-    {
-        if (secretCode[secretMessage] && secretCode[privateKey] && !secretCode[publicKey])
-        {
-            feedback.color = Color.red;
-            UpdateFeedBack("Public key has been exposed ! ");
+        if (!isInteger) {
+            motivationText.text = "Please enter a number!";
+            return;
         }
-    }
-
-    private void messageSentSuccessFully()
-    {
-        if (secretCode[secretMessage] && secretCode[publicKey] && secretCode[privateKey])
+        if(SECRET_VALUE != enteredValue)
         {
-            feedback.color = Color.white;
-            UpdateFeedBack("Secret Message sent successfully! ");
-        }
-    }
-
-    private void UpdateFeedBack(string feedbackText)
-    {
-        feedback.text = feedbackText;
-    }
-
-    public void ChangeState(Image image)
-    {
-        if (secretCode.ContainsKey(image))
-        {
-            secretCode[image] = !secretCode[image];
-
-        }
-        CheckFileIntegrity();
-    }
-
-    //when a private key and public key stay for 5 seconds player fails 
-    public IEnumerator TimerCountDown()
-    {
-        if (secretCode[privateKey] == secretCode[publicKey])
-        {
-            ResetTimer();
+            motivationText.text = "Try again!";
         }
         else
         {
-            while (timer > 0)
-            {
-                timer--;
-                yield return new WaitForSeconds(1f);
-            }
-            CheckTimer();
+            mainMenuController.LoadNextScene("Conversation");
+            mainMenuController.UpdateSceneName("Ann'sTask");
         }
-    }
-
-    // Start the timer coroutine
-    public void StartTimer()
-    {
-        ResetTimer();
-        timerCoroutine = StartCoroutine(TimerCountDown());
-    }
-
-
-    private void CheckTimer()
-    {
-        if (timer <= 0)
-        {
-            feedback.color = Color.yellow;
-            UpdateFeedBack("Too Late Confidential File Has Been Corrupted");
-            mainMenuController.LoadNextScene("Ann'sTask");
-        }
-    }
-
-    private void ResetTimer()
-    {
-        if (timerCoroutine != null)
-        {
-            StopCoroutine(timerCoroutine);
-        }
-        timer = TIMER_DELAY;
-    }
-
-    public void CheckFileIntegrity()
-    {
-        ResetTimer();
-        messageSentSuccessFully();
-        PublicKeyExposed();
-        PrivateKeyExposed();
     }
 }
+
+

@@ -1,3 +1,7 @@
+: This game will teach and assess your soft skills
+
+Chapter : The Takeover
+
 : You are an assistant manager in a consultancy company called Orbit Corp. You manager is travelling on a business trip and her responsibilities now lay on your shoulders. 
 
 It is uncertain when she will be back but till then you will be in charge of her duties. You have just been called into the CEO's office for an urgent briefing. 
@@ -12,11 +16,11 @@ Thank you, sir, I won’t let you down I promise.
 I will immediately brief the team and lead them through pending and upcoming tasks. 
 With my leadership experience, I will be able to fill in our manager's shoes with no doubt. 
 
-Feedback: As a leader it is best to brief your team first and allocated duties on time sensitive tasks first.
+Feedback: As a leader, it is best to brief your team and allocate duties on time-sensitive tasks first.
 
 Dylan: And one last thing, kindly fill in this form and send it back via email before the end of the day. Good luck. 
 
-Task :TaskOne
+Task : TaskOne
 You can always rely on your team 
 
 Stacy: Hi, I know that you have been briefed on my trip. I would like to wish you the best of luck. Whenever I get the chance, I will be able to offer you some advice on what to do when you need help. 
@@ -32,7 +36,9 @@ I think we will be fine; we have the best team for the job.
 
 Stacy: Thank you. And please do not be too hard on yourself. We have a very capable team that is always willing to help. 
 
-Feedback: While all the other choices prove you are a good team player, in this case promising Stacy that you are the right fit for the job proves good self efficasy and confidence to lead a team.
+Feedback: While all the other choices prove you are a good team player, promising Stacy that you are the right fit for the job proves good self-efficacy and confidence to lead a team.
+
+Chapter: Teamleader
 
 : The manager has advised you to work with your colleagues and not rely on yourself when solving a non-trivial task. 
 You have called the associates into your office. After greeting them you proceed with these instructions concerning the duties with fast-approaching deadlines. 
@@ -40,7 +46,7 @@ You have called the associates into your office. After greeting them you proceed
 Player: 
 Let us focus on these duties individually and for anyone lagging, my office is open for guidance and support. 
 The CEO is relying on me so kindly leave all the major duties to me and focus on any easier duties you have so that we fast-track production. 
-I promised our manager that we have the best team so, please make sure you find the best solutions to all issues without relying on my help. 
+I promised our manager that we have the best team, so please ensure you find the best solutions to all issues without relying on my help. 
 Kindly work on these duties first and report any issues to me immediately. I am also expecting a report on everyone's progress by the end of the day.
 
 Warren: Okay boss.   
@@ -63,13 +69,16 @@ I will have it later, but first, can you assist Ann with her duties, then after 
 
 Feedback:
 
-Task :Ann'sTask
-You can always rely on your team
+Task : Ann'sTask
+:Congratulations that was a tough one!
 
-: It is 4 pm and you are about to go home and you receive a significant workload with lots of printing in the next few days that need to start tomorrow morning.
+Chapter: Tonner Replacement
+: It is 4 pm and you are about to go home and receive a significant workload with lots of printing in the next few days that need to start tomorrow morning.
+
 You notice that some office printers are late on toner replacement. Stacy was in charge of this duty but unfortunately, it was not done.
 She left the country for the contract, on the same day she was meant to replace them.
 The maintenance guy usually works under Stacy's supervision but he just finished his shift 1 hour ago.
+
 Player:
 Subcontract it to a third party: 200
 Replace the printer yourself
@@ -109,6 +118,8 @@ Feedback:
 
 : Now the printers are fixed and the printing job is underway. 	You would like Ann all hands on deck tomorrow because of the pressure you are receiving from the CEO.
 
+Chapter: Personal life
+
 Ann: Boss I need to attend my son's(Jimmy) school presentation tomorrow at noon. This means the world to him and I don't want to let him down. Can I please get a two-hour off tomorrow from 11 am to 2 pm?
 
 Player:
@@ -146,6 +157,7 @@ Warren and some other colleagues know about this, they were just afraid to tell 
 
 Feedback: Always give your colleagues the benefit of the doubt and ensure correct communication with them before jumping to conclusions. Always show empathy to your colleagues at work to make their environment friendly and approachable.
 
+Chapter: The Conflict
 : (Days later)
 Warren is shouting at his assistant for coming in 30 minutes late for the fourth day in a row.
 He knows that you are meant to hold him accountable for his junior's actions and now he says that he is fed up with this behaviour and will take action if his assistant doesn't come to work to minutes early tomorrow.
@@ -159,6 +171,7 @@ Player:
 
 Feedback: Asking Warren what is going on fosters good communication and shows that you are willing to understand the situation first.
 
+Chapter: Dilema 
 : Stacy has just closed the deal but she might not be coming back to work since the CEO wants her to pioneer the new Annex branch that has just been opened in Liverpool(Your home city).
 The new branch requires someone with a lot of company knowledge.
 The management has been satisfied with you but they are still considering if either you or Stacy will go to the Annex branch.
@@ -175,6 +188,6 @@ Player:
 
 Feedback: To show selflessness, humility and prioritizing team success of the company over personal gains, by considering that Stacy has more company knowledge than you and that she closed the deal she should take the Liverpool Office.
 
-Task :UnlockLaptop
+Task : UnlockLaptop
 
 : The END!

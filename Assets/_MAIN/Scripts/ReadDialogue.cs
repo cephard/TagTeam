@@ -27,6 +27,7 @@ public class ReadDialogue : MonoBehaviour
     private string[] lines;
     private MainMenuController mainMenuController;
     private static Dictionary<string, int> taskProgress;
+    private ChapterManager chapterManager;
 
 
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
@@ -36,15 +37,17 @@ public class ReadDialogue : MonoBehaviour
     {
         taskProgress = new Dictionary<string, int>();
         taskProgress["pause"] = 0;
-        taskProgress["TaskOne"] = 13;
-        taskProgress["Ann'sTask"] = 49;
+        taskProgress["TaskOne"] = 15;
+        taskProgress["Ann'sTask"] = 47;
         taskProgress["UnlockLaptop"] = 127;
         mainMenuController = GetComponent<MainMenuController>();
         avatarManager = GetComponent<AvatarManager>();
         coinManager.GetComponent<CoinManager>();
+        chapterManager = GetComponent<ChapterManager>();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
         LoadDialogueForScene(mainMenuController.GetSceneName());
+
     }
 
     public void LoadDialogueForScene(string sceneName)
@@ -56,9 +59,8 @@ public class ReadDialogue : MonoBehaviour
         else
         {
             currentLine = 0;
-
         }
-        LoadScript("General2");
+        LoadScript("General");
     }
 
     public void LoadScript(string scriptName)
@@ -90,12 +92,15 @@ public class ReadDialogue : MonoBehaviour
     //reading the next line and dsabling the parent game object if there are no lines to read.
     public void NextLine()
     {
+        
         if (lines != null && currentLine < lines.Length - 1)
         {
             currentLine++;
-            Debug.Log(currentLine);
+            coinManager.AwardCoinsByProgress(currentLine);
+            coinManager.RefreshCoinState();
+            string coins = coinManager.GetCoins().ToString();
+            Debug.Log(currentLine + " : " + coins );
             SetNameAndDialogue(currentLine);
-
         }
         else
         {
@@ -124,8 +129,10 @@ public class ReadDialogue : MonoBehaviour
         {
             avatarName.text = sentenceParts[0].Trim();
             dialogue.text = sentenceParts[1].Trim();
+            chapterManager.ChangeChapterBackground(dialogue.text);
             InovkeResponse();
-            avatarManager.ActivateAvatar(avatarName.text);
+            IntroduceChapter();
+
         }
         else
         {
@@ -134,6 +141,17 @@ public class ReadDialogue : MonoBehaviour
         LoadTaskScene();
     }
 
+    public void IntroduceChapter()
+    {
+        if (String.Equals("Chapter", avatarName.text))
+        {
+            //avatarManager.ActivateAvatar(avatarName.text);
+            dialogue.text = "";
+        }
+        else {
+            chapterManager.HideChapterName(avatarName.text);
+        }
+    }
     public void LoadTaskScene()
     {
         if (String.Equals("Task", avatarName.text))
@@ -153,6 +171,8 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
+    //Load player responces
+    // If there are not enough lines left, deactivate player responses
     private void LoadPlayerResponses(int startLine)
     {
         if (startLine < lines.Length)
@@ -164,7 +184,6 @@ public class ReadDialogue : MonoBehaviour
         }
         else
         {
-            // If there are not enough lines left, deactivate player responses
             playerResponse.SetActive(false);
         }
     }
@@ -194,7 +213,6 @@ public class ReadDialogue : MonoBehaviour
         PlayerPrefs.SetInt("CurrentLine", currentLine += 2);
         PlayerPrefs.Save();
     }
-
 
     //switch the actice layer based on the script
     private void SwitchActiveObject(GameObject avatarDialogue, GameObject playerResponse)

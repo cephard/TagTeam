@@ -11,13 +11,11 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     private static int correctTask = 0;
     private MainMenuController mainMenuController;
     private CoinManager coinManager;
-    private ConfidentialFileManager confidentialFileManager;    
 
     public void Start()
     {
         mainMenuController = GetComponent<MainMenuController>();
         coinManager = GetComponent<CoinManager>();
-        confidentialFileManager = FindObjectOfType<ConfidentialFileManager>();
     }
 
     private string GetCorrectTaskCount(int taskCount)
@@ -31,17 +29,6 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
         }
         CompareTask(eventData);
-
-        Image confidentialImage = eventData.pointerDrag.GetComponent<Image>();
-        if (confidentialImage == null || confidentialFileManager == null)
-        {
-            Debug.Log("Item is null");
-        }
-        else
-        {
-            confidentialFileManager.ChangeState(confidentialImage);
-            confidentialFileManager.StartTimer();
-        }
     }
 
     private void CompareTask(PointerEventData eventData)
@@ -75,9 +62,9 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     //Allows player to load next scene only sfter all tasks are complete
     public void Proceed(string sceneName)
     {
-        if (correctTask >= 0)
+        if (correctTask >= 7)
         {
-           coinManager.AddCoins();
+           coinManager.AddCoins(50);
             mainMenuController.LoadNextScene(sceneName);
             
         }

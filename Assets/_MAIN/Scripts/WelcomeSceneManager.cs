@@ -12,3 +12,4 @@ public class NewBehaviourScript : MonoBehaviour
         welcome.text = "Welcome " + PlayerPrefs.GetString("Username");
     }
 }
+

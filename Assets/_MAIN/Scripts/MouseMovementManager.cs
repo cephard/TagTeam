@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MouseMovementManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
-{ 
+{
     private RectTransform rectTransform;
     [SerializeField] Canvas canvas;
     private CanvasGroup canvasGroup;
@@ -38,6 +38,6 @@ public class MouseMovementManager : MonoBehaviour, IBeginDragHandler, IEndDragHa
         canvasGroup.alpha = 1f;
         transform.SetParent(parentAfterDrag);
         taskImage.raycastTarget = true;
-         transform.SetAsLastSibling();
+        transform.SetAsLastSibling();
     }
 }
