@@ -5,29 +5,34 @@ using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
-    private static int availableCoins = 1000;
-    private static int diamondBadge = 20;
+    private static int availableCoins = 0;
+    private static int diamondGem = 0;
     [SerializeField] private Text coinText;
     [SerializeField] private Text diamondText;
 
-
     void Start()
     {
+        availableCoins = PlayerPrefs.GetInt("Coins", availableCoins);
+        diamondGem = PlayerPrefs.GetInt("Diamonds", diamondGem);
         coinText.text = availableCoins.ToString();
-        diamondText.text = diamondBadge.ToString();
+        diamondText.text = diamondGem.ToString();
     }
 
-    public void AddCoins()
+    public void AddCoins(int coins)
     {
-        availableCoins += 100;
-        diamondBadge += 10;
+        availableCoins += (coins * 2);
+        diamondGem += coins;
+        SaveCoinsAndGems();
     }
 
+    //when a player makes a decision to spend coins
     public void UseCoins(int bonusCoins)
     {
         availableCoins -= bonusCoins;
+        SaveCoinsAndGems();
     }
 
+    //return available coins
     public int GetCoins()
     {
         return availableCoins;
@@ -47,13 +52,49 @@ public class CoinManager : MonoBehaviour
     private IEnumerator CoinReductionEffect(int spentCoins)
     {
         int newAmount = availableCoins - spentCoins;
-
-        for (int i = availableCoins; i >= newAmount; i--)
+        if (spentCoins > availableCoins)
         {
-            coinText.text = i.ToString();
-            yield return new WaitForSeconds(0.0000001f);
+            availableCoins = 0;
+        }
+        else
+        {
+            availableCoins -= spentCoins;
+        }
+        SaveCoinsAndGems();
+        while (availableCoins > newAmount)
+        {
+            {
+                availableCoins--;
+                coinText.text = availableCoins.ToString();
+                yield return new WaitForSeconds(0.05f);
+            }
         }
     }
+
+    /*
+     * Awarding coins based on the progress of the player
+     */
+    public void AwardCoinsByProgress(int currentLine)
+    {
+        if (currentLine % 5 == 0)
+        {
+            AddCoins(20);
+            SaveCoinsAndGems();
+        }
+    }
+
+    //refresh coin UI on the gems prefab
+    public void RefreshCoinState()
+    {
+        coinText.text = availableCoins.ToString();
+        diamondText.text = diamondGem.ToString();
+    }
+
+    //saving coins and diamond gems to persist even after exit
+    private void SaveCoinsAndGems()
+    {
+        PlayerPrefs.SetInt("Coins", availableCoins);
+        PlayerPrefs.SetInt("Diamonds", diamondGem);
+        PlayerPrefs.Save();
+    }
 }
-
-
