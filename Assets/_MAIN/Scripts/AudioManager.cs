@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioClip timerAudioClip;
+    [SerializeField] public AudioClip backgroundAudioClip;
     [SerializeField] public AudioClip gainCoinAudioClip;
     [SerializeField] public AudioClip looseCoinAudioClip;
     [SerializeField] public AudioClip winAudioClip;
@@ -28,6 +29,10 @@ public class AudioManager : MonoBehaviour
     public void PlayWiningAudio()
     {
         TriggerClip(winAudioClip);
+    }
+    public void PlayBackgroundAudio()
+    {
+        TriggerClip(backgroundAudioClip);
     }
 
     private void TriggerClip(AudioClip clip)

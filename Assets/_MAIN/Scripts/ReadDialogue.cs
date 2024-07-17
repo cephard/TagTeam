@@ -41,7 +41,8 @@ public class ReadDialogue : MonoBehaviour
         taskProgress["TaskOne"] = 24;
         taskProgress["Ann'sTask"] = 46;
         taskProgress["PrinterSerial"] = 80;
-        taskProgress["UnlockLaptop"] = 127;
+        taskProgress["Emotion"] = 111;
+        taskProgress["UnlockLaptop"] = 130;
         mainMenuController = GetComponent<MainMenuController>();
         avatarManager = GetComponent<AvatarManager>();
         coinManager = GetComponent<CoinManager>();
