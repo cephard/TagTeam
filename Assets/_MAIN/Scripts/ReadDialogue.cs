@@ -28,6 +28,7 @@ public class ReadDialogue : MonoBehaviour
     private string[] lines;
     private MainMenuController mainMenuController;
     private static Dictionary<string, int> taskProgress;
+    private PlayerDecisionManager playerDecisionManager;
 
 
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
@@ -37,13 +38,15 @@ public class ReadDialogue : MonoBehaviour
     {
         taskProgress = new Dictionary<string, int>();
         taskProgress["pause"] = 0;
-        taskProgress["TaskOne"] = 13;
-        taskProgress["Ann'sTask"] = 49;
+        taskProgress["TaskOne"] = 24;
+        taskProgress["Ann'sTask"] = 46;
+        taskProgress["PrinterSerial"] = 80;
         taskProgress["UnlockLaptop"] = 127;
         mainMenuController = GetComponent<MainMenuController>();
         avatarManager = GetComponent<AvatarManager>();
         coinManager = GetComponent<CoinManager>();
         chapterManager = GetComponent<ChapterManager>();
+        playerDecisionManager = GetComponent<PlayerDecisionManager>();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
         LoadDialogueForScene(mainMenuController.GetSceneName());
@@ -59,7 +62,7 @@ public class ReadDialogue : MonoBehaviour
         {
             currentLine = 0;
         }
-        LoadScript("General");
+        LoadScript("Story");
     }
 
     public void LoadScript(string scriptName)
@@ -95,10 +98,9 @@ public class ReadDialogue : MonoBehaviour
         if (lines != null && currentLine < lines.Length - 1)
         {
             currentLine++;
-            coinManager.AwardCoinsByProgress(currentLine);
             coinManager.RefreshCoinState();
             string coins = coinManager.GetCoins().ToString();
-            Debug.Log(currentLine + " : " + coins);
+            Debug.Log(currentLine);
             SetNameAndDialogue(currentLine);
         }
         else
@@ -143,6 +145,7 @@ public class ReadDialogue : MonoBehaviour
     {
         if (String.Equals("Chapter", avatarName.text))
         {
+            coinManager.AwardCoinsByProgress();
             avatarManager.ActivateAvatar(avatarName.text);
             dialogue.text = "";
         }
@@ -195,6 +198,7 @@ public class ReadDialogue : MonoBehaviour
         currentLine += playerChoice;
         PlayerReport.UpdateDecisions(GetLine(currentLine));
         coinManager.ExtractExpenditure(GetLine(currentLine));
+        GetPlayChoice(GetLine(currentLine));
         currentLine = SkipRemainingChoice(currentLine, playerChoice);
         avatarDialogue.SetActive(true);
         playerResponse.SetActive(false);
@@ -221,4 +225,12 @@ public class ReadDialogue : MonoBehaviour
         avatarDialogue.SetActive(!isAvatarDialogueActive);
         playerResponse.SetActive(isAvatarDialogueActive);
     }
+
+    //get the choice the player selects for story branching
+    public string GetPlayChoice(string playerChoice)
+    {
+        playerDecisionManager.CheckPoorFeedBack(playerChoice);
+        return playerChoice;
+    }
 }
+

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class AssignmentOneLogic : MonoBehaviour
@@ -20,12 +17,23 @@ public class AssignmentOneLogic : MonoBehaviour
     [SerializeField] private Image TaskFive;
     [SerializeField] private Image TaskSix;
     [SerializeField] private Image TaskSeven;
-    private int counter;
+    private MainMenuController mainMenuController;
+    private TimerManager timerManager;
+    private int timeRequiredForTask = 60;
+
 
     void Start()
     {
-        counter = 0;
+        mainMenuController = GetComponent<MainMenuController>();
+        timerManager = GetComponent<TimerManager>();
+        timerManager.SetTimer(timeRequiredForTask);
+        mainMenuController.LoadCounter();
         CompareTexts();
+    }
+
+    void Update()
+    {
+        mainMenuController.RefreshScene(timerManager.GetTimer(), "TaskOne", timeRequiredForTask);
     }
 
     void CompareTexts()
@@ -49,4 +57,3 @@ public class AssignmentOneLogic : MonoBehaviour
         Text taskTextSeven = TaskSeven.GetComponentInChildren<Text>();
     }
 }
-

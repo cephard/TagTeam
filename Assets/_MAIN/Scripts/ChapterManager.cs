@@ -16,8 +16,8 @@ public class ChapterManager : MonoBehaviour
         backgroundColors.Add("Teamleader", new Color(0.85f, 0.64f, 0.87f));
         backgroundColors.Add("Tonner Replacement", new Color(0.70f, 0.87f, 0.90f));
         backgroundColors.Add("Personal life", new Color(1.00f, 0.89f, 0.77f));
-        backgroundColors.Add("The Conflict", new Color(0.85f, 0.65f, 0.13f));
-        backgroundColors.Add("Dilemma", new Color(0.69f, 0.77f, 0.87f));
+        backgroundColors.Add("The Conflict", new Color(0.75f, 0.85f, 0.65f));
+        backgroundColors.Add("The Dilemma", new Color(0.69f, 0.77f, 0.87f));
     }
     public void ChangeChapterBackground(string chapter)
     {

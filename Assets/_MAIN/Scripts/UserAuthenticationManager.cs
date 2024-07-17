@@ -30,7 +30,7 @@ public class UserAuthenticationManager : MonoBehaviour
 
     private void Start()
     {
-       
+        SwitchScreen();
         loginGameObject.SetActive(authenticationScreen);
         mainMenuController = FindObjectOfType<MainMenuController>();
     }

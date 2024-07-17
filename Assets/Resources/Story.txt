@@ -1,80 +1,76 @@
-: This game will teach and assess your soft skills
+: This game will teach and assess your soft skills. The entire game will test your self efficasy
 
-Chapter : The Takeover
+Chapter: The Takeover
+: You're the assistant manager at Orbit Corp, a consultancy company in Swansea. Your manager is away on a business trip to Australia, so now her responsibilities are on your shoulders.
+It's uncertain when she will be back, but until then, you will be in charge of her duties. You have just been called into the CEO's office for an urgent briefing.
 
-: You are an assistant manager in a consultancy company called Orbit Corp. You manager is travelling on a business trip and her responsibilities now lay on your shoulders. 
+Dylan: I am informing you that our manager, Stacy, has been sent on an international trip to secure a new contract with one of our biggest allies. You are expected to step in for her until the day she returns.
+The manager's confidence in you impresses the board, and I expect you to live up to the praises.
 
-It is uncertain when she will be back but till then you will be in charge of her duties. You have just been called into the CEO's office for an urgent briefing. 
-
-Dylan: I called you to let you know that we sent our manager Stacy on an international trip to secure a new contract with one of our biggest allies. So, you are expected to step in for her until the day she resumes. 
-
-The board has been pleased by the manager's confidence in you, and I hope you will live up to the praises. 
-
-Player: 
-I will surely run the company to the required standards.
-Thank you, sir, I won’t let you down I promise. 
-I will immediately brief the team and lead them through pending and upcoming tasks. 
-With my leadership experience, I will be able to fill in our manager's shoes with no doubt. 
+Player:
+I will ensure that the company is run according to the required standards.
+Thank you, sir. I promise I won't let you down.
+I will promptly brief the team and lead them through pending and upcoming tasks.
+With my leadership experience, I do not doubt that I'll be able to fill our manager's shoes.
 
 Feedback: As a leader, it is best to brief your team and allocate duties on time-sensitive tasks first.
 
-Dylan: And one last thing, kindly fill in this form and send it back via email before the end of the day. Good luck. 
-
-Task : TaskOne
-You can always rely on your team 
-
-Stacy: Hi, I know that you have been briefed on my trip. I would like to wish you the best of luck. Whenever I get the chance, I will be able to offer you some advice on what to do when you need help. 
-I assured the CEO that you’re the right person for the job so don’t let me down. 
+Stacy: Hi, I know that you have been briefed on my trip. I would like to wish you the best of luck. Whenever I get the chance, I will be able to offer you some advice on what to do when you need help.
+I assured the CEO that you’re the right person for the job so don’t let me down.
 
 Player: 
-I promise to make you proud, by delivering my utmost best with the team. 
-In case we are faced with any challenges I will let you know.  
-I will always seek your guidance when I am uncertain. 
+I promise to make you proud, by delivering my utmost best with the team.
+In case we are faced with any challenges I will let you know.
+I will always seek your guidance when I am uncertain.
 I think we will be fine; we have the best team for the job.
-
-: You bid her a safe journey and good luck with the contract. 
-
-Stacy: Thank you. And please do not be too hard on yourself. We have a very capable team that is always willing to help. 
 
 Feedback: While all the other choices prove you are a good team player, promising Stacy that you are the right fit for the job proves good self-efficacy and confidence to lead a team.
 
-Chapter: Teamleader
+: You bid her a safe journey and good luck with the contract.
 
-: The manager has advised you to work with your colleagues and not rely on yourself when solving a non-trivial task. 
-You have called the associates into your office. After greeting them you proceed with these instructions concerning the duties with fast-approaching deadlines. 
+Stacy: Thank you. And please do not be too hard on yourself. We have a very capable team that is always willing to help.
+
+Dylan: Kindly fill in this form and send it back via email before the end of the day. Good luck.
+
+Task: TaskOne
+
+: The next chapter aims to test your leadership and communication skills.
+
+Chapter: Teamleader
+: You call the associates into your office.to discuss the duties with fast-approaching deadlines.
 
 Player: 
-Let us focus on these duties individually and for anyone lagging, my office is open for guidance and support. 
-The CEO is relying on me so kindly leave all the major duties to me and focus on any easier duties you have so that we fast-track production. 
-I promised our manager that we have the best team, so please ensure you find the best solutions to all issues without relying on my help. 
-Kindly work on these duties first and report any issues to me immediately. I am also expecting a report on everyone's progress by the end of the day.
+Let us focus on these duties individually and for anyone lagging, my office is open for guidance and support.
+The CEO is relying on me so kindly leave all the major duties to me and focus on any easier duties you have so that we fast-track production.
+I promised our manager that we have the best team, so please ensure you find the best solutions to all issues without relying on my help.
+Complete the selected duties first and report any issues to me immediately. I am also expecting a report on everyone's progress by the end of the day.
 
-Warren: Okay boss.   
+Feedback: A good leader plans and delegates duties based on expertise. They also make a follow-up on the assignments.
+
+Warren: Okay boss.
 Ann: Okay boss.
 
-Feedback:
-
 :(Two days later) Warren has already completed his tasks for the day. You are going for your 30mins coffee break. You find Warren in the canteen while Ann is in the office still struggling with her tasks in the boardroom.
-You approach him and he starts a conversation.
+As you approach him, he starts a conversation.
 
 Warren: Would you like a cup of coffee? 
 
 Player: 
-Yes, meanwhile let me invite Ann over then after the break we can work together to ensure she completes has daily tasks. 
-Thanks for the offer, but I need to check on Ann to see if she needs help with her tasks first. 
-A cappuccino will do. Please do me a favour, can you kindly see what Ann's stack is on? If it's too complex let me know right away. 
+Yes, in the meantime, let me invite Ann over. After the break, we can work together to ensure that she completes her daily tasks.
+Thanks for the offer, but I need to check on Ann to see if she needs help with her tasks first.
+A cappuccino will do. Please do me a favour, can you kindly see what Ann's stack is on? If it's too complex let me know right away.
 I will have it later, but first, can you assist Ann with her duties, then after that, we can all have a coffee break together.
 
 : You head towards Ann to see what is holding her behind and see the task on her computer.
 
-Feedback:
+Feedback: Prioritizing colleague's needs over personal breaks when they need help builds a good team spirit.
 
-Task : Ann'sTask
-:Congratulations that was a tough one!
+Task: Ann'sTask
+
+:The next chapter will test your Problem-Solving and Decision-Making skills
 
 Chapter: Tonner Replacement
 : It is 4 pm and you are about to go home and receive a significant workload with lots of printing in the next few days that need to start tomorrow morning.
-
 You notice that some office printers are late on toner replacement. Stacy was in charge of this duty but unfortunately, it was not done.
 She left the country for the contract, on the same day she was meant to replace them.
 The maintenance guy usually works under Stacy's supervision but he just finished his shift 1 hour ago.
@@ -85,7 +81,7 @@ Replace the printer yourself
 Call the maintenance guy to come over : 30
 Ask Stacy for advice
 
-Feedback: Calling the maintenance guy is the best decision that ensures the quality of services, good time management and that you trust your colleagues from other department 
+Feedback: Calling the maintenance guy is the best decision that ensures the quality of services, good time management and that you trust your colleagues from other departments.
 
 : The CEO is mad at you and he sends you an email concerning the printer issues you know Stacy forgot to inform you if you report her she might get a strike if you do not you might take a strike.
 Dylan: Our client is on my neck, he can't stop calling. What happened to the printers?
@@ -98,13 +94,13 @@ Player:
 
 Dylan: Let us just hope that this printer mishap doesn't occur again.
 
+Feedback: Taking the fault shows how good a leader you are by taking responsibility.
+
 Player:
 Okay, sir.
 I am sorry sir.
-This won't happen again sir.
+This won't happen again, sir.
 I will do better next time sir.
-
-Feedback : 
 
 Stacy: Hello Player sorry have been busy with the contract. I had just wanted to remind you that the printers need toner replacement. It had slipped my mind and the CEO just contacted me.
 
@@ -114,12 +110,13 @@ Tell her it's her fault that you were in trouble.
 It's okay I know the contract was short notice and it might have been hard to keep track of everything.
 [Ignore her]
 
-Feedback:
-
 : Now the printers are fixed and the printing job is underway. 	You would like Ann all hands on deck tomorrow because of the pressure you are receiving from the CEO.
 
-Chapter: Personal life
+Task : PrinterSerial
 
+: The next chapter will test your empathy.
+
+Chapter: Personal life
 Ann: Boss I need to attend my son's(Jimmy) school presentation tomorrow at noon. This means the world to him and I don't want to let him down. Can I please get a two-hour off tomorrow from 11 am to 2 pm?
 
 Player:
@@ -157,6 +154,8 @@ Warren and some other colleagues know about this, they were just afraid to tell 
 
 Feedback: Always give your colleagues the benefit of the doubt and ensure correct communication with them before jumping to conclusions. Always show empathy to your colleagues at work to make their environment friendly and approachable.
 
+: The next chapter will test your conflict resolution and communication skils
+
 Chapter: The Conflict
 : (Days later)
 Warren is shouting at his assistant for coming in 30 minutes late for the fourth day in a row.
@@ -169,25 +168,39 @@ Player:
 [Ask Warren to explain what is going on]
 [Ask Warren's assistant why he is late again]
 
-Feedback: Asking Warren what is going on fosters good communication and shows that you are willing to understand the situation first.
+Feedback: Asking Warren what is going on fosters good communication and shows that you are willing to understand the situation before making any decision.
 
-Chapter: Dilema 
-: Stacy has just closed the deal but she might not be coming back to work since the CEO wants her to pioneer the new Annex branch that has just been opened in Liverpool(Your home city).
+: His assistant used his car for company deliveries and broke down on returning to the office. Repairs cost £500 and fuel £50. He is now £100 short of repairs what do you do?
+
+Player: 
+[Ask Warren to compensate his assistant for the total amount]
+[Compensate him from your pocket]: 550
+[Only give him the money he is short of]: 100
+[Give him £100 now and ask the finance office to compensate him the entire amount]: 100
+
+Feedback: Giving him the £100 now will ensure efficient time management for the car repairs and later involving the finance office to ensure formal record-keeping.
+
+: The next chapter will test your decision-making and ethical behaviour.
+
+Chapter: The Dilemma
+: Stacy has just closed the deal but might not be returning to work since the CEO wants her to pioneer the new Annex branch that has just been opened in Sydney (Your home city).
 The new branch requires someone with a lot of company knowledge.
 The management has been satisfied with you but they are still considering if either you or Stacy will go to the Annex branch.
 You did a managerial role for 4 years before joining Orbit Corp last year but Stacy was a manager for 2 years before joining Orbit Corp and has been Orbit Corp's manager for just three years.
-Remember that either way you become a manager of either branch but the Liverpool role has a 15% higher pay than the main branch. 
+Remember that either way you become a manager of either branch but the Sydney role has a 15% higher pay than the main branch.
 
-Dylan: I am pleased to let you know that Stacy was able to secure the deal and we were thinking of offering you the Liverpool job instead of her.
+Dylan: I am pleased to let you know that Stacy was able to secure the deal and we were thinking of offering you the Sydney job instead of her.
 
 Player: 
 [Take the deal]
-[Back Stacy up and let her take the Liverpool office]
+[Back Stacy up and let her take the Sydney office]
 [Let him decide on his own]
 [Tell him that the board's decision is final]
 
-Feedback: To show selflessness, humility and prioritizing team success of the company over personal gains, by considering that Stacy has more company knowledge than you and that she closed the deal she should take the Liverpool Office.
+Feedback: To show selflessness, humility and prioritizing team success of the company over personal gains, by considering that Stacy has more company knowledge than you and that she closed the deal she should take the Sydney Office.
 
-Task : UnlockLaptop
+: Congratulations! You are now the official manager at the Swansea branch. You will find clues in your new office that will help you decipher the computer password.
+
+Task: UnlockLaptop
 
 : The END!
