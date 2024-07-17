@@ -213,10 +213,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 'The password is has eight characters. It begins with
-            a vowel and ends with a consonant. After every two letters its a symbol
-            or a number. Only the first half follows alphabetical order. The last
-            three start with a symbol. '
+          m_StringArgument: mainClue
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &86235863
@@ -2187,11 +2184,11 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: The password must have eight characters. It should start and end with a
-    letter. After every two letters, it must be followed by a symbol or a number.
-    The first half should consist of alphabetical characters. The last three characters
-    should start with a symbol.
+    m_LineSpacing: 1.2
+  m_Text: "The password must have eight characters. \nIt should start and end with
+    a letter. \nAfter every two letters, it must be followed by a symbol or a number.\nThe
+    first half should consist of   alphabetical characters.\nThe last three characters
+    should start with a symbol."
 --- !u!222 &1374810022
 CanvasRenderer:
   m_ObjectHideFlags: 0

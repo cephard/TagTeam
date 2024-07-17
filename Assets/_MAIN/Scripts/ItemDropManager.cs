@@ -11,11 +11,18 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     private static int correctTask = 0;
     private MainMenuController mainMenuController;
     private CoinManager coinManager;
+    private AudioManager audioManager;
+    private ClueManager clueManager;
+    private const int COMPLETE_TASK = 7;
+    private const int BONUS_COIN  = 50;
+    private int wrongTask = 0;
 
     public void Start()
     {
+        audioManager = FindAnyObjectByType<AudioManager>();
         mainMenuController = GetComponent<MainMenuController>();
         coinManager = GetComponent<CoinManager>();
+        clueManager = GetComponent<ClueManager>();
     }
 
     private string GetCorrectTaskCount(int taskCount)
@@ -36,37 +43,50 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
         Text draggedText = eventData.pointerDrag.GetComponentInChildren<Text>();
         if (slotText.text != null && draggedText != null)
         {
-            
-            if (draggedText.text == slotText.text)
-            {
-                SetCompleteBackground();
-                motivationText.text = "Correct task "!;
-                eventData.pointerDrag.SetActive(false);
-                correctTask++;
-            }
-            else
-            {
-                motivationText.text = "Try Again!";
+            ChangeTaskState(draggedText);
+            eventData.pointerDrag.SetActive(false);
+        }
+    }
 
-            }
+    private void ChangeTaskState(Text draggedText)
+    {
+        if (draggedText.text == slotText.text)
+        {
+            SetCompleteBackground(Color.blue);
+            motivationText.text = "Correct task !";
+            correctTask++;
+        }
+        else
+        {
+            SetCompleteBackground(Color.red);
+            motivationText.text = "Wrong task !";
+            wrongTask++;
         }
     }
 
     //Helper method for player to differentiate between completed and incomplete task
-    private void SetCompleteBackground()
+    private void SetCompleteBackground(Color color)
     {
         Image imageComponent = GetComponent<Image>();
-        imageComponent.color = Color.blue;
+        imageComponent.color = color;
+        motivationText.color = color;
     }
 
     //Allows player to load next scene only sfter all tasks are complete
     public void Proceed(string sceneName)
     {
-        if (correctTask >= 7)
+        if (correctTask >= COMPLETE_TASK)
         {
-           coinManager.AddCoins(50);
-            mainMenuController.LoadNextScene(sceneName);
-            
+            clueManager.ShowWinOrLooseClue("Perfect Eye for Detail !");
+            audioManager.PlayWiningAudio();
+            coinManager.AddCoins(BONUS_COIN);
+            mainMenuController.LoadNextChapter(sceneName);
         }
+        else
+        {
+            clueManager.ShowWinOrLooseClue("Please Try Again!");
+        }
+
+        correctTask = 0;
     }
 }

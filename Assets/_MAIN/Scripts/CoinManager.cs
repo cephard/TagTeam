@@ -5,31 +5,25 @@ using UnityEngine.UI;
 
 public class CoinManager : MonoBehaviour
 {
-    private static int availableCoins = 0;
-    private static int diamondGem = 0;
+    private const int ZERO = 0;
+    private static int availableCoins = ZERO;
+    private static int diamondGem = 3;
+    private const int CHAPTER_BONUS = 100;
     [SerializeField] private Text coinText;
     [SerializeField] private Text diamondText;
 
     void Start()
     {
-        availableCoins = PlayerPrefs.GetInt("Coins", availableCoins);
-        diamondGem = PlayerPrefs.GetInt("Diamonds", diamondGem);
+        //availableCoins = PlayerPrefs.GetInt("Coins", availableCoins);
+        //diamondGem = PlayerPrefs.GetInt("Diamonds", diamondGem);
         coinText.text = availableCoins.ToString();
         diamondText.text = diamondGem.ToString();
     }
 
     public void AddCoins(int coins)
     {
-        availableCoins += (coins * 2);
-        diamondGem += coins;
-        SaveCoinsAndGems();
-    }
+        availableCoins += coins;
 
-    //when a player makes a decision to spend coins
-    public void UseCoins(int bonusCoins)
-    {
-        availableCoins -= bonusCoins;
-        SaveCoinsAndGems();
     }
 
     //return available coins
@@ -44,43 +38,31 @@ public class CoinManager : MonoBehaviour
         string[] parts = line.Split(':');
         if (parts.Length == 2 && int.TryParse(parts[1].Trim(), out int expenditure))
         {
-            StartCoroutine(CoinReductionEffect(expenditure));
+           RemoveExpenditure(expenditure);
         }
     }
 
-    //a coroutine that makes an effect to make the players money spenditure purnishment feel more severe
-    private IEnumerator CoinReductionEffect(int spentCoins)
+    
+    private void RemoveExpenditure(int spentCoins)
     {
         int newAmount = availableCoins - spentCoins;
         if (spentCoins > availableCoins)
         {
-            availableCoins = 0;
+            availableCoins = ZERO;
         }
         else
         {
             availableCoins -= spentCoins;
-        }
-        SaveCoinsAndGems();
-        while (availableCoins > newAmount)
-        {
-            {
-                availableCoins--;
-                coinText.text = availableCoins.ToString();
-                yield return new WaitForSeconds(0.05f);
-            }
         }
     }
 
     /*
      * Awarding coins based on the progress of the player
      */
-    public void AwardCoinsByProgress(int currentLine)
+    public void AwardCoinsByProgress()
     {
-        if (currentLine % 5 == 0)
-        {
-            AddCoins(20);
-            SaveCoinsAndGems();
-        }
+        availableCoins += CHAPTER_BONUS;
+
     }
 
     //refresh coin UI on the gems prefab

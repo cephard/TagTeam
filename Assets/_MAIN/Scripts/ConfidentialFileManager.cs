@@ -14,11 +14,24 @@ public class ConfidentialFileManager : MonoBehaviour
     [SerializeField] private GameObject cluePanel;
     [SerializeField] private InputField secretValue;
     private MainMenuController mainMenuController;
+    private AudioManager audioManager;
+    private ClueManager clueManager;
+    private int timeRequiredForTask = 60;
+    private TimerManager timerManager;
 
     private void Start()
     {
         mainMenuController = GetComponent<MainMenuController>();
-        HideClue();
+        timerManager = GetComponent<TimerManager>();
+        audioManager = GetComponent<AudioManager>();
+        clueManager = GetComponent<ClueManager>();
+        timerManager.SetTimer(timeRequiredForTask);
+        mainMenuController.LoadCounter();
+    }
+
+    void Update()
+    {
+        mainMenuController.RefreshScene(timerManager.GetTimer(), "Ann'sTask", timeRequiredForTask);
     }
 
     public void HideClue()
@@ -33,28 +46,44 @@ public class ConfidentialFileManager : MonoBehaviour
             "Both keys and files are encoded with a secret value.";
     }
 
-    public void SubmitValue()
+    public void SubmitValue(string sceneName)
     {
-        if (secretValue.text == null) {
-            motivationText.text = "Value cannot be null!";
+        if (secretValue.text == null)
+        {
+            Feedback("Value cannot be null!");
         }
         int enteredValue;
         bool isInteger = int.TryParse(secretValue.text, out enteredValue);
 
-        if (!isInteger) {
-            motivationText.text = "Please enter a number!";
+        if (!isInteger)
+        {
+            Feedback("Please enter a number!");
             return;
         }
-        if(SECRET_VALUE != enteredValue)
+        if (SECRET_VALUE != enteredValue)
         {
-            motivationText.text = "Try again!";
+
+            Feedback("Try again!");
         }
         else
         {
-            mainMenuController.LoadNextScene("Conversation");
-            mainMenuController.UpdateSceneName("Ann'sTask");
+            Proceed(sceneName);
         }
     }
+
+    public void Proceed(string sceneName)
+    {
+        audioManager.PlayWiningAudio();
+        clueManager.ShowWinOrLooseClue("Congratulations! You Rock!");
+        mainMenuController.LoadNextChapter(sceneName);
+    }
+
+    private void Feedback(string feedback)
+    {
+        motivationText.color = Color.red;
+        motivationText.text = feedback;
+    }
+
 }
 
 
