@@ -52,12 +52,14 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     {
         if (draggedText.text == slotText.text)
         {
+            audioManager.PlayGainCoinAudio();
             SetCompleteBackground(Color.blue);
             motivationText.text = "Correct task !";
             correctTask++;
         }
         else
         {
+            audioManager.PlayWrongAnswerAudio();
             SetCompleteBackground(Color.red);
             motivationText.text = "Wrong task !";
             wrongTask++;

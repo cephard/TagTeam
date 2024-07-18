@@ -9,8 +9,8 @@ public class PrinterSerialNumberManager : MonoBehaviour
     [SerializeField] private Text correctErrorCount;
     [SerializeField] private InputField[] errorsFound;
     private AudioManager audioManager;
-    private int[] expectedAnswer = { 2, 2, 0, 2, 2 };
-    private const int EXPECTED_ERRORS = 8;
+    private int[] expectedAnswer = { 2, 3, 0, 2, 2 };
+    private const int EXPECTED_ERRORS = 9;
     private MainMenuController mainMenuController;
     private ClueManager clueManager;
     private TimerManager timerManager;
@@ -43,6 +43,7 @@ public class PrinterSerialNumberManager : MonoBehaviour
         }
         else
         {
+            audioManager.PlayWrongAnswerAudio();
             clueManager.ShowWinOrLooseClue("Please Try Again!");
         }
     }
@@ -57,6 +58,10 @@ public class PrinterSerialNumberManager : MonoBehaviour
             if (ParseInputField(errorsFound[i].text) == expectedAnswer[i])
             {
                 errorFoundByPlayer += ParseInputField(errorsFound[i].text);
+            }
+            else
+            {
+                return errorFoundByPlayer;
             }
         }
         return errorFoundByPlayer;

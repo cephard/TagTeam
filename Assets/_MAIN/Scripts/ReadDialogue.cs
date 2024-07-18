@@ -21,13 +21,13 @@ public class ReadDialogue : MonoBehaviour
     [SerializeField] private Text playerReponseThree;
     [SerializeField] private Text playerReponseFour;
     [SerializeField] private CoinManager coinManager;
+    private TaskProgressManager taskProgressManager;
     private AvatarManager avatarManager;
     private ChapterManager chapterManager;
     private int playerChoice;
     private static int currentLine = 0;
     private string[] lines;
     private MainMenuController mainMenuController;
-    private static Dictionary<string, int> taskProgress;
     private PlayerDecisionManager playerDecisionManager;
 
 
@@ -36,33 +36,20 @@ public class ReadDialogue : MonoBehaviour
     */
     private void Start()
     {
-        taskProgress = new Dictionary<string, int>();
-        taskProgress["pause"] = 0;
-        taskProgress["TaskOne"] = 24;
-        taskProgress["Ann'sTask"] = 46;
-        taskProgress["PrinterSerial"] = 80;
-        taskProgress["Emotion"] = 111;
-        taskProgress["UnlockLaptop"] = 130;
         mainMenuController = GetComponent<MainMenuController>();
         avatarManager = GetComponent<AvatarManager>();
         coinManager = GetComponent<CoinManager>();
         chapterManager = GetComponent<ChapterManager>();
         playerDecisionManager = GetComponent<PlayerDecisionManager>();
+        taskProgressManager = GetComponent<TaskProgressManager>();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
-        LoadDialogueForScene(mainMenuController.GetSceneName());
+        LoadDialogueForScene();
     }
 
-    public void LoadDialogueForScene(string sceneName)
+    public void LoadDialogueForScene()
     {
-        if (taskProgress.ContainsKey(sceneName))
-        {
-            currentLine = taskProgress[sceneName];
-        }
-        else
-        {
-            currentLine = 0;
-        }
+        currentLine = taskProgressManager.GetTaskProgress(mainMenuController.GetSceneName());
         LoadScript("Story");
     }
 
@@ -95,7 +82,6 @@ public class ReadDialogue : MonoBehaviour
     //reading the next line and dsabling the parent game object if there are no lines to read.
     public void NextLine()
     {
-
         if (lines != null && currentLine < lines.Length - 1)
         {
             currentLine++;
@@ -106,10 +92,10 @@ public class ReadDialogue : MonoBehaviour
         }
         else
         {
-            avatarDialogue.SetActive(false);
-            playerResponse.SetActive(true);
+            SwitchActiveObject(avatarDialogue, playerResponse);
         }
     }
+
 
     // Sets the dialogue and avatar name based on the current line index
     private void SetNameAndDialogue(int lineIndex)
@@ -134,7 +120,7 @@ public class ReadDialogue : MonoBehaviour
             InovkeResponse();
             avatarManager.ActivateAvatar(avatarName.text);
             chapterManager.ChangeChapterBackground(dialogue.text);
-            IntroduceChapter();
+            chapterManager.IntroduceChapter(avatarName.text, dialogue.text);
         }
         else
         {
@@ -142,35 +128,22 @@ public class ReadDialogue : MonoBehaviour
         }
         LoadTaskScene();
     }
-    public void IntroduceChapter()
-    {
-        if (String.Equals("Chapter", avatarName.text))
-        {
-            coinManager.AwardCoinsByProgress();
-            avatarManager.ActivateAvatar(avatarName.text);
-            dialogue.text = "";
-        }
-        else
-        {
-            chapterManager.HideChapterName(avatarName.text);
-        }
-    }
 
     public void LoadTaskScene()
     {
         if (String.Equals("Task", avatarName.text))
         {
             SaveNextLine();
-            taskProgress[dialogue.text] = currentLine;
+            taskProgressManager.SetTaskProgress(dialogue.text,currentLine);
             mainMenuController.LoadNextScene(dialogue.text);
         }
     }
+
     public void InovkeResponse()
     {
         if (String.Equals("Player", avatarName.text))
         {
-            avatarDialogue.SetActive(false);
-            playerResponse.SetActive(true);
+            SwitchActiveObject(avatarDialogue,playerResponse);
             LoadPlayerResponses(currentLine + 1);
         }
     }
@@ -192,6 +165,7 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
+    
     //based on the players response the player avatar will skip to that response then skip ahead
     // Extract the integer from the current line
     public void PlayerDecision(int playerChoice)
@@ -199,10 +173,9 @@ public class ReadDialogue : MonoBehaviour
         currentLine += playerChoice;
         PlayerReport.UpdateDecisions(GetLine(currentLine));
         coinManager.ExtractExpenditure(GetLine(currentLine));
-        GetPlayChoice(GetLine(currentLine));
+        playerDecisionManager.GetPlayerChoice(GetLine(currentLine));
         currentLine = SkipRemainingChoice(currentLine, playerChoice);
-        avatarDialogue.SetActive(true);
-        playerResponse.SetActive(false);
+        SwitchActiveObject(avatarDialogue, playerResponse);
         NextLine();
     }
 
@@ -225,13 +198,6 @@ public class ReadDialogue : MonoBehaviour
         bool isAvatarDialogueActive = avatarDialogue.activeSelf;
         avatarDialogue.SetActive(!isAvatarDialogueActive);
         playerResponse.SetActive(isAvatarDialogueActive);
-    }
-
-    //get the choice the player selects for story branching
-    public string GetPlayChoice(string playerChoice)
-    {
-        playerDecisionManager.CheckPoorFeedBack(playerChoice);
-        return playerChoice;
     }
 }
 

@@ -34,16 +34,11 @@ public class ConfidentialFileManager : MonoBehaviour
         mainMenuController.RefreshScene(timerManager.GetTimer(), "Ann'sTask", timeRequiredForTask);
     }
 
-    public void HideClue()
-    {
-        cluePanel.SetActive(false);
-    }
     public void RevealFileClue()
     {
-        cluePanel.SetActive(true);
-        puzzleClue.text = "Help Ann to unlock the confidential file.\n" +
+        clueManager.SetClue("Help Ann to unlock the confidential file.\n" +
             "Every Key has its own value. Private keys are RED and Public keys are BLUE.\n" +
-            "Both keys and files are encoded with a secret value.";
+            "Both keys and files are encoded with a secret value.");
     }
 
     public void SubmitValue(string sceneName)
@@ -64,6 +59,7 @@ public class ConfidentialFileManager : MonoBehaviour
         {
 
             Feedback("Try again!");
+            audioManager.PlayWrongAnswerAudio();
         }
         else
         {
