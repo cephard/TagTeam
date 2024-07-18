@@ -7,6 +7,7 @@ public class PlayerDecisionManager : MonoBehaviour
 {
     private CoinManager coinManager;
 
+    // entries in represent reward or purnishment in coins for decisions made by player
     private Dictionary<string, int> playerResponses = new Dictionary<string, int>()
 {
         {"I will ensure that the company is run according to the required standards.", 2 },
@@ -67,10 +68,12 @@ public class PlayerDecisionManager : MonoBehaviour
         {"[Tell him that the board's decision is final]" ,0},
 };
 
+
     private void Start()
     {
         coinManager = GetComponent<CoinManager>();
     }
+
     public void CheckPoorFeedBack(string decision)
     {
         if (playerResponses.ContainsKey(decision))
@@ -82,4 +85,18 @@ public class PlayerDecisionManager : MonoBehaviour
             Debug.LogWarning("Decision not found in playerResponses.");
         }
     }
+
+    public void ActivateManagerHelp(int currentline)
+    {
+        
+
+    }
+
+    //get the choice the player selects for story branching
+    public string GetPlayerChoice(string playerChoice)
+    {
+        CheckPoorFeedBack(playerChoice);
+        return playerChoice;
+    }
+
 }

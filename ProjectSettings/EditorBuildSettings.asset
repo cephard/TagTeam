@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_MAIN/Scenes/PrinterSerial.unity
     guid: c00a2d267ac2509419d3d9b5c886c57f
+  - enabled: 1
+    path: Assets/_MAIN/Scenes/TaskTwo.unity
+    guid: cb61ccda94ef5ad419d4d578c3ddaf76
   m_configObjects: {}

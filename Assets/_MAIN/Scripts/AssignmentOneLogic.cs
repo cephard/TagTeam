@@ -17,9 +17,9 @@ public class AssignmentOneLogic : MonoBehaviour
     [SerializeField] private Image TaskFive;
     [SerializeField] private Image TaskSix;
     [SerializeField] private Image TaskSeven;
-    private MainMenuController mainMenuController;
-    private TimerManager timerManager;
-    private int timeRequiredForTask = 60;
+    protected MainMenuController mainMenuController;
+    protected TimerManager timerManager;
+    protected int timeRequiredForTask = 60;
 
 
     void Start()

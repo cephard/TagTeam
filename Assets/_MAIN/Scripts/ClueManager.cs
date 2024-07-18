@@ -9,6 +9,11 @@ public class ClueManager : MonoBehaviour
     [SerializeField] private Text clueText;
     [SerializeField] private GameObject clueDisplay;
 
+    public void SetClue(string clue)
+    {
+        ShowClue();
+        clueText.text = clue;
+    }
     public void ShowClue()
     {
         clueDisplay.SetActive(true);
@@ -20,7 +25,7 @@ public class ClueManager : MonoBehaviour
 
     public void ShowWinOrLooseClue(string clueName)
     {
-        clueDisplay.SetActive(true);
+        ShowClue();
         clueText.text = clueName;
     }
 }

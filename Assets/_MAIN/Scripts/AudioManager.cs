@@ -5,37 +5,45 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
-    [SerializeField] public AudioSource audioSource;
-    [SerializeField] public AudioClip timerAudioClip;
-    [SerializeField] public AudioClip backgroundAudioClip;
-    [SerializeField] public AudioClip gainCoinAudioClip;
-    [SerializeField] public AudioClip looseCoinAudioClip;
-    [SerializeField] public AudioClip winAudioClip;
+    [SerializeField] private AudioSource chimeAudioSource;
+    [SerializeField] private AudioSource timerAudioSource;
+
+    [SerializeField] private AudioClip timerAudioClip;
+    [SerializeField] private AudioClip backgroundAudioClip;
+    [SerializeField] private AudioClip gainCoinAudioClip;
+    [SerializeField] private AudioClip looseCoinAudioClip;
+    [SerializeField] private AudioClip winAudioClip;
+    [SerializeField] private AudioClip wrongAnswerAudioClip;
 
     public void PlayTimerAudio()
     {
-        TriggerClip(timerAudioClip);
+        TriggerClip(timerAudioClip, timerAudioSource);
     }
 
     public void PlayGainCoinAudio()
     {
-        TriggerClip(gainCoinAudioClip);
+        TriggerClip(gainCoinAudioClip, chimeAudioSource);
     }
 
     public void PlayLooseCoinAudio()
     {
-        TriggerClip(looseCoinAudioClip);
+        TriggerClip(looseCoinAudioClip, chimeAudioSource);
     }
     public void PlayWiningAudio()
     {
-        TriggerClip(winAudioClip);
+        TriggerClip(winAudioClip, chimeAudioSource);
     }
     public void PlayBackgroundAudio()
     {
-        TriggerClip(backgroundAudioClip);
+        TriggerClip(backgroundAudioClip, chimeAudioSource);
     }
 
-    private void TriggerClip(AudioClip clip)
+    public void PlayWrongAnswerAudio()
+    {
+        TriggerClip(wrongAnswerAudioClip, chimeAudioSource);
+    }
+
+    private void TriggerClip(AudioClip clip, AudioSource audioSource)
     {
         audioSource.clip = clip;
         audioSource.Play();
