@@ -1016,6 +1016,7 @@ RectTransform:
   m_Children:
   - {fileID: 176170843}
   - {fileID: 1592879835}
+  - {fileID: 775756404}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1270,8 +1271,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -168.06625}
-  m_SizeDelta: {x: 1444.4551, y: 575.8674}
+  m_AnchoredPosition: {x: 0, y: -228}
+  m_SizeDelta: {x: 1444.4551, y: 456}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &748178635
 MonoBehaviour:
@@ -1300,7 +1301,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 100
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1461,7 +1462,7 @@ GameObject:
   - component: {fileID: 775756406}
   - component: {fileID: 775756405}
   m_Layer: 5
-  m_Name: 14 is the answer
+  m_Name: Manager Advice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1482,11 +1483,11 @@ RectTransform:
   - {fileID: 748178634}
   - {fileID: 848062750}
   - {fileID: 1110767892}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 380667778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 959.9999, y: 540}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 1839.4359, y: 911.3113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &775756405
@@ -1509,8 +1510,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 691e40e3ae6c416488a007da9c5e389c, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1701,8 +1702,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ConfidentialFileManager, Assembly-CSharp
+      - m_Target: {fileID: 1567436748}
+        m_TargetAssemblyTypeName: ClueManager, Assembly-CSharp
         m_MethodName: HideClue
         m_Mode: 1
         m_Arguments:
@@ -2382,6 +2383,7 @@ GameObject:
   - component: {fileID: 1567436745}
   - component: {fileID: 1567436746}
   - component: {fileID: 1567436747}
+  - component: {fileID: 1567436748}
   m_Layer: 5
   m_Name: Dialogue Layers
   m_TagString: Untagged
@@ -2515,6 +2517,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1aff1e0d715b404fbd457170ce1780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1567436748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567436739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885bbefd944492345aa0696aaf14ab26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clueText: {fileID: 748178635}
+  clueDisplay: {fileID: 775756403}
 --- !u!1 &1592879834
 GameObject:
   m_ObjectHideFlags: 0
@@ -4103,4 +4119,3 @@ SceneRoots:
   - {fileID: 2112195316}
   - {fileID: 380667778}
   - {fileID: 2037354166}
-  - {fileID: 775756404}

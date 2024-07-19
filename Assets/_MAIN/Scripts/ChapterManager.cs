@@ -20,19 +20,20 @@ public class ChapterManager : MonoBehaviour
         backgroundColors.Add("The Dilemma", new Color(0.69f, 0.77f, 0.87f));
     }
 
-   public void IntroduceChapter(string avatarName, string dialogue)
-   {
-       if (avatarName.Equals("Chapter"))
-       {
-           FindAnyObjectByType<CoinManager>().AwardCoinsByProgress();
-           FindAnyObjectByType<AvatarManager>().ActivateAvatar(avatarName);
-           dialogue = "";
-       }
-       else
-       {
-          HideChapterName(avatarName);
-       }
-   }
+    public void IntroduceChapter(string chapterName, string dialogue)
+    {
+        if (chapterName.Equals("Chapter"))
+        {
+            FindAnyObjectByType<CoinManager>().AwardCoinsByProgress();
+            FindAnyObjectByType<AvatarManager>().ActivateAvatar(chapterName);
+            ChangeChapterBackground(dialogue);
+            dialogue = "";
+        }
+        else
+        {
+            HideChapterName(chapterName);
+        }
+    }
 
     public void ChangeChapterBackground(string chapter)
     {
