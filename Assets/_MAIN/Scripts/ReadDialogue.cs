@@ -29,6 +29,7 @@ public class ReadDialogue : MonoBehaviour
     private string[] lines;
     private MainMenuController mainMenuController;
     private PlayerDecisionManager playerDecisionManager;
+    private ClueManager clueManager;
 
 
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
@@ -42,8 +43,10 @@ public class ReadDialogue : MonoBehaviour
         chapterManager = GetComponent<ChapterManager>();
         playerDecisionManager = GetComponent<PlayerDecisionManager>();
         taskProgressManager = GetComponent<TaskProgressManager>();
+        clueManager = GetComponent<ClueManager>();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
+        clueManager.HideClue();
         LoadDialogueForScene();
     }
 
@@ -119,7 +122,6 @@ public class ReadDialogue : MonoBehaviour
             dialogue.text = sentenceParts[1].Trim();
             InovkeResponse();
             avatarManager.ActivateAvatar(avatarName.text);
-            chapterManager.ChangeChapterBackground(dialogue.text);
             chapterManager.IntroduceChapter(avatarName.text, dialogue.text);
         }
         else
@@ -174,8 +176,10 @@ public class ReadDialogue : MonoBehaviour
         PlayerReport.UpdateDecisions(GetLine(currentLine));
         coinManager.ExtractExpenditure(GetLine(currentLine));
         playerDecisionManager.GetPlayerChoice(GetLine(currentLine));
+        playerDecisionManager.SeekAdvice(GetLine(currentLine), avatarDialogue, playerResponse);
         currentLine = SkipRemainingChoice(currentLine, playerChoice);
         SwitchActiveObject(avatarDialogue, playerResponse);
+        NextLine();
         NextLine();
     }
 

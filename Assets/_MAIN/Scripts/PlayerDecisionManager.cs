@@ -67,11 +67,12 @@ public class PlayerDecisionManager : MonoBehaviour
         {"[Let him decide on his own]" , 0},
         {"[Tell him that the board's decision is final]" ,0},
 };
-
+    private ClueManager clueManager;
 
     private void Start()
     {
         coinManager = GetComponent<CoinManager>();
+        clueManager = GetComponent<ClueManager>();
     }
 
     public void CheckPoorFeedBack(string decision)
@@ -86,10 +87,14 @@ public class PlayerDecisionManager : MonoBehaviour
         }
     }
 
-    public void ActivateManagerHelp(int currentline)
+    public void SeekAdvice(string playerRequest, GameObject dialogue, GameObject avatar)
     {
-        
-
+        if (playerRequest == "[Ask Stacy for advice]")
+        {
+           clueManager.SetClue("Hi i am here to help!");
+            dialogue.SetActive(false);
+            avatar.SetActive(false);
+        }
     }
 
     //get the choice the player selects for story branching
