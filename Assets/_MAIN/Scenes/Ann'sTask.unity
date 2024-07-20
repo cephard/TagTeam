@@ -1234,8 +1234,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 652.7125, y: -385.7665}
-  m_SizeDelta: {x: 1244.285, y: 726.0243}
+  m_AnchoredPosition: {x: 585.1038, y: -384.61783}
+  m_SizeDelta: {x: 1109.0677, y: 682.3739}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961499005
 MonoBehaviour:
@@ -1378,7 +1378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 885.6304, y: 421.3}
+  m_AnchoredPosition: {x: 850, y: 460}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138282273
@@ -2231,7 +2231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 346, y: -292}
+  m_AnchoredPosition: {x: 293, y: -277}
   m_SizeDelta: {x: 160, y: 96.8892}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1888574430
@@ -2520,11 +2520,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 544489845365982094, guid: 45c61bddca8128f419cc1a3d6014d29f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1622
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 544489845365982094, guid: 45c61bddca8128f419cc1a3d6014d29f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 962
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 544489845365982094, guid: 45c61bddca8128f419cc1a3d6014d29f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2694,8 +2694,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -265, y: -64}
-  m_SizeDelta: {x: 1315.4949, y: 1080}
+  m_AnchoredPosition: {x: -332.19, y: -64}
+  m_SizeDelta: {x: 1181.1, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939257170
 MonoBehaviour:

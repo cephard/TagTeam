@@ -48,5 +48,24 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = clip;
         audioSource.Play();
     }
+
+    public void PauseAudio()
+    {
+        AudioListener.pause = true;
+    }
+    public void ResumeAudio()
+    {
+        AudioListener.pause = false;
+    }
+    public void MuteAudio()
+    {
+        AudioListener.volume = 0;
+    }
+
+    public void UnmuteAudio()
+    {
+        AudioListener.volume = 1;
+    }
+
 }
 
