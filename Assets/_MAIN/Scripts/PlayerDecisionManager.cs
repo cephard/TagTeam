@@ -89,9 +89,9 @@ public class PlayerDecisionManager : MonoBehaviour
 
     public void SeekAdvice(string playerRequest, GameObject dialogue, GameObject avatar)
     {
-        if (playerRequest == "[Ask Stacy for advice]" || playerRequest == "[Ask Stacy for advice].")
+        if (playerRequest == "[Ask Stacy for advice]" || playerRequest == "[Ask Stacy for advice.]")
         {
-           clueManager.SetClue("Hi i am here to help!");
+            clueManager.SetClue("Hi i am here to help!");
             dialogue.SetActive(false);
             avatar.SetActive(false);
         }

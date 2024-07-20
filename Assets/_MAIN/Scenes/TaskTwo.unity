@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 28414801}
   - component: {fileID: 28414804}
   - component: {fileID: 28414805}
+  - component: {fileID: 28414806}
   m_Layer: 5
   m_Name: Slot Four
   m_TagString: Untagged
@@ -318,6 +319,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 343534825}
   clueDisplay: {fileID: 1444446331}
+--- !u!114 &28414806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28414799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfd7cf862178b74580eeb77acaafd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chimeAudioSource: {fileID: 0}
+  timerAudioSource: {fileID: 0}
+  timerAudioClip: {fileID: 0}
+  backgroundAudioClip: {fileID: 0}
+  gainCoinAudioClip: {fileID: 0}
+  looseCoinAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 0}
+  wrongAnswerAudioClip: {fileID: 0}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1 &64141785
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +433,7 @@ GameObject:
   - component: {fileID: 106260899}
   - component: {fileID: 106260902}
   - component: {fileID: 106260903}
+  - component: {fileID: 106260904}
   m_Layer: 5
   m_Name: Slot Two
   m_TagString: Untagged
@@ -518,6 +541,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 343534825}
   clueDisplay: {fileID: 1444446331}
+--- !u!114 &106260904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106260897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfd7cf862178b74580eeb77acaafd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chimeAudioSource: {fileID: 0}
+  timerAudioSource: {fileID: 0}
+  timerAudioClip: {fileID: 0}
+  backgroundAudioClip: {fileID: 0}
+  gainCoinAudioClip: {fileID: 0}
+  looseCoinAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 0}
+  wrongAnswerAudioClip: {fileID: 0}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1 &137559544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,6 +2816,7 @@ GameObject:
   - component: {fileID: 1092255790}
   - component: {fileID: 1092255793}
   - component: {fileID: 1092255794}
+  - component: {fileID: 1092255795}
   m_Layer: 5
   m_Name: Slot One
   m_TagString: Untagged
@@ -2879,6 +2924,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 343534825}
   clueDisplay: {fileID: 1444446331}
+--- !u!114 &1092255795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092255788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfd7cf862178b74580eeb77acaafd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chimeAudioSource: {fileID: 0}
+  timerAudioSource: {fileID: 0}
+  timerAudioClip: {fileID: 0}
+  backgroundAudioClip: {fileID: 0}
+  gainCoinAudioClip: {fileID: 0}
+  looseCoinAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 0}
+  wrongAnswerAudioClip: {fileID: 0}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1 &1109010154
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,6 +3196,7 @@ GameObject:
   - component: {fileID: 1243280241}
   - component: {fileID: 1243280244}
   - component: {fileID: 1243280245}
+  - component: {fileID: 1243280246}
   m_Layer: 5
   m_Name: Slot Three
   m_TagString: Untagged
@@ -3237,6 +3304,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 343534825}
   clueDisplay: {fileID: 1444446331}
+--- !u!114 &1243280246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243280239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfd7cf862178b74580eeb77acaafd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chimeAudioSource: {fileID: 0}
+  timerAudioSource: {fileID: 0}
+  timerAudioClip: {fileID: 0}
+  backgroundAudioClip: {fileID: 0}
+  gainCoinAudioClip: {fileID: 0}
+  looseCoinAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 0}
+  wrongAnswerAudioClip: {fileID: 0}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1 &1280701059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3463,6 +3551,7 @@ GameObject:
   - component: {fileID: 1284824990}
   - component: {fileID: 1284824991}
   - component: {fileID: 1284824992}
+  - component: {fileID: 1284824993}
   m_Layer: 5
   m_Name: Slot Eight
   m_TagString: Untagged
@@ -3582,6 +3671,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 343534825}
   clueDisplay: {fileID: 1444446331}
+--- !u!114 &1284824993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284824985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfd7cf862178b74580eeb77acaafd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chimeAudioSource: {fileID: 0}
+  timerAudioSource: {fileID: 0}
+  timerAudioClip: {fileID: 0}
+  backgroundAudioClip: {fileID: 0}
+  gainCoinAudioClip: {fileID: 0}
+  looseCoinAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 0}
+  wrongAnswerAudioClip: {fileID: 0}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1 &1314759182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,6 +3865,7 @@ MonoBehaviour:
   looseCoinAudioClip: {fileID: 0}
   winAudioClip: {fileID: 8300000, guid: 9e74aaaa40287de4a998bee710c77dd1, type: 3}
   wrongAnswerAudioClip: {fileID: 8300000, guid: 98ab12cdf3ca45e47948d1be1cd11493, type: 3}
+  gainGemAudioClip: {fileID: 0}
 --- !u!114 &1314759192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4524,6 +4635,7 @@ GameObject:
   - component: {fileID: 1770377640}
   - component: {fileID: 1770377643}
   - component: {fileID: 1770377644}
+  - component: {fileID: 1770377645}
   m_Layer: 5
   m_Name: Slot Five
   m_TagString: Untagged
@@ -4631,6 +4743,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 343534825}
   clueDisplay: {fileID: 1444446331}
+--- !u!114 &1770377645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770377638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfd7cf862178b74580eeb77acaafd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chimeAudioSource: {fileID: 0}
+  timerAudioSource: {fileID: 0}
+  timerAudioClip: {fileID: 0}
+  backgroundAudioClip: {fileID: 0}
+  gainCoinAudioClip: {fileID: 0}
+  looseCoinAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 0}
+  wrongAnswerAudioClip: {fileID: 0}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1 &1776836289
 GameObject:
   m_ObjectHideFlags: 0
@@ -4903,6 +5036,7 @@ GameObject:
   - component: {fileID: 1860477067}
   - component: {fileID: 1860477068}
   - component: {fileID: 1860477069}
+  - component: {fileID: 1860477070}
   m_Layer: 5
   m_Name: Slot Seven
   m_TagString: Untagged
@@ -5010,6 +5144,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 343534825}
   clueDisplay: {fileID: 1444446331}
+--- !u!114 &1860477070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860477062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfd7cf862178b74580eeb77acaafd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chimeAudioSource: {fileID: 0}
+  timerAudioSource: {fileID: 0}
+  timerAudioClip: {fileID: 0}
+  backgroundAudioClip: {fileID: 0}
+  gainCoinAudioClip: {fileID: 0}
+  looseCoinAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 0}
+  wrongAnswerAudioClip: {fileID: 0}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1 &1890943165
 GameObject:
   m_ObjectHideFlags: 0
@@ -5357,6 +5512,7 @@ GameObject:
   - component: {fileID: 2009557135}
   - component: {fileID: 2009557138}
   - component: {fileID: 2009557139}
+  - component: {fileID: 2009557140}
   m_Layer: 5
   m_Name: Slot Six
   m_TagString: Untagged
@@ -5464,6 +5620,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 343534825}
   clueDisplay: {fileID: 1444446331}
+--- !u!114 &2009557140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009557133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfd7cf862178b74580eeb77acaafd8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chimeAudioSource: {fileID: 0}
+  timerAudioSource: {fileID: 0}
+  timerAudioClip: {fileID: 0}
+  backgroundAudioClip: {fileID: 0}
+  gainCoinAudioClip: {fileID: 0}
+  looseCoinAudioClip: {fileID: 0}
+  winAudioClip: {fileID: 0}
+  wrongAnswerAudioClip: {fileID: 0}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class ClueManager : MonoBehaviour
     {
         audioManager = GetComponent<AudioManager>();
         ShowClue();
-        Debug.Log(isPaused);
+        //Debug.Log(isPaused);
     }
 
     private void Update()
@@ -53,6 +53,7 @@ public class ClueManager : MonoBehaviour
     {
         ShowClue();
         clueText.text = clueName;
+        ResumeGame();
     }
 
     public void PauseGame()

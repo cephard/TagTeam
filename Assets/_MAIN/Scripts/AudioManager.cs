@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip looseCoinAudioClip;
     [SerializeField] private AudioClip winAudioClip;
     [SerializeField] private AudioClip wrongAnswerAudioClip;
+    [SerializeField] private AudioClip gainGemAudioClip;
 
     public void PlayTimerAudio()
     {
@@ -23,6 +24,11 @@ public class AudioManager : MonoBehaviour
     public void PlayGainCoinAudio()
     {
         TriggerClip(gainCoinAudioClip, chimeAudioSource);
+    }
+
+    public void PlayGainGemAudio()
+    {
+        TriggerClip(gainGemAudioClip, chimeAudioSource);
     }
 
     public void PlayLooseCoinAudio()

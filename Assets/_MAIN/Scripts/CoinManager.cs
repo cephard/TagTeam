@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class CoinManager : MonoBehaviour
 {
     private const int ZERO = 0;
-    private static int availableCoins = ZERO;
-    private static int diamondGem = 3;
+    private static int availableCoinCount = ZERO;
+    private static int specialGem = ZERO;
     private const int CHAPTER_BONUS = 100;
+    private AudioManager audioManager;
     [SerializeField] private Text coinText;
     [SerializeField] private Text diamondText;
 
@@ -16,20 +17,23 @@ public class CoinManager : MonoBehaviour
     {
         //availableCoins = PlayerPrefs.GetInt("Coins", availableCoins);
         //diamondGem = PlayerPrefs.GetInt("Diamonds", diamondGem);
-        coinText.text = availableCoins.ToString();
-        diamondText.text = diamondGem.ToString();
+        audioManager = GetComponent<AudioManager>();    
+        coinText.text = availableCoinCount.ToString();
+        diamondText.text = specialGem.ToString();
     }
 
-    public void AddCoins(int coins)
+    public void AddCoins(int coin)
     {
-        availableCoins += coins;
-
+        if (coin >= 5) {
+            AwardSpecialGem();
+        }
+        availableCoinCount += coin;
     }
 
     //return available coins
     public int GetCoins()
     {
-        return availableCoins;
+        return availableCoinCount;
     }
 
     //Deducting the amount of coins based on the player decidion that requires money to be spent
@@ -45,14 +49,14 @@ public class CoinManager : MonoBehaviour
     
     private void RemoveExpenditure(int spentCoins)
     {
-        int newAmount = availableCoins - spentCoins;
-        if (spentCoins > availableCoins)
+        int newAmount = availableCoinCount - spentCoins;
+        if (spentCoins > availableCoinCount)
         {
-            availableCoins = ZERO;
+            availableCoinCount = ZERO;
         }
         else
         {
-            availableCoins -= spentCoins;
+            availableCoinCount -= spentCoins;
         }
     }
 
@@ -61,22 +65,27 @@ public class CoinManager : MonoBehaviour
      */
     public void AwardCoinsByProgress()
     {
-        availableCoins += CHAPTER_BONUS;
+        availableCoinCount += CHAPTER_BONUS;
 
     }
 
+    private void AwardSpecialGem()
+    {
+        specialGem++;
+        audioManager.PlayGainGemAudio();
+    }
     //refresh coin UI on the gems prefab
     public void RefreshCoinState()
     {
-        coinText.text = availableCoins.ToString();
-        diamondText.text = diamondGem.ToString();
+        coinText.text = availableCoinCount.ToString();
+        diamondText.text = specialGem.ToString();
     }
 
     //saving coins and diamond gems to persist even after exit
     private void SaveCoinsAndGems()
     {
-        PlayerPrefs.SetInt("Coins", availableCoins);
-        PlayerPrefs.SetInt("Diamonds", diamondGem);
+        PlayerPrefs.SetInt("Coins", availableCoinCount);
+        PlayerPrefs.SetInt("Diamonds", specialGem);
         PlayerPrefs.Save();
     }
 }
