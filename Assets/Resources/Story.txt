@@ -57,7 +57,7 @@ Warren: Would you like a cup of coffee?
 
 Player: 
 Yes, in the meantime, let me invite Ann over. After the break, we can work together to ensure that she completes her daily tasks.
-Thanks for the offer, but I need to check on Ann to see if she needs help with her tasks first.
+Thanks for the offer, but I need to check on Ann to see if she needs help.
 A cappuccino will do. Please do me a favour, can you kindly see what Ann's stack is on? If it's too complex let me know right away.
 I will have it later, but first, can you assist Ann with her duties, then after that, we can all have a coffee break together.
 
@@ -79,7 +79,7 @@ Player:
 Subcontract it to a third party: 200
 Replace the printer yourself
 Call the maintenance guy to come over : 30
-Ask Stacy for advice
+[Ask Stacy for advice.]
 
 Feedback: Calling the maintenance guy is the best decision that ensures the quality of services, good time management and that you trust your colleagues from other departments.
 

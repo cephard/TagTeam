@@ -2423,7 +2423,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1811928546}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
         m_MethodName: LoadNextScene
         m_Mode: 5
@@ -5334,6 +5334,7 @@ MonoBehaviour:
   looseCoinAudioClip: {fileID: 0}
   winAudioClip: {fileID: 8300000, guid: 9e74aaaa40287de4a998bee710c77dd1, type: 3}
   wrongAnswerAudioClip: {fileID: 8300000, guid: 98ab12cdf3ca45e47948d1be1cd11493, type: 3}
+  gainGemAudioClip: {fileID: 0}
 --- !u!1 &1815627224
 GameObject:
   m_ObjectHideFlags: 0

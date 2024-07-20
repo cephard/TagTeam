@@ -216,4 +216,3 @@ public class ReadDialogue : MonoBehaviour
         playerResponse.SetActive(isAvatarDialogueActive);
     }
 }
-
