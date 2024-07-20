@@ -29,7 +29,7 @@ public class PlayerDecisionManager : MonoBehaviour
         { "Subcontract it to a third party: 200" , -2 },
         { "Replace the printer yourself." , -1},
         { "Call the maintenance guy to come over : 30" , 5},
-        {"Ask Stacy for advice." , 0},
+        {"[Ask Stacy for advice.]" , 0},
         {"[Blame it on Stacy]", -5},
         {"[Take the fault]" , 5},
         {"[Blame it on the maintenance guy]" , -10},
@@ -89,7 +89,7 @@ public class PlayerDecisionManager : MonoBehaviour
 
     public void SeekAdvice(string playerRequest, GameObject dialogue, GameObject avatar)
     {
-        if (playerRequest == "[Ask Stacy for advice]")
+        if (playerRequest == "[Ask Stacy for advice]" || playerRequest == "[Ask Stacy for advice].")
         {
            clueManager.SetClue("Hi i am here to help!");
             dialogue.SetActive(false);

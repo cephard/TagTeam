@@ -46,10 +46,17 @@ public class ReadDialogue : MonoBehaviour
         clueManager = GetComponent<ClueManager>();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
-        clueManager.HideClue();
         LoadDialogueForScene();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !String.Equals("Player", avatarName.text))
+        {
+            NextLine();
+        }
+        clueManager.HideClue();
+    }
     public void LoadDialogueForScene()
     {
         currentLine = taskProgressManager.GetTaskProgress(mainMenuController.GetSceneName());
@@ -90,7 +97,7 @@ public class ReadDialogue : MonoBehaviour
             currentLine++;
             coinManager.RefreshCoinState();
             string coins = coinManager.GetCoins().ToString();
-            Debug.Log(currentLine);
+            //Debug.Log(currentLine);
             SetNameAndDialogue(currentLine);
         }
         else
@@ -103,14 +110,19 @@ public class ReadDialogue : MonoBehaviour
     // Sets the dialogue and avatar name based on the current line index
     private void SetNameAndDialogue(int lineIndex)
     {
+        PlaceHolderDialogue(lineIndex);
+        string line = lines[lineIndex];
+        string[] sentenceParts = line.Split(new[] { ':' }, 2);
+        SplitSentence(line, sentenceParts);
+    }
+
+    private void PlaceHolderDialogue(int lineIndex)
+    {
         if (lines == null || lineIndex >= lines.Length)
         {
             avatarName.text = "Office";
             dialogue.text = "There is no one in the office!";
         }
-        string line = lines[lineIndex];
-        string[] sentenceParts = line.Split(new[] { ':' }, 2);
-        SplitSentence(line, sentenceParts);
     }
 
     //split the sentence in a  way that the first part is the avatar's name and the other is the dialogue
@@ -136,7 +148,7 @@ public class ReadDialogue : MonoBehaviour
         if (String.Equals("Task", avatarName.text))
         {
             SaveNextLine();
-            taskProgressManager.SetTaskProgress(dialogue.text,currentLine);
+            taskProgressManager.SetTaskProgress(dialogue.text, currentLine);
             mainMenuController.LoadNextScene(dialogue.text);
         }
     }
@@ -145,7 +157,7 @@ public class ReadDialogue : MonoBehaviour
     {
         if (String.Equals("Player", avatarName.text))
         {
-            SwitchActiveObject(avatarDialogue,playerResponse);
+            SwitchActiveObject(avatarDialogue, playerResponse);
             LoadPlayerResponses(currentLine + 1);
         }
     }
@@ -167,7 +179,7 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
-    
+
     //based on the players response the player avatar will skip to that response then skip ahead
     // Extract the integer from the current line
     public void PlayerDecision(int playerChoice)
