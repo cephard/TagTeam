@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskTwoManager : AssignmentOneLogic
+public class TaskTwoManager : TaskOneManager
 {
+    private string taskTwo = "TaskTwo";
     void Update()
     {
-        mainMenuController.RefreshScene(timerManager.GetTimer(), "TaskTwo", timeRequiredForTask);
+        CheckWrongTask(taskTwo);
+        mainMenuController.RefreshScene(timerManager.GetTimer(), taskTwo, timeRequiredForTask);
+  
     }
 
 }

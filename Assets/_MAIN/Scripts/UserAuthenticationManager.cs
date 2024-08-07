@@ -11,7 +11,7 @@ using PlayFab.ClientModels;
 using UnityEngine.UI;
 using System;
 
-public class UserAuthenticationManager : MonoBehaviour
+public class UserAuthenticationManager : UnityEngine.MonoBehaviour
 {
     private const string LAST_EMAIL = "LAST_EMAIL";
     private const string LAST_PASSWORD = "LAST_PASSWORD";

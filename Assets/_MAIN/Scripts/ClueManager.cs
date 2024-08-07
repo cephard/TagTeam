@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClueManager : MonoBehaviour
+public class ClueManager : UnityEngine.MonoBehaviour
 {
     [SerializeField] private Text clueText;
     [SerializeField] private GameObject clueDisplay;

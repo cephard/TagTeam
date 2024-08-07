@@ -110,7 +110,7 @@ Tell her it's her fault that you were in trouble.
 It's okay I know the contract was short notice and it might have been hard to keep track of everything.
 [Ignore her]
 
-: Now the printers are fixed and the printing job is underway. 	You would like Ann all hands on deck tomorrow because of the pressure you are receiving from the CEO.
+: Now the printers are fixed and the printing job is underway. 	You would like all hands on deck tomorrow because of the pressure you are receiving from the CEO.
 
 Task : PrinterSerial
 

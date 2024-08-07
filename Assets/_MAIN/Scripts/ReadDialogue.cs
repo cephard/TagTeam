@@ -9,7 +9,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class ReadDialogue : MonoBehaviour
+public class ReadDialogue : UnityEngine.MonoBehaviour
 {
     //making fields serialissable to enable access in unity
     [SerializeField] private TextMeshProUGUI dialogue;
@@ -49,13 +49,13 @@ public class ReadDialogue : MonoBehaviour
         LoadDialogueForScene();
     }
 
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow) && !String.Equals("Player", avatarName.text))
         {
             NextLine();
         }
-        clueManager.HideClue();
     }
     public void LoadDialogueForScene()
     {
@@ -125,28 +125,42 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
+ 
     //split the sentence in a  way that the first part is the avatar's name and the other is the dialogue
     public void SplitSentence(string line, string[] sentenceParts)
     {
         if (sentenceParts.Length == 2)
         {
             avatarName.text = sentenceParts[0].Trim();
-            dialogue.text = sentenceParts[1].Trim();
+            LoadTaskScene(sentenceParts);
             InovkeResponse();
+            chapterManager.IntroduceChapter(avatarName.text, sentenceParts[1].Trim());
             avatarManager.ActivateAvatar(avatarName.text);
-            chapterManager.IntroduceChapter(avatarName.text, dialogue.text);
+
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+            
+            typingCoroutine = StartCoroutine(TypeSentence(sentenceParts[1].Trim()));
+
         }
         else
         {
-            dialogue.text = line;
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+            typingCoroutine = StartCoroutine(TypeSentence(line));
         }
-        LoadTaskScene();
+
     }
 
-    public void LoadTaskScene()
+    public void LoadTaskScene(string[] sentenceParts)
     {
         if (String.Equals("Task", avatarName.text))
         {
+            dialogue.text = sentenceParts[1].Trim();
             SaveNextLine();
             taskProgressManager.SetTaskProgress(dialogue.text, currentLine);
             mainMenuController.LoadNextScene(dialogue.text);
@@ -185,13 +199,13 @@ public class ReadDialogue : MonoBehaviour
     public void PlayerDecision(int playerChoice)
     {
         currentLine += playerChoice;
+        int nextLine = SkipRemainingChoice(currentLine, playerChoice);
         PlayerReport.UpdateDecisions(GetLine(currentLine));
         coinManager.ExtractExpenditure(GetLine(currentLine));
         playerDecisionManager.GetPlayerChoice(GetLine(currentLine));
-        playerDecisionManager.SeekAdvice(GetLine(currentLine), avatarDialogue, playerResponse);
-        currentLine = SkipRemainingChoice(currentLine, playerChoice);
+        playerDecisionManager.SeekAdvice(GetLine(currentLine), GetLine(nextLine), avatarDialogue, playerResponse);
+        currentLine = nextLine;
         SwitchActiveObject(avatarDialogue, playerResponse);
-        NextLine();
         NextLine();
     }
 
@@ -215,4 +229,19 @@ public class ReadDialogue : MonoBehaviour
         avatarDialogue.SetActive(!isAvatarDialogueActive);
         playerResponse.SetActive(isAvatarDialogueActive);
     }
+
+
+
+    private Coroutine typingCoroutine;
+
+    private IEnumerator TypeSentence(string sentence)
+    {
+        dialogue.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogue.text += letter;
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
 }

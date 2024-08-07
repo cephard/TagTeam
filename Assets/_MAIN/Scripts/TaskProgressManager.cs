@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskProgressManager : MonoBehaviour
+public class TaskProgressManager : UnityEngine.MonoBehaviour
 {
     private Dictionary<string, int> taskProgress;
     private void Awake()

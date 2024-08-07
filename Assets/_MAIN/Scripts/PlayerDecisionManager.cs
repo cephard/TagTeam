@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerDecisionManager : MonoBehaviour
+public class PlayerDecisionManager : UnityEngine.MonoBehaviour
 {
     private CoinManager coinManager;
 
@@ -87,13 +88,21 @@ public class PlayerDecisionManager : MonoBehaviour
         }
     }
 
-    public void SeekAdvice(string playerRequest, GameObject dialogue, GameObject avatar)
+    public void SeekAdvice(string playerRequest,string advice, GameObject dialogue, GameObject avatar)
     {
-        if (playerRequest == "[Ask Stacy for advice]" || playerRequest == "[Ask Stacy for advice.]")
+        if (playerRequest == "[Ask Stacy for advice]")
         {
-            clueManager.SetClue("Hi i am here to help!");
             dialogue.SetActive(false);
             avatar.SetActive(false);
+            clueManager.SetClue("It is best to wait until tea break and ask Ann about the issue. " +
+                "Give her a chance to explain herself, and remember to be polite and friendlt.");
+            Task.Delay(100);
+        }
+
+        if (playerRequest == "[Ask Stacy for advice.]")
+        {
+            clueManager.SetClue("You should call the maintainance guy to come over. \n" +
+                "It will cost us £30 for his taxi transport but we will have saved alot of time and resources. \n");
         }
     }
 

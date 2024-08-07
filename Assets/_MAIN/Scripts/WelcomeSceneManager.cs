@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WelcomeSceneManager : MonoBehaviour
+public class WelcomeSceneManager : UnityEngine.MonoBehaviour
 {
     [SerializeField] private Text welcome;
     [SerializeField] private GameObject audioPlayer;

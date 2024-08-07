@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour
+public class MainMenuController : UnityEngine.MonoBehaviour
 {
     private ReadDialogue readDialogue;
+    private PlayerChanceManager playerChanceManager;
     private static string currentScene;
     private const float CHAPTER_LOAD_DELAY= 2.5f;
-    private static int playChance = 3;
-    private static int counter = 3;
-    private const string CounterKey = "Counter";
 
     void Start()
     {
         readDialogue = GetComponent<ReadDialogue>();
+        playerChanceManager = GetComponent<PlayerChanceManager>();
     }
 
     //mehod to navigate between scenes
@@ -50,38 +49,15 @@ public class MainMenuController : MonoBehaviour
     //player fails when they have used all chances
     public void FailedLevel(string scene)
     {
-        if (counter <= 0)
+        if (playerChanceManager.GetRemainingChance() <= 0)
         {
-            ResetCounter();
-            SaveCounter();
+            playerChanceManager.ResetChance();
+            playerChanceManager.SaveRemainingChance();
             LoadNextScene("Conversation");
             UpdateSceneName(scene);
         }
     }
-        
-    private void SaveCounter()
-    {
-        PlayerPrefs.SetInt(CounterKey, counter);
-        PlayerPrefs.Save();
-    }
-
-    public void LoadCounter()
-    {
-        if (PlayerPrefs.HasKey(CounterKey))
-        {
-            counter = PlayerPrefs.GetInt(CounterKey);
-        }
-        else
-        {
-            ResetCounter();
-        }
-    }
-
-    private void ResetCounter()
-    {
-        counter = 3;
-        SaveCounter();
-    }
+       
 
     //When timer hits below one it resets then will ens when counter is 3
     public void RefreshScene(int timer, string scene, int taskTime)
@@ -89,10 +65,8 @@ public class MainMenuController : MonoBehaviour
         FailedLevel(scene);
         if (timer < 1)
         {
-            counter--;
-            SaveCounter();
+            playerChanceManager.ReduceRemainingChance();
             timer = taskTime;
-            Debug.Log(counter);
             LoadNextScene(scene);
         }
     }
