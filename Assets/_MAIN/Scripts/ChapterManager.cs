@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
-public class ChapterManager : MonoBehaviour
+public class ChapterManager : UnityEngine.MonoBehaviour
 {
     [SerializeField] private Image backgroundImage;
     [SerializeField] private Text chapterName;
@@ -20,18 +20,17 @@ public class ChapterManager : MonoBehaviour
         backgroundColors.Add("The Dilemma", new Color(0.69f, 0.77f, 0.87f));
     }
 
-    public void IntroduceChapter(string chapterName, string dialogue)
+    public void IntroduceChapter(string avatarName, string currentChapter)
     {
-        if (chapterName.Equals("Chapter"))
+        if (avatarName.Equals("Chapter"))
         {
             FindAnyObjectByType<CoinManager>().AwardCoinsByProgress();
-            FindAnyObjectByType<AvatarManager>().ActivateAvatar(chapterName);
-            ChangeChapterBackground(dialogue);
-            dialogue = "";
+            FindAnyObjectByType<AvatarManager>().ActivateAvatar(avatarName);
+            ChangeChapterBackground(currentChapter);
         }
         else
         {
-            HideChapterName(chapterName);
+            HideChapterName();
         }
     }
 
@@ -49,7 +48,7 @@ public class ChapterManager : MonoBehaviour
         chapterName.text = chapter;
     }
 
-    public void HideChapterName(string chapter)
+    public void HideChapterName()
     {
         chapterName.text = "";
     }

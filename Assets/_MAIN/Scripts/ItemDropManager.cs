@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemDropManager : MonoBehaviour, IDropHandler
+public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
 {
     [SerializeField] private Text slotText;
     [SerializeField] private Text motivationText;
@@ -14,15 +14,30 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     private AudioManager audioManager;
     private ClueManager clueManager;
     private const int COMPLETE_TASK = 7;
-    private const int BONUS_COIN  = 50;
-    private int wrongTask = 0;
+    private const int PASS_TASK_COUNT = 4;
+    private const int BONUS_COIN = 10;
+    private static int wrongTask;
+    private Stack<DroppedTaskManager> actionStack = new Stack<DroppedTaskManager>();
+
 
     public void Start()
     {
+        correctTask = 0;
+        wrongTask = 0;
         audioManager = FindAnyObjectByType<AudioManager>();
         mainMenuController = GetComponent<MainMenuController>();
         coinManager = GetComponent<CoinManager>();
         clueManager = GetComponent<ClueManager>();
+    }
+
+    protected bool CheckWrongTask(string sceneName)
+    {
+        if (wrongTask == 3)
+        {
+            mainMenuController = new MainMenuController();
+            mainMenuController.LoadNextScene(sceneName);
+        }
+        return false;
     }
 
     private string GetCorrectTaskCount(int taskCount)
@@ -77,18 +92,29 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     //Allows player to load next scene only sfter all tasks are complete
     public void Proceed(string sceneName)
     {
-        if (correctTask >= COMPLETE_TASK)
-        {
-            clueManager.ShowWinOrLooseClue("Perfect Eye for Detail !");
+        if (correctTask >= PASS_TASK_COUNT)
+        { 
+            CheckTaskCount(correctTask);
             audioManager.PlayWiningAudio();
-            coinManager.AddCoins(BONUS_COIN);
+            coinManager.AddCoins(BONUS_COIN * correctTask);
             mainMenuController.LoadNextChapter(sceneName);
         }
         else
         {
             clueManager.ShowWinOrLooseClue("Please Try Again!");
         }
+        Debug.Log(correctTask.ToString());
+    }
 
-        correctTask = 0;
+    private void CheckTaskCount(int checkCorrectTask)
+    {
+        if (checkCorrectTask == COMPLETE_TASK)
+        {
+            clueManager.ShowWinOrLooseClue("Perfect Eye for Detail !");
+        }
+        else
+        {
+            clueManager.ShowWinOrLooseClue("Nice Try !");
+        }
     }
 }

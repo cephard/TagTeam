@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PrinterSerialNumberManager : MonoBehaviour
+public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
 {
     [SerializeField] private Text printedErrorCount;
     [SerializeField] private Text correctErrorCount;
@@ -12,6 +12,7 @@ public class PrinterSerialNumberManager : MonoBehaviour
     private int[] expectedAnswer = { 2, 3, 0, 2, 2 };
     private const int EXPECTED_ERRORS = 9;
     private MainMenuController mainMenuController;
+    private PlayerChanceManager playerChanceManager;
     private ClueManager clueManager;
     private TimerManager timerManager;
     private int timeRequiredForTask = 60;
@@ -23,8 +24,9 @@ public class PrinterSerialNumberManager : MonoBehaviour
         timerManager = GetComponent<TimerManager>();
         clueManager = GetComponent<ClueManager>();
         audioManager = GetComponent<AudioManager>();
+        playerChanceManager = GetComponent<PlayerChanceManager>();
         timerManager.SetTimer(timeRequiredForTask);
-        mainMenuController.LoadCounter();
+        playerChanceManager.LoadRemainingChance();
     }
 
     void Update()

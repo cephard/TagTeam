@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseMenuManager : MonoBehaviour
+public class PauseMenuManager : ItemDropManager
 {
 
-
 }
+

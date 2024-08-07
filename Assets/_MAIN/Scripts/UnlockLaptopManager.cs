@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnlockLaptopManager : MonoBehaviour
+public class UnlockLaptopManager : UnityEngine.MonoBehaviour
 {
     [SerializeField] private Text clueText;
     [SerializeField] private GameObject clueDisplay;
@@ -48,6 +48,8 @@ public class UnlockLaptopManager : MonoBehaviour
             mainMenuController.LoadNextScene("Stats");
             mainMenuController.UpdateSceneName("UnlockLaptop");
         }
+
+        Debug.Log(hiddenEntry.text);
     }
 
     private void Start()

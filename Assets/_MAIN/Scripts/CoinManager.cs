@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CoinManager : MonoBehaviour
+public class CoinManager : UnityEngine.MonoBehaviour
 {
     private const int ZERO = 0;
     private static int availableCoinCount = ZERO;

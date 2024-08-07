@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TaskThree : MonoBehaviour
+public class TaskThree : UnityEngine.MonoBehaviour
 {
     private bool privateKey;
     private bool publicKey;

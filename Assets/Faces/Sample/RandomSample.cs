@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RandomSample : MonoBehaviour {
+public class RandomSample : UnityEngine.MonoBehaviour {
 	public Image cbody;
 	public Image cface;
 	public Image chair;

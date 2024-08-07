@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConfidentialFileManager : MonoBehaviour
+public class ConfidentialFileManager : UnityEngine.MonoBehaviour
 {
     private const int SECRET_VALUE = 14;
     [SerializeField] private Text puzzleClue;
@@ -14,6 +14,7 @@ public class ConfidentialFileManager : MonoBehaviour
     [SerializeField] private GameObject cluePanel;
     [SerializeField] private InputField secretValue;
     private MainMenuController mainMenuController;
+    private PlayerChanceManager playerChanceManager;
     private AudioManager audioManager;
     private ClueManager clueManager;
     private int timeRequiredForTask = 60;
@@ -25,8 +26,9 @@ public class ConfidentialFileManager : MonoBehaviour
         timerManager = GetComponent<TimerManager>();
         audioManager = GetComponent<AudioManager>();
         clueManager = GetComponent<ClueManager>();
+        playerChanceManager = GetComponent<PlayerChanceManager>();
         timerManager.SetTimer(timeRequiredForTask);
-        mainMenuController.LoadCounter();
+        playerChanceManager.LoadRemainingChance();
     }
 
     void Update()
@@ -67,6 +69,8 @@ public class ConfidentialFileManager : MonoBehaviour
         }
     }
 
+
+    //proceed with click
     public void Proceed(string sceneName)
     {
         audioManager.PlayWiningAudio();

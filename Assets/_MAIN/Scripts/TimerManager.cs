@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerManager : MonoBehaviour
+public class TimerManager : UnityEngine.MonoBehaviour
 {
     [SerializeField] private Text timerText;
     private AudioManager audioManager;

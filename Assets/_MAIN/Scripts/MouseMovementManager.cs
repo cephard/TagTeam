@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MouseMovementManager : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class MouseMovementManager : UnityEngine.MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private RectTransform rectTransform;
     [SerializeField] Canvas canvas;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AssignmentOneLogic : MonoBehaviour
+public class TaskOneManager : ItemDropManager
 {
     [SerializeField] private Image SlotOne;
     [SerializeField] private Image SlotTwo;
@@ -19,21 +19,30 @@ public class AssignmentOneLogic : MonoBehaviour
     [SerializeField] private Image TaskSeven;
     protected MainMenuController mainMenuController;
     protected TimerManager timerManager;
+    protected PlayerChanceManager playerChanceManager;
     protected int timeRequiredForTask = 60;
+    private string taskOne = "TaskOne";
 
 
-    void Start()
+    new void Start()
     {
         mainMenuController = GetComponent<MainMenuController>();
         timerManager = GetComponent<TimerManager>();
+        playerChanceManager = GetComponent<PlayerChanceManager>();  
         timerManager.SetTimer(timeRequiredForTask);
-        mainMenuController.LoadCounter();
+        playerChanceManager.LoadRemainingChance();
         CompareTexts();
     }
 
     void Update()
     {
-        mainMenuController.RefreshScene(timerManager.GetTimer(), "TaskOne", timeRequiredForTask);
+        CheckWrongTask(taskOne);
+        mainMenuController.RefreshScene(timerManager.GetTimer(), taskOne, timeRequiredForTask);
+    }
+
+    public void RefreshTaskOne()
+    {
+
     }
 
     void CompareTexts()
