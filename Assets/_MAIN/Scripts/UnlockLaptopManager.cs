@@ -10,8 +10,17 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
     [SerializeField] private GameObject clueDisplay;
     [SerializeField] private InputField hiddenEntry;
     private MainMenuController mainMenuController;
+    private ClueManager clueManager;
     private CoinManager coinManager;
     private char[] passwordCharacters = { 'E', 'n', '4', 't', 'e', '@', '#', 'r' };
+
+
+    private void Start()
+    {
+        clueManager = GetComponent<ClueManager>();
+        coinManager = GetComponent<CoinManager>();
+        mainMenuController = GetComponent<MainMenuController>();
+    }
 
     public void UpdateClue(string clue)
     {
@@ -35,11 +44,6 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
         }
     }
 
-    public void HideClue()
-    {
-        clueDisplay.SetActive(false);
-    }
-
     public void UnlockLaptop()
     {
         if (string.Equals(hiddenEntry.text, "En4te@#r", StringComparison.OrdinalIgnoreCase))
@@ -48,13 +52,12 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
             mainMenuController.LoadNextScene("Stats");
             mainMenuController.UpdateSceneName("UnlockLaptop");
         }
+        else
+        {
+            clueManager.SetClue("Wrong input please try again!");
+        }
 
         Debug.Log(hiddenEntry.text);
     }
 
-    private void Start()
-    {
-        coinManager = GetComponent<CoinManager>();
-        mainMenuController = GetComponent<MainMenuController>();
-    }
 }

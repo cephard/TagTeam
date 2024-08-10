@@ -83,7 +83,7 @@ Call the maintenance guy to come over : 30
 
 Feedback: Calling the maintenance guy is the best decision that ensures the quality of services, good time management and that you trust your colleagues from other departments.
 
-: The CEO is mad at you and he sends you an email concerning the printer issues you know Stacy forgot to inform you if you report her she might get a strike if you do not you might take a strike.
+: The CEO is mad at you and he sends you an email concerning the printer issues you know Stacy forgot to inform you, if you report her she might get a strike if you do not, you might get a strike.
 Dylan: Our client is on my neck, he can't stop calling. What happened to the printers?
 
 Player:
@@ -102,7 +102,7 @@ I am sorry sir.
 This won't happen again, sir.
 I will do better next time sir.
 
-Stacy: Hello Player sorry have been busy with the contract. I had just wanted to remind you that the printers need toner replacement. It had slipped my mind and the CEO just contacted me.
+Stacy: Hello, sorry have been busy with the contract, were you able to fix the printers?
 
 Player:
 Tell her you took care of it and she should not worry.
@@ -110,7 +110,7 @@ Tell her it's her fault that you were in trouble.
 It's okay I know the contract was short notice and it might have been hard to keep track of everything.
 [Ignore her]
 
-: Now the printers are fixed and the printing job is underway. 	You would like all hands on deck tomorrow because of the pressure you are receiving from the CEO.
+: Now the printers are fixed and the printing job is underway. 	You would need all hands on deck tomorrow because of the pressure you are receiving from the Dylan.
 
 Task : PrinterSerial
 
