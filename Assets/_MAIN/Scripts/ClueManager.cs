@@ -14,10 +14,8 @@ public class ClueManager : UnityEngine.MonoBehaviour
     private void Start()
     {
         audioManager = GetComponent<AudioManager>();
-        ShowClue();
-        //Debug.Log(isPaused);
     }
-
+  
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -30,6 +28,11 @@ public class ClueManager : UnityEngine.MonoBehaviour
             {
                 ShowClue();
             }
+        }
+
+        if (clueDisplay.activeSelf == true)
+        {
+            PauseGame();
         }
     }
 
@@ -48,6 +51,17 @@ public class ClueManager : UnityEngine.MonoBehaviour
         clueDisplay.SetActive(false);
         ResumeGame();
     }
+
+    public void OverRideClueOnStart(GameObject activeObject)
+    {
+        if (activeObject.activeSelf == false)
+        {
+            HideClue();
+            Debug.Log(activeObject.activeSelf.ToString());
+        }
+    }
+
+
 
     public void ShowWinOrLooseClue(string clueName)
     {

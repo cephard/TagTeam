@@ -95,7 +95,7 @@ public class PlayerDecisionManager : UnityEngine.MonoBehaviour
             dialogue.SetActive(false);
             avatar.SetActive(false);
             clueManager.SetClue("It is best to wait until tea break and ask Ann about the issue. " +
-                "Give her a chance to explain herself, and remember to be polite and friendlt.");
+                "Give her a chance to explain herself, and remember to be polite and friendly.");
             Task.Delay(100);
         }
 

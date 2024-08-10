@@ -30,6 +30,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     private MainMenuController mainMenuController;
     private PlayerDecisionManager playerDecisionManager;
     private ClueManager clueManager;
+    private bool clueHidden = false;
 
 
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
@@ -47,8 +48,8 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
         LoadDialogueForScene();
+        clueManager.OverRideClueOnStart(playerResponse);
     }
-
 
     private void Update()
     {
@@ -125,7 +126,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         }
     }
 
- 
+
     //split the sentence in a  way that the first part is the avatar's name and the other is the dialogue
     public void SplitSentence(string line, string[] sentenceParts)
     {
@@ -141,7 +142,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
             {
                 StopCoroutine(typingCoroutine);
             }
-            
+
             typingCoroutine = StartCoroutine(TypeSentence(sentenceParts[1].Trim()));
 
         }
