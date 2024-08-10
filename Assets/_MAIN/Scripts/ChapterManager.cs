@@ -8,6 +8,7 @@ public class ChapterManager : UnityEngine.MonoBehaviour
 {
     [SerializeField] private Image backgroundImage;
     [SerializeField] private Text chapterName;
+    private string currentChapterName;
     Dictionary<string, Dictionary<string, Color>> chapters = new Dictionary<string, Dictionary<string, Color>>();
 
     private void Start()
@@ -36,6 +37,7 @@ public class ChapterManager : UnityEngine.MonoBehaviour
             FindAnyObjectByType<CoinManager>().AwardCoinsByProgress();
             FindAnyObjectByType<AvatarManager>().ActivateAvatar(avatarName);
             ChangeChapterBackground(chapterKey);
+            currentChapterName = chapterKey;
         }
         else
         {
@@ -58,6 +60,7 @@ public class ChapterManager : UnityEngine.MonoBehaviour
 
     private void DisplayChapterName(string chapter)
     {
+
         chapterName.text = chapter;
     }
 
@@ -68,7 +71,7 @@ public class ChapterManager : UnityEngine.MonoBehaviour
 
     public string GetCurrentChapterName()
     {
-        return chapterName.text;
+        return currentChapterName;
     }
 
     // Method to get the chapter name by key (e.g., "Chapter1")

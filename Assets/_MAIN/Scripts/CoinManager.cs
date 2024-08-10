@@ -22,6 +22,9 @@ public class CoinManager : UnityEngine.MonoBehaviour
         diamondText.text = specialGem.ToString();
     }
 
+
+
+
     public void AddCoins(int coin)
     {
         if (coin >= 5) {
@@ -34,6 +37,11 @@ public class CoinManager : UnityEngine.MonoBehaviour
     public int GetCoins()
     {
         return availableCoinCount;
+    }
+
+    public int GetSpecialGem()
+    {
+        return specialGem;
     }
 
     //Deducting the amount of coins based on the player decidion that requires money to be spent
