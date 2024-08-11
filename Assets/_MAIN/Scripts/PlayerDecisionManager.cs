@@ -24,7 +24,7 @@ public class PlayerDecisionManager : UnityEngine.MonoBehaviour
         { "I promised our manager that we have the best team, so please ensure you find the best solutions to all issues without relying on my help.", -5 },
         { "Complete the selected duties first and report any issues to me immediately. I am also expecting a report on everyone's progress by the end of the day." , 5},
         {"Yes, in the meantime, let me invite Ann over. After the break, we can work together to ensure that she completes her daily tasks." , 2 },
-        { "Thanks for the offer, but I need to check on Ann to see if she needs help." , 4 },
+        { "Thanks for the offer, but I need to check on Ann to see if she needs help." , 5 },
         { "A cappuccino will do. Please see what is taking Ann so long.", 1},
         { "I will have it later, but first, can you assist Ann with her duties?" , 2 },
         { "Subcontract it to a third party: 200" , -2 },

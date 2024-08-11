@@ -29,14 +29,12 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     private string[] lines;
     private MainMenuController mainMenuController;
     private PlayerDecisionManager playerDecisionManager;
+    private FeedBackManager feedBackManager;
     private ClueManager clueManager;
     private bool clueHidden = false;
 
 
-    /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
-    skipping blank lines to ensure seamless conversation
-    */
-    private void Start()
+    private void InitializeCustomObjects()
     {
         mainMenuController = GetComponent<MainMenuController>();
         avatarManager = GetComponent<AvatarManager>();
@@ -45,6 +43,15 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         playerDecisionManager = GetComponent<PlayerDecisionManager>();
         taskProgressManager = GetComponent<TaskProgressManager>();
         clueManager = GetComponent<ClueManager>();
+        feedBackManager = GetComponent<FeedBackManager>();
+    }
+
+    /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
+    skipping blank lines to ensure seamless conversation
+    */
+    private void Start()
+    {
+        InitializeCustomObjects();
         avatarManager.InitiliseAvatar();
         avatarManager.DeactivateAvatars();
         LoadDialogueForScene();
@@ -58,6 +65,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
             NextLine();
         }
     }
+
     public void LoadDialogueForScene()
     {
         currentLine = taskProgressManager.GetTaskProgress(mainMenuController.GetSceneName());
@@ -130,6 +138,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     //split the sentence in a  way that the first part is the avatar's name and the other is the dialogue
     public void SplitSentence(string line, string[] sentenceParts)
     {
+        StopTypeWritterEffect();
         if (sentenceParts.Length == 2)
         {
             avatarName.text = sentenceParts[0].Trim();
@@ -137,24 +146,21 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
             InovkeResponse();
             chapterManager.IntroduceChapter(avatarName.text, sentenceParts[1].Trim());
             avatarManager.ActivateAvatar(avatarName.text);
-
-            if (typingCoroutine != null)
-            {
-                StopCoroutine(typingCoroutine);
-            }
-
             typingCoroutine = StartCoroutine(TypeSentence(sentenceParts[1].Trim()));
-
         }
         else
         {
-            if (typingCoroutine != null)
-            {
-                StopCoroutine(typingCoroutine);
-            }
             typingCoroutine = StartCoroutine(TypeSentence(line));
         }
 
+    }
+
+    private void StopTypeWritterEffect()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
     }
 
     public void LoadTaskScene(string[] sentenceParts)
@@ -206,6 +212,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         playerDecisionManager.GetPlayerChoice(GetLine(currentLine));
         playerDecisionManager.SeekAdvice(GetLine(currentLine), GetLine(nextLine), avatarDialogue, playerResponse);
         currentLine = nextLine;
+        feedBackManager.AwardStar(coinManager.GetChapterGem());
         SwitchActiveObject(avatarDialogue, playerResponse);
         NextLine();
     }
@@ -230,7 +237,6 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         avatarDialogue.SetActive(!isAvatarDialogueActive);
         playerResponse.SetActive(isAvatarDialogueActive);
     }
-
 
 
     private Coroutine typingCoroutine;
