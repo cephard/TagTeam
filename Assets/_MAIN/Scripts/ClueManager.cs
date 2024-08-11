@@ -57,11 +57,8 @@ public class ClueManager : UnityEngine.MonoBehaviour
         if (activeObject.activeSelf == false)
         {
             HideClue();
-            Debug.Log(activeObject.activeSelf.ToString());
         }
     }
-
-
 
     public void ShowWinOrLooseClue(string clueName)
     {

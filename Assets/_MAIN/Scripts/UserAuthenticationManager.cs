@@ -27,6 +27,7 @@ public class UserAuthenticationManager : UnityEngine.MonoBehaviour
     [SerializeField] private InputField loginPassword;
     [SerializeField] private Text authenticationType;
     [SerializeField] private Text switchAuthenticationType;
+    [SerializeField] private Text pleaseWait;
 
     private void Start()
     {
@@ -58,6 +59,7 @@ public class UserAuthenticationManager : UnityEngine.MonoBehaviour
     // Register a new PlayFab user using PlayFab API
     private void Register(string email, string username, string password, string confirmPass)
     {
+        pleaseWait.text = "Please wait...";
         var request = new RegisterPlayFabUserRequest
         {
             Email = email,
@@ -103,6 +105,8 @@ public class UserAuthenticationManager : UnityEngine.MonoBehaviour
     // Make API call to PlayFab for login
     private void MakeAPICall(LoginWithEmailAddressRequest request, string email, string password)
     {
+        pleaseWait.text = "Please wait...";
+
         PlayFabClientAPI.LoginWithEmailAddress(request,
            successResult =>
            {
@@ -121,17 +125,27 @@ public class UserAuthenticationManager : UnityEngine.MonoBehaviour
     }
 
     // Handle PlayFab API call failure
+    // Log the full error details in the console for debugging
+    // Get the full error report
+    // Split the error report into segments based on common delimiters
+    // Display the last part of the error message in the UI
+    // Find the last non-empty segment
     private void PlayFabFailure(PlayFabError error)
-    {
-        Debug.LogError(error.Error + " : " + error.GenerateErrorReport());
-        authenticationType.text = "An error occurred, please try again!";
+    { 
+       // Debug.LogError(error.Error + " : " + error.GenerateErrorReport());
+        string errorReport = error.GenerateErrorReport();
+        string[] segments = errorReport.Split(new[] { '.', ':', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        string lastSegment = segments.Length > 0 ? segments[segments.Length - 1].Trim() : "An unknown error occurred.";
+        pleaseWait.text = "";
+        authenticationType.text = lastSegment;
     }
+
 
     // Switch between login and signup screens
     public void SwitchScreen()
     {
-        authenticationScreen = !authenticationScreen; 
-        loginGameObject.SetActive(authenticationScreen); 
+        authenticationScreen = !authenticationScreen;
+        loginGameObject.SetActive(authenticationScreen);
         signupGameObject.SetActive(!authenticationScreen);
         SwitchLogInScreen(loginGameObject);
     }

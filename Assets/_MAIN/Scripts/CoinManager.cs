@@ -10,24 +10,26 @@ public class CoinManager : UnityEngine.MonoBehaviour
     private static int specialGem = ZERO;
     private const int CHAPTER_BONUS = 100;
     private AudioManager audioManager;
+    private static int gemPerChapter = ZERO;
     [SerializeField] private Text coinText;
     [SerializeField] private Text diamondText;
 
     void Start()
     {
-        //availableCoins = PlayerPrefs.GetInt("Coins", availableCoins);
-        //diamondGem = PlayerPrefs.GetInt("Diamonds", diamondGem);
-        audioManager = GetComponent<AudioManager>();    
+        audioManager = GetComponent<AudioManager>();
         coinText.text = availableCoinCount.ToString();
         diamondText.text = specialGem.ToString();
     }
 
-
-
+    public void ResetChapterGem()
+    {
+        gemPerChapter = 0;
+    }
 
     public void AddCoins(int coin)
     {
-        if (coin >= 5) {
+        if (coin >= 5)
+        {
             AwardSpecialGem();
         }
         availableCoinCount += coin;
@@ -44,17 +46,21 @@ public class CoinManager : UnityEngine.MonoBehaviour
         return specialGem;
     }
 
+    public int GetChapterGem()
+    {
+        return gemPerChapter;
+    }
+
     //Deducting the amount of coins based on the player decidion that requires money to be spent
     public void ExtractExpenditure(string line)
     {
         string[] parts = line.Split(':');
         if (parts.Length == 2 && int.TryParse(parts[1].Trim(), out int expenditure))
         {
-           RemoveExpenditure(expenditure);
+            RemoveExpenditure(expenditure);
         }
     }
 
-    
     private void RemoveExpenditure(int spentCoins)
     {
         int newAmount = availableCoinCount - spentCoins;
@@ -79,7 +85,8 @@ public class CoinManager : UnityEngine.MonoBehaviour
 
     private void AwardSpecialGem()
     {
-        specialGem++;
+        gemPerChapter += 2;
+        specialGem += 2;
         audioManager.PlayGainGemAudio();
     }
     //refresh coin UI on the gems prefab
@@ -97,3 +104,5 @@ public class CoinManager : UnityEngine.MonoBehaviour
         PlayerPrefs.Save();
     }
 }
+
+

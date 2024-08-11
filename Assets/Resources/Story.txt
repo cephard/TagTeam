@@ -61,9 +61,9 @@ Thanks for the offer, but I need to check on Ann to see if she needs help.
 A cappuccino will do. Please do me a favour, can you kindly see what Ann's stack is on? If it's too complex let me know right away.
 I will have it later, but first, can you assist Ann with her duties, then after that, we can all have a coffee break together.
 
-: You head towards Ann to see what is holding her behind and see the task on her computer.
-
 Feedback: Prioritizing colleague's needs over personal breaks when they need help builds a good team spirit.
+
+: You head towards Ann to see what is holding her behind and see the task on her computer.
 
 Task: Ann'sTask
 

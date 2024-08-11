@@ -9,8 +9,6 @@ public class FeedBackManager : MonoBehaviour
     [SerializeField] private GameObject starThree;
     private CoinManager coinManager;
     private ChapterManager chapterManager;
-
-
     private Dictionary<string, int> chapterGemRequirements = new Dictionary<string, int>();
 
     void Start()
@@ -18,18 +16,17 @@ public class FeedBackManager : MonoBehaviour
         HideStars();
         coinManager = GetComponent<CoinManager>();
         chapterManager = GetComponent<ChapterManager>();
-        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter1"), 2);
-        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter2"), 2);
-        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter3"), 4);
-        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter4"), 3);
-        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter5"), 2);
-        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter6"), 1);
+        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter1"), 4);
+        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter2"), 4);
+        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter3"), 8);
+        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter4"), 6);
+        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter5"), 4);
+        chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter6"), 2);
     }
 
     private void Update()
     {
-        AwardStar(coinManager.GetSpecialGem());
-        Debug.Log(coinManager.GetSpecialGem().ToString() + chapterManager.GetCurrentChapterName());
+       // AwardStar(coinManager.GetChapterGem());
     }
     public void AwardStar(int availableGem)
     {
@@ -40,9 +37,11 @@ public class FeedBackManager : MonoBehaviour
         {
             // Compare available gems with required gems and award stars accordingly
             int requiredGems = chapterGemRequirements[currentChapterName];
-            if (availableGem == 0) { 
+            if (availableGem == 0)
+            {
                 HideStars();
-            }else if (availableGem >= requiredGems)
+            }
+            else if (availableGem >= requiredGems)
             {
                 // Award 3 stars if available gems are equal or more than required
                 starOne.SetActive(true);
@@ -65,17 +64,10 @@ public class FeedBackManager : MonoBehaviour
             }
             else
             {
-                // No stars awarded if available gems are less than required - 2
                 HideStars();
             }
         }
-        else
-        {
-            // No stars awarded if the chapter name is not found
-            HideStars();
-        }
     }
-
 
     private void HideStars()
     {

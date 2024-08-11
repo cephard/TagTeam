@@ -38,13 +38,14 @@ public class ChapterManager : UnityEngine.MonoBehaviour
             FindAnyObjectByType<AvatarManager>().ActivateAvatar(avatarName);
             ChangeChapterBackground(chapterKey);
             currentChapterName = chapterKey;
+            Debug.Log(currentChapterName);
+            DisplayChapterName(currentChapterName);
         }
         else
         {
             HideChapterName();
         }
     }
-
     public void ChangeChapterBackground(string chapterKey)
     {
         if (chapters.ContainsKey(chapterKey))
