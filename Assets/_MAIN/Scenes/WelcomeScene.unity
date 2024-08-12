@@ -1032,38 +1032,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 588f580aa28729740b6854b8c6c4f63b, type: 3}
---- !u!1 &882830437
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 882830438}
-  m_Layer: 0
-  m_Name: Timer and message
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &882830438
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882830437}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1206, y: 154, z: -3.8238647}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1593368954}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &990337241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,11 +1478,11 @@ Transform:
   m_GameObject: {fileID: 1593368953}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -206, y: 472, z: 3.7712662}
+  m_LocalPosition: {x: 1000, y: 626, z: -0.052598476}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 882830438}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1593368955
 AudioSource:
@@ -1528,9 +1496,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.029
+  m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1773,7 +1741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   welcome: {fileID: 990337242}
-  audioPlayer: {fileID: 882830437}
+  audioPlayer: {fileID: 0}
 --- !u!114 &1702285154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,7 +1757,7 @@ MonoBehaviour:
   chimeAudioSource: {fileID: 1593368955}
   timerAudioSource: {fileID: 1593368955}
   timerAudioClip: {fileID: 0}
-  backgroundAudioClip: {fileID: 8300000, guid: 12ad0c18e8e765a4bb41fdf70be31638, type: 3}
+  backgroundAudioClip: {fileID: 8300000, guid: cd1d7580a9f99404db1022156949d95a, type: 3}
   gainCoinAudioClip: {fileID: 0}
   looseCoinAudioClip: {fileID: 0}
   winAudioClip: {fileID: 0}
@@ -1981,7 +1949,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 112445124}
   - {fileID: 636911271}
-  - {fileID: 882830438}
+  - {fileID: 1593368954}
   - {fileID: 2076860799}
   - {fileID: 1023648033}
   - {fileID: 1295399417}
