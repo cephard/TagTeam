@@ -92,9 +92,9 @@ Player:
 [Blame it on the maintenance guy]
 [Ignore the message]
 
-Dylan: Let us just hope that this printer mishap doesn't occur again.
-
 Feedback: Taking the fault shows how good a leader you are by taking responsibility.
+
+Dylan: Let us just hope that this printer mishap doesn't occur again.
 
 Player:
 Okay, sir.
