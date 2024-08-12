@@ -8,9 +8,12 @@ public class PlayerReport : UnityEngine.MonoBehaviour
     [SerializeField] private Text report;
     private static string reportText = "";
     private static int choiseNumber;
+    private AudioManager audioManager;
 
     public void Start()
     {
+        audioManager = GetComponent<AudioManager>();
+        audioManager.PlayBackgroundAudio();
         report.text = reportText;
     }
 

@@ -14,7 +14,6 @@ public class WelcomeSceneManager : UnityEngine.MonoBehaviour
         audioManager = GetComponent<AudioManager>();
         audioManager.PlayBackgroundAudio();
         welcome.text = "Welcome " + PlayerPrefs.GetString("Username");
-        DontDestroyOnLoad(audioPlayer);
     }
 }
 
