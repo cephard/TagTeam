@@ -42,9 +42,12 @@ public class FeedBackManager : MonoBehaviour
         {
             int requiredGems = chapterGemRequirements[currentChapterName];
             int starsToShow = 0;
+            if (availableGem == 0)
+            {
 
-            // Determine the number of stars to show based on available gems
-            if (availableGem >= requiredGems)
+                starsToShow = 0; // Award no stars
+
+            }else if (availableGem >= requiredGems) // Determine the number of stars to show based on available gems
             {
                 starsToShow = 3; // Award 3 stars
             }
@@ -56,10 +59,7 @@ public class FeedBackManager : MonoBehaviour
             {
                 starsToShow = 1; // Award 1 star
             }
-            else
-            {
-                starsToShow = 0; // Award no stars
-            }
+
 
             // Show or hide stars based on the starsToShow count
             ShowStars(starsToShow);
