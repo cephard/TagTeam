@@ -1,21 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FeedBackManager : MonoBehaviour
 {
-    [SerializeField] private GameObject starOne;
-    [SerializeField] private GameObject starTwo;
-    [SerializeField] private GameObject starThree;
+    [SerializeField] private GameObject[] stars = new GameObject[3];
     private CoinManager coinManager;
     private ChapterManager chapterManager;
     private Dictionary<string, int> chapterGemRequirements = new Dictionary<string, int>();
+    private int[] feedBackScore = new int[5];
 
     void Start()
     {
+        // Initialize and hide all stars
         HideStars();
+
+        // Get references to other managers
         coinManager = GetComponent<CoinManager>();
         chapterManager = GetComponent<ChapterManager>();
+
+        // Define gem requirements for each chapter
         chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter1"), 4);
         chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter2"), 4);
         chapterGemRequirements.Add(chapterManager.GetChapterNameByKey("Chapter3"), 8);
@@ -26,8 +29,10 @@ public class FeedBackManager : MonoBehaviour
 
     private void Update()
     {
-       // AwardStar(coinManager.GetChapterGem());
+        // Optionally call AwardStar with the latest gem count
+        // AwardStar(coinManager.GetChapterGem());
     }
+
     public void AwardStar(int availableGem)
     {
         string currentChapterName = chapterManager.GetCurrentChapterName();
@@ -35,46 +40,47 @@ public class FeedBackManager : MonoBehaviour
         // Check if the current chapter has a gem requirement defined
         if (chapterGemRequirements.ContainsKey(currentChapterName))
         {
-            // Compare available gems with required gems and award stars accordingly
             int requiredGems = chapterGemRequirements[currentChapterName];
-            if (availableGem == 0)
+            int starsToShow = 0;
+
+            // Determine the number of stars to show based on available gems
+            if (availableGem >= requiredGems)
             {
-                HideStars();
-            }
-            else if (availableGem >= requiredGems)
-            {
-                // Award 3 stars if available gems are equal or more than required
-                starOne.SetActive(true);
-                starTwo.SetActive(true);
-                starThree.SetActive(true);
+                starsToShow = 3; // Award 3 stars
             }
             else if (availableGem == requiredGems - 1)
             {
-                // Award 2 stars if available gems are one less than required
-                starOne.SetActive(true);
-                starTwo.SetActive(true);
-                starThree.SetActive(false);
+                starsToShow = 2; // Award 2 stars
             }
             else if (availableGem == requiredGems - 2)
             {
-                // Award 1 star if available gems are two less than required
-                starOne.SetActive(true);
-                starTwo.SetActive(false);
-                starThree.SetActive(false);
+                starsToShow = 1; // Award 1 star
             }
             else
             {
-                HideStars();
+                starsToShow = 0; // Award no stars
             }
+
+            // Show or hide stars based on the starsToShow count
+            ShowStars(starsToShow);
+        }
+    }
+
+    private void ShowStars(int count)
+    {
+        // Loop through the stars array and set active state based on the count
+        for (int i = 0; i < stars.Length; i++)
+        {
+            stars[i].SetActive(i < count);
         }
     }
 
     private void HideStars()
     {
-        starOne.SetActive(false);
-        starTwo.SetActive(false);
-        starThree.SetActive(false);
+        // Hide all stars
+        foreach (var star in stars)
+        {
+            star.SetActive(false);
+        }
     }
-
-
 }
