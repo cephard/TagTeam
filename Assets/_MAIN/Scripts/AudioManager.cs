@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : UnityEngine.MonoBehaviour
 {
 
+    private bool isMute = false;
     [SerializeField] private AudioSource chimeAudioSource;
     [SerializeField] private AudioSource timerAudioSource;
 
@@ -71,6 +72,24 @@ public class AudioManager : UnityEngine.MonoBehaviour
     public void UnmuteAudio()
     {
         AudioListener.volume = 1;
+    }
+
+    public bool GetAudioStatues()
+    {
+        return isMute;
+    }
+    public void MuteEntireGame()
+    {
+        if (isMute)
+        {
+            UnmuteAudio();
+            isMute = false;
+        }
+        else
+        {
+            MuteAudio();
+            isMute = true;
+        }
     }
 
 }

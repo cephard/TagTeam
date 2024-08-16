@@ -2082,6 +2082,18 @@ MonoBehaviour:
           m_StringArgument: PauseMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1811928552}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PRINTER_SERIAL_BACK_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &699286685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4611,6 +4623,7 @@ GameObject:
   - component: {fileID: 1811928550}
   - component: {fileID: 1811928549}
   - component: {fileID: 1811928551}
+  - component: {fileID: 1811928552}
   m_Layer: 0
   m_Name: Printer
   m_TagString: Untagged
@@ -4730,6 +4743,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotText: {fileID: 0}
   motivationText: {fileID: 0}
+--- !u!114 &1811928552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811928544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bfd587604d4ab4e89ead72d669a477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1815627224
 GameObject:
   m_ObjectHideFlags: 0
@@ -5826,6 +5851,18 @@ MonoBehaviour:
           m_StringArgument: Conversation
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1811928552}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PRINTER_SERIAL_SUBMIT_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1811928546}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
         m_MethodName: UpdateSceneName
@@ -5968,6 +6005,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1811928552}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PRINTER_SERIAL_HINT_BUTTON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1997198292
