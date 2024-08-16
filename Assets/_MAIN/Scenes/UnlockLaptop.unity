@@ -216,6 +216,18 @@ MonoBehaviour:
           m_StringArgument: mainClue
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_HINT_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &86235863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +561,18 @@ MonoBehaviour:
             you
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_CLUE8_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &255726564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +704,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: The most popular symbol used to tag stories on social
             media.
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_CLUE7_BUTTON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &375964938
@@ -1060,6 +1096,18 @@ MonoBehaviour:
           m_StringArgument: A symbol that must be used in every email address
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_CLUE6_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &494843065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,6 +1240,18 @@ MonoBehaviour:
           m_StringArgument: The consonant found in the oposite word for YES
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_CLUE2_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &577183637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,6 +1382,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: PauseMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_BACK_BUTTON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &623322607
@@ -1609,6 +1681,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_SUBMIT_BUTTON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1143744569
@@ -1972,6 +2056,18 @@ MonoBehaviour:
             speakers
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_CLUE1_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1388737969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2250,6 +2346,7 @@ GameObject:
   - component: {fileID: 1752219918}
   - component: {fileID: 1752219919}
   - component: {fileID: 1752219920}
+  - component: {fileID: 1752219921}
   m_Layer: 5
   m_Name: Laptop
   m_TagString: Untagged
@@ -2391,6 +2488,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clueText: {fileID: 1374810021}
   clueDisplay: {fileID: 388622095}
+--- !u!114 &1752219921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752219910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bfd587604d4ab4e89ead72d669a477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1784488006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,6 +2869,18 @@ MonoBehaviour:
           m_StringArgument: Square root of 16
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_CLUE3_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1905047362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,6 +3233,18 @@ MonoBehaviour:
           m_StringArgument: 'The second vowel in the alphabet. '
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_CLUE5_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2018709334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3449,6 +3582,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: A consonant sound made from the word "TEA".
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1752219921}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: UNLOCK_LAPTOP_CLUE4_BUTTON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2117712792

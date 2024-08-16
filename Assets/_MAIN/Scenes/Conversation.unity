@@ -349,6 +349,18 @@ MonoBehaviour:
           m_StringArgument: PauseMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1567436751}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CONVERSATION_MENU_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &43397817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,6 +1642,7 @@ GameObject:
   - component: {fileID: 642748271}
   - component: {fileID: 642748270}
   - component: {fileID: 642748269}
+  - component: {fileID: 642748272}
   m_Layer: 5
   m_Name: Task Info
   m_TagString: Untagged
@@ -1712,6 +1725,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1567436751}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CONVERSATION_HINT_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &642748270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,6 +1775,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642748267}
   m_CullTransparentMesh: 1
+--- !u!114 &642748272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642748267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bfd587604d4ab4e89ead72d669a477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &748178633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,6 +3332,7 @@ GameObject:
   - component: {fileID: 1567436748}
   - component: {fileID: 1567436749}
   - component: {fileID: 1567436750}
+  - component: {fileID: 1567436751}
   m_Layer: 5
   m_Name: Dialogue Layers
   m_TagString: Untagged
@@ -3479,6 +3517,18 @@ MonoBehaviour:
   - {fileID: 1320203586}
   - {fileID: 170352434}
   - {fileID: 1084248514}
+--- !u!114 &1567436751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567436739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bfd587604d4ab4e89ead72d669a477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1592879834
 GameObject:
   m_ObjectHideFlags: 0

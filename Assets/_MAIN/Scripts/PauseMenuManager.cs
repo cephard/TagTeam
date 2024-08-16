@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject audioGameObject;
     CoinManager coinManager;
     AudioManager audioManager;
     private void Start()
@@ -13,8 +13,20 @@ public class PauseMenuManager : MonoBehaviour
         audioManager = GetComponent<AudioManager>();
         coinManager = GetComponent<CoinManager>();
         coinManager.ResetChapterGem();
-        settingsPanel.SetActive(false);
         audioManager.PlayBackgroundAudio();
+    }
+
+    private void Update()
+    {
+        if (audioManager.GetAudioStatues())
+        {
+            audioGameObject.SetActive(false);
+        }
+        else
+        {
+            audioGameObject.SetActive(true);
+
+        }
     }
 }
 

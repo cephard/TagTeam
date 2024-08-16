@@ -49,7 +49,7 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
         if (string.Equals(hiddenEntry.text, "En4te@#r", StringComparison.OrdinalIgnoreCase))
         {
             coinManager.AddCoins(100);
-            mainMenuController.LoadNextScene("Stats");
+            mainMenuController.LoadNextScene("PlayerStatistics");
             mainMenuController.UpdateSceneName("UnlockLaptop");
         }
         else

@@ -291,6 +291,18 @@ MonoBehaviour:
           m_StringArgument: PauseMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1939257178}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ANNS_TASK_BACK_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &151711807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,6 +684,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Ann'sTask
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1939257178}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ANNS_TASK_PROCEEDE_BUTTON
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1939257173}
@@ -1435,6 +1459,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1939257178}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ANNS_TASK_HIT_BUTTON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1138282274
@@ -2717,6 +2753,7 @@ GameObject:
   - component: {fileID: 1939257174}
   - component: {fileID: 1939257176}
   - component: {fileID: 1939257177}
+  - component: {fileID: 1939257178}
   m_Layer: 5
   m_Name: Computer
   m_TagString: Untagged
@@ -2872,6 +2909,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotText: {fileID: 0}
   motivationText: {fileID: 0}
+--- !u!114 &1939257178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939257168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bfd587604d4ab4e89ead72d669a477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2073423332
 GameObject:
   m_ObjectHideFlags: 0
