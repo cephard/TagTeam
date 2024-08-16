@@ -513,8 +513,8 @@ GameObject:
   - component: {fileID: 139308264}
   - component: {fileID: 139308265}
   - component: {fileID: 139308266}
-  - component: {fileID: 139308267}
   - component: {fileID: 139308268}
+  - component: {fileID: 139308269}
   m_Layer: 5
   m_Name: Tasks
   m_TagString: Untagged
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinText: {fileID: 4887794261207654420}
   diamondText: {fileID: 4887794261207654423}
---- !u!114 &139308267
+--- !u!114 &139308268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -678,7 +678,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 139308257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806d26d2e8bf58f4c8006d6f8badf28b, type: 3}
+  m_Script: {fileID: 11500000, guid: b5bfd587604d4ab4e89ead72d669a477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &139308269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139308257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1447b035e9a83f44a914ac0310d2b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   achievements:
@@ -697,18 +709,6 @@ MonoBehaviour:
   - {fileID: 659338820}
   - {fileID: 1102615092}
   - {fileID: 562532945}
---- !u!114 &139308268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139308257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5bfd587604d4ab4e89ead72d669a477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &167860869
 GameObject:
   m_ObjectHideFlags: 0

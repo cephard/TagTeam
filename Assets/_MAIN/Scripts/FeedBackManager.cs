@@ -4,9 +4,10 @@ using UnityEngine;
 public class FeedBackManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] stars = new GameObject[3];
-  
+
     private CoinManager coinManager;
     private ChapterManager chapterManager;
+
     private Dictionary<string, int> chapterGemRequirements = new Dictionary<string, int>();
 
 
@@ -39,25 +40,61 @@ public class FeedBackManager : MonoBehaviour
         {
             int requiredGems = chapterGemRequirements[currentChapterName];
             int starsToShow = 0;
+            UpdateArchievedScore(availableGem);
+
+
             if (availableGem == 0)
             {
-
                 starsToShow = 0;
-
             }
             else if (availableGem >= requiredGems)
             {
                 starsToShow = 3;
             }
-            else if (availableGem == requiredGems - 1)
+            else if (availableGem >= requiredGems / 2)
             {
                 starsToShow = 2;
             }
-            else if (availableGem == requiredGems - 2)
+            else if (availableGem >= requiredGems / 4)
             {
                 starsToShow = 1;
             }
             ShowStars(starsToShow);
+        }
+    }
+
+    public void UpdateArchievedScore(int availableGem)
+    {
+        string currentChapterName = chapterManager.GetCurrentChapterName();
+        int requiredGems = 0;
+
+        // Use switch case to set the required gems based on the chapter name
+        switch (currentChapterName)
+        {
+            case "The Takeover":
+                AchievementDataManager.UpdateAchievedGoals("Leadership", availableGem);
+                AchievementDataManager.UpdateAchievedGoals("Self Efficacy", availableGem);
+                break;
+            case "Teamleader":
+                AchievementDataManager.UpdateAchievedGoals("Leadership", availableGem);
+                AchievementDataManager.UpdateAchievedGoals("Communication Skills", availableGem);
+                break;
+            case "Tonner Replacement":
+                AchievementDataManager.UpdateAchievedGoals("Decision Making", availableGem);
+                AchievementDataManager.UpdateAchievedGoals("Self Efficacy", availableGem);
+                break;
+            case "Personal life":
+                AchievementDataManager.UpdateAchievedGoals("Emotional Intelligence", availableGem);
+                break;
+            case "The Conflict":
+                AchievementDataManager.UpdateAchievedGoals("Communication Skills", availableGem);
+                break;
+            case "The Dilemma":
+                AchievementDataManager.UpdateAchievedGoals("Decision Making", availableGem);
+                break;
+            default:
+                Debug.LogWarning("Chapter name not found: " + currentChapterName);
+                return;
         }
     }
 
