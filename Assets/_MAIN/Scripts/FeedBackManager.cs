@@ -4,17 +4,15 @@ using UnityEngine;
 public class FeedBackManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] stars = new GameObject[3];
+  
     private CoinManager coinManager;
     private ChapterManager chapterManager;
     private Dictionary<string, int> chapterGemRequirements = new Dictionary<string, int>();
-    private int[] feedBackScore = new int[5];
+
 
     void Start()
     {
-        // Initialize and hide all stars
         HideStars();
-
-        // Get references to other managers
         coinManager = GetComponent<CoinManager>();
         chapterManager = GetComponent<ChapterManager>();
 
@@ -29,8 +27,7 @@ public class FeedBackManager : MonoBehaviour
 
     private void Update()
     {
-        // Optionally call AwardStar with the latest gem count
-        // AwardStar(coinManager.GetChapterGem());
+
     }
 
     public void AwardStar(int availableGem)
@@ -45,30 +42,28 @@ public class FeedBackManager : MonoBehaviour
             if (availableGem == 0)
             {
 
-                starsToShow = 0; // Award no stars
+                starsToShow = 0;
 
-            }else if (availableGem >= requiredGems) // Determine the number of stars to show based on available gems
+            }
+            else if (availableGem >= requiredGems)
             {
-                starsToShow = 3; // Award 3 stars
+                starsToShow = 3;
             }
             else if (availableGem == requiredGems - 1)
             {
-                starsToShow = 2; // Award 2 stars
+                starsToShow = 2;
             }
             else if (availableGem == requiredGems - 2)
             {
-                starsToShow = 1; // Award 1 star
+                starsToShow = 1;
             }
-
-
-            // Show or hide stars based on the starsToShow count
             ShowStars(starsToShow);
         }
     }
 
+    // Loop through the stars array and set active state based on the count
     private void ShowStars(int count)
     {
-        // Loop through the stars array and set active state based on the count
         for (int i = 0; i < stars.Length; i++)
         {
             stars[i].SetActive(i < count);
@@ -77,7 +72,6 @@ public class FeedBackManager : MonoBehaviour
 
     private void HideStars()
     {
-        // Hide all stars
         foreach (var star in stars)
         {
             star.SetActive(false);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class AchievementManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] achievements = new GameObject[15];
+
     private Dictionary<string, (int expected, int achieved)> targetGoals;
 
     private int[] archvievedScore = new int[5];
@@ -20,11 +21,11 @@ public class AchievementManager : MonoBehaviour
         // Initialize the dictionary with soft skills and their expected and initial archived values
         targetGoals = new Dictionary<string, (int expected, int achieved)>
         {
-            { "Self Efficacy", (12, 0) },
-            { "Leadership", (6, 0) },
-            { "Communication Skills", (6, 0) },
-            { "Decision Making", (10, 0) },
-            { "Emotional Intelligence", (6, 0) }
+            { "Self Efficacy", (12, 8) },
+            { "Leadership", (6, 5) },
+            { "Communication Skills", (6, 5) },
+            { "Decision Making", (10, 3) },
+            { "Emotional Intelligence", (6, 2) }
         };
     }
 

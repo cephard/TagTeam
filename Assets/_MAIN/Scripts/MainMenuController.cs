@@ -49,7 +49,7 @@ public class MainMenuController : UnityEngine.MonoBehaviour
     //player fails when they have used all chances
     public void FailedLevel(string scene)
     {
-        if (playerChanceManager.GetRemainingChance() <= 0)
+        if (playerChanceManager.GetRemainingChance() <= 0) 
         {
             playerChanceManager.ResetChance();
             playerChanceManager.SaveRemainingChance();
