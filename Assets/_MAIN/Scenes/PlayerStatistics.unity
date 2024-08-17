@@ -429,7 +429,7 @@ MonoBehaviour:
   chimeAudioSource: {fileID: 597271986}
   timerAudioSource: {fileID: 1170760536}
   timerAudioClip: {fileID: 0}
-  backgroundAudioClip: {fileID: 8300000, guid: 85dd9cec65244de44922e28070c458c6, type: 3}
+  backgroundAudioClip: {fileID: 8300000, guid: 639174a8d2316444985b7b7904167b00, type: 3}
   gainCoinAudioClip: {fileID: 0}
   looseCoinAudioClip: {fileID: 0}
   winAudioClip: {fileID: 0}
@@ -474,22 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806d26d2e8bf58f4c8006d6f8badf28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achievements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &139308268
 MonoBehaviour:
   m_ObjectHideFlags: 0
