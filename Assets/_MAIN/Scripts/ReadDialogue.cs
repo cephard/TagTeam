@@ -92,7 +92,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     {
         if (lines == null || lineIndex >= lines.Length)
         {
-            mainMenuController.LoadNextScene("PlayStatistics");
+            mainMenuController.LoadNextScene("PlayerStatistics");
             return "The End";
         }
         return lines[lineIndex];

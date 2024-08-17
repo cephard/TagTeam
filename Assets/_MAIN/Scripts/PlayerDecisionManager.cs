@@ -29,7 +29,7 @@ public class PlayerDecisionManager : UnityEngine.MonoBehaviour
         { "I will have it later, but first, can you assist Ann with her duties?" , 2 },
         { "Subcontract it to a third party: 200" , -2 },
         { "Replace the printer yourself." , -1},
-        { "Call the maintenance guy to come over : 30" , 5},
+        { "Call the maintenance guy to come over : 30"   , 5},
         {"[Ask Stacy for advice.]" , 0},
         {"[Blame it on Stacy]", -5},
         {"[Take the fault]" , 5},

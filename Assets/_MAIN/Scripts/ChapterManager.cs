@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
-public class ChapterManager : UnityEngine.MonoBehaviour
+public class ChapterManager : MonoBehaviour
 {
     [SerializeField] private Image backgroundImage;
     [SerializeField] private Text chapterName;

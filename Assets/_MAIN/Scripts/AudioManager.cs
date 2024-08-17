@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : UnityEngine.MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
 
     private bool isMute = false;
