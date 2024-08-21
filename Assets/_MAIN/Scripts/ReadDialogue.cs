@@ -32,6 +32,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     private FeedBackManager feedBackManager;
     private ClueManager clueManager;
     private bool clueHidden = false;
+    private AnalyticsManager analyticsManager;
 
 
     private void InitializeCustomObjects()
@@ -44,6 +45,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         taskProgressManager = GetComponent<TaskProgressManager>();
         clueManager = GetComponent<ClueManager>();
         feedBackManager = GetComponent<FeedBackManager>();
+        analyticsManager = GetComponent<AnalyticsManager>();
     }
 
     /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
@@ -208,6 +210,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         currentLine += playerChoice;
         int nextLine = SkipRemainingChoice(currentLine, playerChoice);
         PlayerReport.UpdateDecisions(GetLine(currentLine));
+        PlayFabDataManager.SavePlayerResponse(GetLine(currentLine), currentLine);
         coinManager.ExtractExpenditure(GetLine(currentLine));
         playerDecisionManager.GetPlayerChoice(GetLine(currentLine));
         playerDecisionManager.SeekAdvice(GetLine(currentLine), GetLine(nextLine), avatarDialogue, playerResponse);
