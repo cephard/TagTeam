@@ -5,16 +5,9 @@ using PlayFab.ClientModels;
 
 public class AnalyticsManager : MonoBehaviour
 {
-    // PlayFab Title ID (Set this in the Unity Editor or via script)
 
-    // Dictionary to hold event call counts
     private Dictionary<string, int> eventCallCounts = new Dictionary<string, int>();
-
-    private void Start()
-    {
-
-
-    }
+    
 
     // Call this method to track an event occurrence
     public void TrackEvent(string eventName)
@@ -39,7 +32,6 @@ public class AnalyticsManager : MonoBehaviour
     {
         Debug.Log($"Event: {eventName}, Event Occurrence Count: {eventCallCounts[eventName]}");
     }
-
 
 
     // Send event counts to PlayFab
