@@ -44,6 +44,7 @@ public class ClueManager : UnityEngine.MonoBehaviour
     public void ShowClue()
     {
         clueDisplay.SetActive(true);
+        PauseGame();
     }
     public void HideClue()
     {

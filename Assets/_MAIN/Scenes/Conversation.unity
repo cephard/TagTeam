@@ -2060,7 +2060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.627451}
+  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3380,7 +3380,6 @@ MonoBehaviour:
   playerReponseTwo: {fileID: 586225821647009637}
   playerReponseThree: {fileID: 586225821647009636}
   playerReponseFour: {fileID: 586225821647009635}
-  coinManager: {fileID: 0}
 --- !u!114 &1567436742
 MonoBehaviour:
   m_ObjectHideFlags: 0

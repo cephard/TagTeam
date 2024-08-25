@@ -18,6 +18,7 @@ public class TaskOneManager : ItemDropManager
     [SerializeField] private Image TaskSix;
     [SerializeField] private Image TaskSeven;
     protected MainMenuController mainMenuController;
+    private AnalyticsManager analyticsManager;
     protected TimerManager timerManager;
     protected PlayerChanceManager playerChanceManager;
     protected int timeRequiredForTask = 60;
@@ -28,10 +29,12 @@ public class TaskOneManager : ItemDropManager
     {
         mainMenuController = GetComponent<MainMenuController>();
         timerManager = GetComponent<TimerManager>();
-        playerChanceManager = GetComponent<PlayerChanceManager>();  
+        playerChanceManager = GetComponent<PlayerChanceManager>();
+        analyticsManager = GetComponent<AnalyticsManager>();    
         timerManager.SetTimer(timeRequiredForTask);
         playerChanceManager.LoadRemainingChance();
         CompareTexts();
+        analyticsManager.TrackEvent("Task One");
     }
 
     void Update()

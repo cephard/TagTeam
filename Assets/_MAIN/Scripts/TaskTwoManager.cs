@@ -5,6 +5,13 @@ using UnityEngine;
 public class TaskTwoManager : TaskOneManager
 {
     private string taskTwo = "TaskTwo";
+    private AnalyticsManager analyticsManager;
+    private void Awake()
+    {
+        analyticsManager = GetComponent<AnalyticsManager>();
+        analyticsManager.TrackEvent("Task Two");
+    }
+   
     void Update()
     {
         CheckWrongTask(taskTwo);

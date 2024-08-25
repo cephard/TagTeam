@@ -90,13 +90,13 @@ public class PlayerDecisionManager : UnityEngine.MonoBehaviour
 
     public void SeekAdvice(string playerRequest,string advice, GameObject dialogue, GameObject avatar)
     {
+
+        dialogue.SetActive(false);
+        avatar.SetActive(false);
         if (playerRequest == "[Ask Stacy for advice]")
         {
-            dialogue.SetActive(false);
-            avatar.SetActive(false);
             clueManager.SetClue("It is best to wait until tea break and ask Ann about the issue. " +
                 "Give her a chance to explain herself, and remember to be polite and friendly.");
-            Task.Delay(100);
         }
 
         if (playerRequest == "[Ask Stacy for advice.]")
