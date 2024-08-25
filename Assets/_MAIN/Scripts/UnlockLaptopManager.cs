@@ -13,13 +13,15 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
     private ClueManager clueManager;
     private CoinManager coinManager;
     private char[] passwordCharacters = { 'E', 'n', '4', 't', 'e', '@', '#', 'r' };
-
+    private AnalyticsManager analyticsManager;
 
     private void Start()
     {
         clueManager = GetComponent<ClueManager>();
         coinManager = GetComponent<CoinManager>();
         mainMenuController = GetComponent<MainMenuController>();
+        analyticsManager = GetComponent<AnalyticsManager>();
+        analyticsManager.TrackEvent("Unlock Laptop");
     }
 
     public void UpdateClue(string clue)

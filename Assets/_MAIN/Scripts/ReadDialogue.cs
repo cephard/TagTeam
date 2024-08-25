@@ -20,7 +20,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     [SerializeField] private Text playerReponseTwo;
     [SerializeField] private Text playerReponseThree;
     [SerializeField] private Text playerReponseFour;
-    [SerializeField] private CoinManager coinManager;
+    private CoinManager coinManager;
     private TaskProgressManager taskProgressManager;
     private AvatarManager avatarManager;
     private ChapterManager chapterManager;
@@ -62,12 +62,21 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !String.Equals("Player", avatarName.text))
+        HandleInput();
+    }
+
+    private bool IsPlayerSpeaking()
+    {
+        return String.Equals("Player", avatarName.text);
+    }
+
+    private void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !IsPlayerSpeaking())
         {
             NextLine();
         }
     }
-
     public void LoadDialogueForScene()
     {
         currentLine = taskProgressManager.GetTaskProgress(mainMenuController.GetSceneName());
@@ -209,11 +218,11 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     {
         currentLine += playerChoice;
         int nextLine = SkipRemainingChoice(currentLine, playerChoice);
+        playerDecisionManager.SeekAdvice(GetLine(currentLine), GetLine(nextLine), avatarDialogue, playerResponse);
         PlayerReport.UpdateDecisions(GetLine(currentLine));
         PlayFabDataManager.SavePlayerResponse(GetLine(currentLine), currentLine);
         coinManager.ExtractExpenditure(GetLine(currentLine));
         playerDecisionManager.GetPlayerChoice(GetLine(currentLine));
-        playerDecisionManager.SeekAdvice(GetLine(currentLine), GetLine(nextLine), avatarDialogue, playerResponse);
         currentLine = nextLine;
         feedBackManager.AwardStar(coinManager.GetChapterGem());
         SwitchActiveObject(avatarDialogue, playerResponse);
