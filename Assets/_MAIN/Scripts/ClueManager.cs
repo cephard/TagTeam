@@ -32,7 +32,7 @@ public class ClueManager : UnityEngine.MonoBehaviour
 
         if (clueDisplay.activeSelf == true)
         {
-            //PauseGame();
+            PauseGame();
         }
     }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public static class AchievementDataManager
 {
+    private const int ZERO = 0;
     private static Dictionary<string, (int expected, int achieved)> targetGoals;
 
     static AchievementDataManager()
@@ -13,7 +14,8 @@ public static class AchievementDataManager
             { "Leadership", (6, 0) },
             { "Communication Skills", (6, 0) },
             { "Decision Making", (10, 0) },
-            { "Emotional Intelligence", (6, 0) }
+            { "Emotional Intelligence", (6, 0) },
+            { "Problem Solving", (15, 0) }
         };
     }
 
