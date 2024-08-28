@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class AchievementUIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] achievements = new GameObject[15];
+    [SerializeField] private GameObject[] achievements = new GameObject[18];
 
 
     private void Start()
     {
-
         ShowStars();
     }
 
@@ -20,15 +19,15 @@ public class AchievementUIManager : MonoBehaviour
         }
         else if (achievedScore <= expectedScore / 3)
         {
-            return 0; // One star
+            return 0;
         }
         else if (achievedScore <= 2 * expectedScore / 3)
         {
-            return 1; // Two stars
+            return 1;
         }
         else
         {
-            return 2; // Three stars
+            return 2;
         }
     }
 
@@ -68,6 +67,7 @@ public class AchievementUIManager : MonoBehaviour
             case "Communication Skills": return 6;
             case "Decision Making": return 9;
             case "Emotional Intelligence": return 12;
+            case "Problem Solving": return 15;
             default: return -1;
         }
     }
