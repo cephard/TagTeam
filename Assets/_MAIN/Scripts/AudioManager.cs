@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
+    private const int MUTE = 0;
+    private const int UNMUTE = 1;
     private bool isMute = false;
     [SerializeField] private AudioSource chimeAudioSource;
     [SerializeField] private AudioSource timerAudioSource;
@@ -66,12 +67,12 @@ public class AudioManager : MonoBehaviour
     }
     public void MuteAudio()
     {
-        AudioListener.volume = 0;
+        AudioListener.volume = MUTE;
     }
 
     public void UnmuteAudio()
     {
-        AudioListener.volume = 1;
+        AudioListener.volume = UNMUTE;
     }
 
     public bool GetAudioStatues()
