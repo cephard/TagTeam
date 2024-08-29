@@ -15,7 +15,7 @@ public class ClueManager : UnityEngine.MonoBehaviour
     {
         audioManager = GetComponent<AudioManager>();
     }
-  
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -34,6 +34,11 @@ public class ClueManager : UnityEngine.MonoBehaviour
         {
             PauseGame();
         }
+    }
+
+    public GameObject GetClue()
+    {
+        return clueDisplay;
     }
 
     public void SetClue(string clue)
