@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
 {
+    private const int NO_ERROR = 0;
     [SerializeField] private Text printedErrorCount;
     [SerializeField] private Text correctErrorCount;
     [SerializeField] private InputField[] errorsFound;
@@ -56,9 +57,9 @@ public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
     //check exact answer for each error spotted
     private int ValidatePlayerAnswers()
     {
-        int errorFoundByPlayer = 0;
+        int errorFoundByPlayer = NO_ERROR;
 
-        for (int i = 0; i < errorsFound.Length; i++)
+        for (int i = NO_ERROR; i < errorsFound.Length; i++)
         {
             if (ParseInputField(errorsFound[i].text) == expectedAnswer[i])
             {
@@ -86,7 +87,7 @@ public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
         }
         else
         {
-            return 0;
+            return NO_ERROR;
         }
     }
 

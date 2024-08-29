@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerChanceManager : ItemDropManager
 {
-    private static int playerChance = 3;
-    private const string playChanceKey = "Chance";
+    private const int AVAILABLE_CHANCE = 3;
+    private const string PLAY_CHANCE_KEY = "Chance";
+    private static int playerChance = AVAILABLE_CHANCE;
+    
 
 
     public int GetRemainingChance()
@@ -16,15 +18,15 @@ public class PlayerChanceManager : ItemDropManager
 
     public void SaveRemainingChance()
     {
-        PlayerPrefs.SetInt(playChanceKey, playerChance);
+        PlayerPrefs.SetInt(PLAY_CHANCE_KEY, playerChance);
         PlayerPrefs.Save();
     }
 
     public void LoadRemainingChance()
     {
-        if (PlayerPrefs.HasKey(playChanceKey))
+        if (PlayerPrefs.HasKey(PLAY_CHANCE_KEY))
         {
-            playerChance = PlayerPrefs.GetInt(playChanceKey);
+            playerChance = PlayerPrefs.GetInt(PLAY_CHANCE_KEY);
         }
         else
         {
@@ -34,7 +36,7 @@ public class PlayerChanceManager : ItemDropManager
 
     public void ResetChance()
     {
-        playerChance = 3;
+        playerChance = AVAILABLE_CHANCE;
         SaveRemainingChance();
     }
 

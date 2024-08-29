@@ -9,6 +9,8 @@ public class MainMenuController : UnityEngine.MonoBehaviour
     private PlayerChanceManager playerChanceManager;
     private static string currentScene;
     private const float CHAPTER_LOAD_DELAY= 2.5f;
+    private const int NO_MORE_CHANCE = 0;
+    private const int ONE_SECOND = 1;
 
     void Start()
     {
@@ -49,7 +51,7 @@ public class MainMenuController : UnityEngine.MonoBehaviour
     //player fails when they have used all chances
     public void FailedLevel(string scene)
     {
-        if (playerChanceManager.GetRemainingChance() <= 0) 
+        if (playerChanceManager.GetRemainingChance() <= NO_MORE_CHANCE) 
         {
             playerChanceManager.ResetChance();
             playerChanceManager.SaveRemainingChance();
@@ -63,7 +65,7 @@ public class MainMenuController : UnityEngine.MonoBehaviour
     public void RefreshScene(int timer, string scene, int taskTime)
     {
         FailedLevel(scene);
-        if (timer < 1)
+        if (timer < ONE_SECOND)
         {
             playerChanceManager.ReduceRemainingChance();
             timer = taskTime;

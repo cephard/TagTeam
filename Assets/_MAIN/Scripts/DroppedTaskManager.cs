@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class DroppedTaskManager
 {
+
+    private const int NO_ACTION = 0;
     private Stack<DragDropAction> actionStack = new Stack<DragDropAction>();
     private RectTransform slotRectTransform;
     public RectTransform DraggedRectTransform { get; private set; }
@@ -29,7 +31,7 @@ public class DroppedTaskManager
 
     public void UndoLastAction()
     {
-        if (actionStack.Count > 0)
+        if (actionStack.Count > NO_ACTION)
         {
             DragDropAction lastAction = actionStack.Pop();
             lastAction.DraggedRectTransform.anchoredPosition = lastAction.OriginalDraggedPosition;

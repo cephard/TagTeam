@@ -8,22 +8,24 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
 {
     [SerializeField] private Text slotText;
     [SerializeField] private Text motivationText;
-    private static int correctTask = 0;
+    private const int COMPLETE_TASK = 7;
+    private const int PASS_TASK_COUNT = 4;
+    private const int BONUS_COIN = 10;
+    private const int MAXIMUM_WRONG_TASKS = 3;
+    private const int NO_TASK = 0;
+    private static int correctTask = NO_TASK;
     private MainMenuController mainMenuController;
     private CoinManager coinManager;
     private AudioManager audioManager;
     private ClueManager clueManager;
-    private const int COMPLETE_TASK = 7;
-    private const int PASS_TASK_COUNT = 4;
-    private const int BONUS_COIN = 10;
     private static int wrongTask;
     private Stack<DroppedTaskManager> actionStack = new Stack<DroppedTaskManager>();
 
 
     public void Start()
     {
-        correctTask = 0;
-        wrongTask = 0;
+        correctTask = NO_TASK;
+        wrongTask = NO_TASK;
         audioManager = FindAnyObjectByType<AudioManager>();
         mainMenuController = GetComponent<MainMenuController>();
         coinManager = GetComponent<CoinManager>();
@@ -32,7 +34,7 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
 
     protected bool CheckWrongTask(string sceneName)
     {
-        if (wrongTask == 3)
+        if (wrongTask == MAXIMUM_WRONG_TASKS)
         {
             mainMenuController = new MainMenuController();
             mainMenuController.LoadNextScene(sceneName);
