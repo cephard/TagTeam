@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ClueManager : UnityEngine.MonoBehaviour
 {
+    private const int PAUSED_TIME = 0;
+    private const int CONTINOUS_TIME = 1;
     [SerializeField] private Text clueText;
     [SerializeField] private GameObject clueDisplay;
     private AudioManager audioManager;
@@ -74,14 +76,14 @@ public class ClueManager : UnityEngine.MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        Time.timeScale = PAUSED_TIME;
         isPaused = true;
         audioManager.PauseAudio();
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = CONTINOUS_TIME;
         isPaused = false;
 
         if (audioManager != null)

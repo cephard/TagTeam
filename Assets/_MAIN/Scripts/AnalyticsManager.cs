@@ -5,7 +5,7 @@ using PlayFab.ClientModels;
 
 public class AnalyticsManager : MonoBehaviour
 {
-
+    private const int ONE_EVENT = 1;
     private Dictionary<string, int> eventCallCounts = new Dictionary<string, int>();
     
 
@@ -18,7 +18,7 @@ public class AnalyticsManager : MonoBehaviour
         }
         else
         {
-            eventCallCounts[eventName] = 1;
+            eventCallCounts[eventName] = ONE_EVENT;
         }
 
         // Log the updated event count
@@ -42,12 +42,12 @@ public class AnalyticsManager : MonoBehaviour
             var eventProperties = new Dictionary<string, object>
             {
                 { "NameOfEvent", kvp.Key },
-                //{ "EventOccurrenceCount", kvp.Value }
+                { "EventOccurrenceCount", kvp.Value }
             };
 
             var request = new WriteClientPlayerEventRequest
             {
-                EventName = eventName,  // Name of the event in PlayFab
+                EventName = eventName,
                 Body = eventProperties
             };
 

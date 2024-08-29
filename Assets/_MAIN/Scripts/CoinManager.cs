@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class CoinManager : UnityEngine.MonoBehaviour
 {
     private const int ZERO = 0;
+    private const int ONE = 1;
+    private const int TWO = 2;
+    private const int FIVE = 5;
     private static int availableCoinCount = ZERO;
     private static int specialGem = ZERO;
     private const int CHAPTER_BONUS = 100;
@@ -23,12 +26,12 @@ public class CoinManager : UnityEngine.MonoBehaviour
 
     public void ResetChapterGem()
     {
-        gemPerChapter = 0;
+        gemPerChapter = ZERO;
     }
 
     public void AddCoins(int coin)
     {
-        if (coin >= 5)
+        if (coin >= FIVE)
         {
             AwardSpecialGem();
         }
@@ -55,7 +58,7 @@ public class CoinManager : UnityEngine.MonoBehaviour
     public void ExtractExpenditure(string line)
     {
         string[] parts = line.Split(':');
-        if (parts.Length == 2 && int.TryParse(parts[1].Trim(), out int expenditure))
+        if (parts.Length == TWO && int.TryParse(parts[ONE].Trim(), out int expenditure))
         {
             RemoveExpenditure(expenditure);
         }
@@ -85,8 +88,8 @@ public class CoinManager : UnityEngine.MonoBehaviour
 
     private void AwardSpecialGem()
     {
-        gemPerChapter += 2;
-        specialGem += 2;
+        gemPerChapter += TWO;
+        specialGem += TWO;
         audioManager.PlayGainGemAudio();
     }
     //refresh coin UI on the gems prefab
