@@ -3,19 +3,23 @@ using UnityEngine;
 
 public static class AchievementDataManager
 {
-    private const int ZERO = 0;
+    private const int NO_ACHIEVEMENT = 0;
+    private const int SIXTH_ACHIEVEMENT = 6;
+    private const int TENTH_ACHIEVEMENT = 10;
+        private const int TWELVETH_ACHIEVEMENT = 12;
+    private const int FIFTEENTH_ACHIEVEMENT = 15;
     private static Dictionary<string, (int expected, int achieved)> targetGoals;
 
     static AchievementDataManager()
     {
         targetGoals = new Dictionary<string, (int expected, int achieved)>
         {
-            { "Self Efficacy", (12, 0) },
-            { "Leadership", (6, 0) },
-            { "Communication Skills", (6, 0) },
-            { "Decision Making", (10, 0) },
-            { "Emotional Intelligence", (6, 0) },
-            { "Problem Solving", (15, 0) }
+            { "Self Efficacy", (TWELVETH_ACHIEVEMENT, NO_ACHIEVEMENT) },
+            { "Leadership", (SIXTH_ACHIEVEMENT, NO_ACHIEVEMENT) },
+            { "Communication Skills", (SIXTH_ACHIEVEMENT, NO_ACHIEVEMENT) },
+            { "Decision Making", (TENTH_ACHIEVEMENT, NO_ACHIEVEMENT) },
+            { "Emotional Intelligence", (SIXTH_ACHIEVEMENT, NO_ACHIEVEMENT) },
+            { "Problem Solving", (FIFTEENTH_ACHIEVEMENT, NO_ACHIEVEMENT) }
         };
     }
 
@@ -34,7 +38,7 @@ public static class AchievementDataManager
         {
             return values.achieved;
         }
-        return 0;
+        return NO_ACHIEVEMENT;
     }
 
     public static int GetExpectedScore(string skill)
@@ -43,7 +47,7 @@ public static class AchievementDataManager
         {
             return values.expected;
         }
-        return 0;
+        return NO_ACHIEVEMENT;
     }
 
     public static IEnumerable<string> GetSkills()

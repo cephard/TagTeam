@@ -11,7 +11,6 @@ using UnityEngine.UI;
 
 public class ReadDialogue : UnityEngine.MonoBehaviour
 {
-    //making fields serialissable to enable access in unity
     [SerializeField] private TextMeshProUGUI dialogue;
     [SerializeField] private TextMeshProUGUI avatarName;
     [SerializeField] private GameObject avatarDialogue;
@@ -24,17 +23,16 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     private TaskProgressManager taskProgressManager;
     private AvatarManager avatarManager;
     private ChapterManager chapterManager;
-    private int playerChoice;
-    private static int currentLine = 0;
-    private string[] lines;
     private MainMenuController mainMenuController;
     private PlayerDecisionManager playerDecisionManager;
     private FeedBackManager feedBackManager;
     private ClueManager clueManager;
-    private bool clueHidden = false;
     private AnalyticsManager analyticsManager;
-
-
+    private int playerChoice;
+    private static int currentLine = 0;
+    private string[] lines;
+    private bool clueHidden = false;
+   
     private void InitializeCustomObjects()
     {
         mainMenuController = GetComponent<MainMenuController>();
@@ -250,7 +248,6 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         playerResponse.SetActive(isAvatarDialogueActive);
     }
 
-
     private Coroutine typingCoroutine;
 
     private IEnumerator TypeSentence(string sentence)
@@ -262,5 +259,5 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
     }
-
 }
+
