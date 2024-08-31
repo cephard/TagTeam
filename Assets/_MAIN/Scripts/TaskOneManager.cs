@@ -21,8 +21,11 @@ public class TaskOneManager : ItemDropManager
     private AnalyticsManager analyticsManager;
     protected TimerManager timerManager;
     protected PlayerChanceManager playerChanceManager;
-    protected int timeRequiredForTask = 60;
-    private string taskOne = "TaskOne";
+    private const int TIME_REQUIRED_FOR_TASK = 60;
+    private const string TASK_ONE_NAME = "TaskOne";
+
+   // protected int timeRequiredForTask = 60;
+   // private string taskOne = "TaskOne";
 
 
     new void Start()
@@ -31,41 +34,40 @@ public class TaskOneManager : ItemDropManager
         timerManager = GetComponent<TimerManager>();
         playerChanceManager = GetComponent<PlayerChanceManager>();
         analyticsManager = GetComponent<AnalyticsManager>();    
-        timerManager.SetTimer(timeRequiredForTask);
+        timerManager.SetTimer(TIME_REQUIRED_FOR_TASK);
         playerChanceManager.LoadRemainingChance();
         CompareTexts();
-        analyticsManager.TrackEvent("Task One");
+        analyticsManager.TrackEvent(TASK_ONE_NAME);
     }
 
     void Update()
     {
-        CheckWrongTask(taskOne);
-        mainMenuController.RefreshScene(timerManager.GetTimer(), taskOne, timeRequiredForTask);
+        CheckWrongTask(TASK_ONE_NAME);
+        mainMenuController.RefreshScene(timerManager.GetTimer(), TASK_ONE_NAME, TIME_REQUIRED_FOR_TASK);
     }
-
-    public void RefreshTaskOne()
-    {
-
-    }
-
     void CompareTexts()
     {
         // Access the Text components of Slot images
-        Text slotTextOne = SlotOne.GetComponentInChildren<Text>();
-        Text slotTextTwo = SlotTwo.GetComponentInChildren<Text>();
-        Text slotTextThree = SlotThree.GetComponentInChildren<Text>();
-        Text slotTextFour = SlotFour.GetComponentInChildren<Text>();
-        Text slotTextFive = SlotFive.GetComponentInChildren<Text>();
-        Text slotTextSix = SlotSix.GetComponentInChildren<Text>();
-        Text slotTextSeven = SlotSeven.GetComponentInChildren<Text>();
+        Text slotTextOne = GetTextComponent(SlotOne);
+        Text slotTextTwo = GetTextComponent(SlotTwo);
+        Text slotTextThree = GetTextComponent(SlotThree);
+        Text slotTextFour = GetTextComponent(SlotFour);
+        Text slotTextFive = GetTextComponent(SlotFive);
+        Text slotTextSix = GetTextComponent(SlotSix);
+        Text slotTextSeven = GetTextComponent(SlotSeven);
 
         // Access the Text components of Task images
-        Text taskTextOne = TaskOne.GetComponentInChildren<Text>();
-        Text taskTextTwo = TaskTwo.GetComponentInChildren<Text>();
-        Text taskTextThree = TaskThree.GetComponentInChildren<Text>();
-        Text taskTextFour = TaskFour.GetComponentInChildren<Text>();
-        Text taskTextFive = TaskFive.GetComponentInChildren<Text>();
-        Text taskTextSix = TaskSix.GetComponentInChildren<Text>();
-        Text taskTextSeven = TaskSeven.GetComponentInChildren<Text>();
+        Text taskTextOne = GetTextComponent(TaskOne);
+        Text taskTextTwo = GetTextComponent(TaskTwo);
+        Text taskTextThree = GetTextComponent(TaskThree);
+        Text taskTextFour = GetTextComponent(TaskFour);
+        Text taskTextFive = GetTextComponent(TaskFive);
+        Text taskTextSix = GetTextComponent(TaskSix);
+        Text taskTextSeven = GetTextComponent(TaskSeven);
+    }
+
+    private Text GetTextComponent(Image image)
+    {
+        return image.GetComponentInChildren<Text>();
     }
 }

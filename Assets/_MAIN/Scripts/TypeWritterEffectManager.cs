@@ -1,18 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TypeWritterEffectManager : ReadDialogue
 {
-    public IEnumerator TypeWritterEffect(string sentence, string dialogueText)
+    private const float TYPING_SPEED = 0.05f;
+
+    public IEnumerator TypeWritterEffect(string sentence, Text dialogueText)
     {
-        dialogueText = "";
+        dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
-            dialogueText += letter;
-            yield return new WaitForSeconds(0.05f);
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(TYPING_SPEED);
         }
     }
-
 }
-//dialogue.text

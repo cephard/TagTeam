@@ -4,10 +4,11 @@ using UnityEngine.UI;
 
 public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
-    private GameObject taskdetail;
-    [SerializeField]
-    private Text detailText;
+    private const string HOVER_TEXT = "Click on the task to see more details!";
+
+    [SerializeField] private GameObject taskdetail;
+    [SerializeField] private Text detailText;
+
     private string taskName;
     private string taskDuration;
     private string taskDeadline;
@@ -49,7 +50,7 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        detailText.text = "Cick on the task to See more details !";
+        detailText.text = HOVER_TEXT;
         taskdetail.SetActive(true);
     }
 
