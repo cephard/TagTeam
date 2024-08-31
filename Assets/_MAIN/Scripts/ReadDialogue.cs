@@ -1,7 +1,3 @@
-/*
-Class that takes care of the storyline of the game by loading scripts and avatars to their correct responces
-*/
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,8 +5,18 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class ReadDialogue : UnityEngine.MonoBehaviour
+public class ReadDialogue : MonoBehaviour
 {
+    private const int DIVIDE_LINE = 2;
+    private const int INITIAL_LINE_INDEX = 0;
+    private const int LINE_INCREMENT = 1;
+    private const int FIRST_OPTION = 1;
+    private const int SECOND_OPTION = 2;
+    private const int THIRD_OPTION = 3;
+    private const int FOURTH_OPTION = 4;
+    private const int PLAYER_OPTIONS = 4;
+    private const float TYPEWRITER_SPEED = 0.05f;
+
     [SerializeField] private TextMeshProUGUI dialogue;
     [SerializeField] private TextMeshProUGUI avatarName;
     [SerializeField] private GameObject avatarDialogue;
@@ -19,6 +25,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     [SerializeField] private Text playerReponseTwo;
     [SerializeField] private Text playerReponseThree;
     [SerializeField] private Text playerReponseFour;
+
     private CoinManager coinManager;
     private TaskProgressManager taskProgressManager;
     private AvatarManager avatarManager;
@@ -29,10 +36,10 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     private ClueManager clueManager;
     private AnalyticsManager analyticsManager;
     private int playerChoice;
-    private static int currentLine = 0;
+    private static int currentLine = INITIAL_LINE_INDEX;
     private string[] lines;
     private bool clueHidden = false;
-   
+
     private void InitializeCustomObjects()
     {
         mainMenuController = GetComponent<MainMenuController>();
@@ -46,9 +53,6 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         analyticsManager = GetComponent<AnalyticsManager>();
     }
 
-    /*loading the text file with the dialogues and setting the eponsences to wait for the NPC dialogues
-    skipping blank lines to ensure seamless conversation
-    */
     private void Start()
     {
         InitializeCustomObjects();
@@ -87,7 +91,6 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         playerResponse.SetActive(false);
         if (textAsset == null)
         {
-            //in case the file response is not found this text will be displayed insted
             dialogue.text = "Oops! Sorry I'll get back to you soon I have an urgent meeting!";
             return;
         }
@@ -96,7 +99,6 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         SetNameAndDialogue(currentLine);
     }
 
-    //returns the line on the specific index
     private string GetLine(int lineIndex)
     {
         if (lines == null || lineIndex >= lines.Length)
@@ -107,15 +109,13 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         return lines[lineIndex];
     }
 
-    //reading the next line and dsabling the parent game object if there are no lines to read.
     public void NextLine()
     {
-        if (lines != null && currentLine < lines.Length - 1)
+        if (lines != null && currentLine < lines.Length - LINE_INCREMENT)
         {
             currentLine++;
             coinManager.RefreshCoinState();
             string coins = coinManager.GetCoins().ToString();
-            //Debug.Log(currentLine);
             SetNameAndDialogue(currentLine);
         }
         else
@@ -124,13 +124,11 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         }
     }
 
-
-    // Sets the dialogue and avatar name based on the current line index
     private void SetNameAndDialogue(int lineIndex)
     {
         PlaceHolderDialogue(lineIndex);
         string line = lines[lineIndex];
-        string[] sentenceParts = line.Split(new[] { ':' }, 2);
+        string[] sentenceParts = line.Split(new[] { ':' }, DIVIDE_LINE);
         SplitSentence(line, sentenceParts);
     }
 
@@ -143,19 +141,17 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         }
     }
 
-
-    //split the sentence in a  way that the first part is the avatar's name and the other is the dialogue
     public void SplitSentence(string line, string[] sentenceParts)
     {
         StopTypeWritterEffect();
-        if (sentenceParts.Length == 2)
+        if (sentenceParts.Length == DIVIDE_LINE)
         {
-            avatarName.text = sentenceParts[0].Trim();
+            avatarName.text = sentenceParts[INITIAL_LINE_INDEX].Trim();
             LoadTaskScene(sentenceParts);
             InovkeResponse();
-            chapterManager.IntroduceChapter(avatarName.text, sentenceParts[1].Trim());
+            chapterManager.IntroduceChapter(avatarName.text, sentenceParts[LINE_INCREMENT].Trim());
             avatarManager.ActivateAvatar(avatarName.text);
-            typingCoroutine = StartCoroutine(TypeSentence(sentenceParts[1].Trim()));
+            typingCoroutine = StartCoroutine(TypeSentence(sentenceParts[LINE_INCREMENT].Trim()));
         }
         else
         {
@@ -176,7 +172,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
     {
         if (String.Equals("Task", avatarName.text))
         {
-            dialogue.text = sentenceParts[1].Trim();
+            dialogue.text = sentenceParts[LINE_INCREMENT].Trim();
             SaveNextLine();
             taskProgressManager.SetTaskProgress(dialogue.text, currentLine);
             mainMenuController.LoadNextScene(dialogue.text);
@@ -188,20 +184,18 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         if (String.Equals("Player", avatarName.text))
         {
             SwitchActiveObject(avatarDialogue, playerResponse);
-            LoadPlayerResponses(currentLine + 1);
+            LoadPlayerResponses(currentLine + LINE_INCREMENT);
         }
     }
 
-    //Load player responces
-    // If there are not enough lines left, deactivate player responses
     private void LoadPlayerResponses(int startLine)
     {
         if (startLine < lines.Length)
         {
             playerReponseOne.text = GetLine(startLine);
-            playerReponseTwo.text = GetLine(startLine + 1);
-            playerReponseThree.text = GetLine(startLine + 2);
-            playerReponseFour.text = GetLine(startLine + 3);
+            playerReponseTwo.text = GetLine(startLine + LINE_INCREMENT);
+            playerReponseThree.text = GetLine(startLine + SECOND_OPTION);
+            playerReponseFour.text = GetLine(startLine + THIRD_OPTION);
         }
         else
         {
@@ -209,9 +203,6 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         }
     }
 
-
-    //based on the players response the player avatar will skip to that response then skip ahead
-    // Extract the integer from the current line
     public void PlayerDecision(int playerChoice)
     {
         currentLine += playerChoice;
@@ -227,20 +218,17 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         NextLine();
     }
 
-    //The scripts avoids the multiple choice options after the player selects one to ensure a seamless storyline
     private int SkipRemainingChoice(int currentLine, int playerChoice)
     {
-        int playerOptions = 4;
-        return currentLine += (playerOptions - playerChoice);
+        return currentLine += (PLAYER_OPTIONS - playerChoice);
     }
 
     public void SaveNextLine()
     {
-        PlayerPrefs.SetInt("CurrentLine", currentLine += 2);
+        PlayerPrefs.SetInt("CurrentLine", currentLine += SECOND_OPTION);
         PlayerPrefs.Save();
     }
 
-    //switch the actice layer based on the script
     private void SwitchActiveObject(GameObject avatarDialogue, GameObject playerResponse)
     {
         bool isAvatarDialogueActive = avatarDialogue.activeSelf;
@@ -256,8 +244,7 @@ public class ReadDialogue : UnityEngine.MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogue.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(TYPEWRITER_SPEED);
         }
     }
 }
-
