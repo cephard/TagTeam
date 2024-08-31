@@ -8,6 +8,10 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private GameObject taskdetail;
     [SerializeField]
     private Text detailText;
+    private string taskName;
+    private string taskDuration;
+    private string taskDeadline;
+    private string taskPriority;
 
     void Start()
     {
@@ -17,14 +21,35 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
     }
 
-    public void SetDetailText(string specificDetail)
+    public void SetTaskName(string specificName)
     {
-        detailText.text = specificDetail;
+        taskName = specificName;
+    }
+    public void SetTaskDuration(string specificDuration)
+    {
+        taskDuration = specificDuration;
+    }
+    public void SettaskDeadline(string specificDeadline)
+    {
+        taskDeadline = specificDeadline;
+    }
+
+    public void SetTaskPriority(string specificPriority)
+    {
+        taskPriority = specificPriority;
+    }
+
+    public void SetDetailText()
+    {
+        detailText.text = taskName + "\n"
+            + taskDuration + "\n"
+            + taskDeadline + "\n"
+            + taskPriority;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        detailText.text = "Cick to See more details";
+        detailText.text = "Cick on the task to See more details !";
         taskdetail.SetActive(true);
     }
 
