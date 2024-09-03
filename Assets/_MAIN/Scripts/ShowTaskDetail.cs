@@ -4,10 +4,11 @@ using UnityEngine.UI;
 
 public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
-    private GameObject taskdetail;
-    [SerializeField]
-    private Text detailText;
+    // private const string HOVER_TEXT = "Click on the task to see more details!";
+    [SerializeField] private Text originalText;
+    [SerializeField] private GameObject taskdetail;
+    [SerializeField] private Text detailText;
+
     private string taskName;
     private string taskDuration;
     private string taskDeadline;
@@ -17,7 +18,7 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (taskdetail != null)
         {
-            taskdetail.SetActive(false);
+            taskdetail.SetActive(true);
         }
     }
 
@@ -39,6 +40,11 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         taskPriority = specificPriority;
     }
 
+    public void SetDetail(Text taskDetail)
+    {
+        detailText.text = taskDetail.text;
+    }
+
     public void SetDetailText()
     {
         detailText.text = taskName + "\n"
@@ -49,7 +55,7 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        detailText.text = "Cick on the task to See more details !";
+        //detailText.text = originalText.text;
         taskdetail.SetActive(true);
     }
 
@@ -57,7 +63,8 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (taskdetail != null)
         {
-            taskdetail.SetActive(false);
+            //taskdetail.SetActive(false);
+            //detailText.text = HOVER_TEXT;
         }
     }
 }

@@ -37,7 +37,7 @@ Task: TaskOne
 : The next chapter aims to test your leadership and communication skills.
 
 Chapter: Teamleader
-: You call the associates into your office.to discuss the duties with fast-approaching deadlines.
+: You call the associates into your office to discuss the duties with fast-approaching deadlines from (Retail Corp) a long time client of Orbit Corp.
 
 Player: 
 Let us focus on these duties individually and for anyone lagging, my office is open for guidance and support.
@@ -63,8 +63,7 @@ I will have it later, but first, can you assist Ann with her duties, then after 
 
 Feedback: Prioritizing colleague's needs over personal breaks when they need help builds a good team spirit.
 
-: You head towards Ann to see what is holding her behind and see the task on her computer.
-
+: When you enter Ann's office shows you an dissatisfied email from Cathy (Retail Corp's Marketing Office)
 Task: Ann'sTask
 
 :The next chapter will test your Problem-Solving and Decision-Making skills
