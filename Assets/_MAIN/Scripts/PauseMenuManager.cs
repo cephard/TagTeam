@@ -18,7 +18,7 @@ public class PauseMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (audioManager.GetAudioStatues())
+        if (audioManager.GetAudioStatus())
         {
             audioGameObject.SetActive(false);
         }

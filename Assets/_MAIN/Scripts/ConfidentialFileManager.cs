@@ -73,7 +73,7 @@ public class ConfidentialFileManager : UnityEngine.MonoBehaviour
     //proceed with click
     public void Proceed(string sceneName)
     {
-        audioManager.PlayWiningAudio();
+        audioManager.PlayWinningAudio();
         clueManager.ShowWinOrLooseClue("Congratulations! You Rock!");
         mainMenuController.LoadNextChapter(sceneName);
     }
