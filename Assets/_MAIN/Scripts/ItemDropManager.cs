@@ -103,7 +103,7 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
         }
         else
         {
-            clueManager.ShowWinOrLooseClue("Please Try Again!");
+            clueManager.ShowWinOrLoseClue("Please Try Again!");
         }
         Debug.Log(correctTask.ToString());
     }
@@ -112,11 +112,11 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
     {
         if (checkCorrectTask == COMPLETE_TASK)
         {
-            clueManager.ShowWinOrLooseClue("Perfect Eye for Detail !");
+            clueManager.ShowWinOrLoseClue("Perfect Eye for Detail !");
         }
         else
         {
-            clueManager.ShowWinOrLooseClue("Nice Try !");
+            clueManager.ShowWinOrLoseClue("Nice Try !");
         }
     }
 }
