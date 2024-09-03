@@ -74,7 +74,7 @@ public class ConfidentialFileManager : UnityEngine.MonoBehaviour
     public void Proceed(string sceneName)
     {
         audioManager.PlayWinningAudio();
-        clueManager.ShowWinOrLooseClue("Congratulations! You Rock!");
+        clueManager.ShowWinOrLoseClue("Congratulations! You Rock!");
         mainMenuController.LoadNextChapter(sceneName);
     }
 

@@ -44,13 +44,13 @@ public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
         if (EXPECTED_ERRORS == ValidatePlayerAnswers())
         {
             audioManager.PlayWinningAudio();
-            clueManager.ShowWinOrLooseClue("Congratulations! You Rock!");
+            clueManager.ShowWinOrLoseClue("Congratulations! You Rock!");
             mainMenuController.LoadNextChapter(sceneName);
         }
         else
         {
             audioManager.PlayWrongAnswerAudio();
-            clueManager.ShowWinOrLooseClue("Please Try Again!");
+            clueManager.ShowWinOrLoseClue("Please Try Again!");
         }
     }
 

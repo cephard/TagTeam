@@ -55,7 +55,7 @@ public class EmailTaskManager : MonoBehaviour
     {
         if (responseFeedback.ContainsKey(responseName))
         {
-            clueManager.ShowWinOrLooseClue(responseFeedback[responseName]);
+            clueManager.ShowWinOrLoseClue(responseFeedback[responseName]);
             computer.SetActive(false);
             await Task.Delay(10000);
             mainMenuController.LoadNextScene("Conversation");
