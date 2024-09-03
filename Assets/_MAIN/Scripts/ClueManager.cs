@@ -45,8 +45,8 @@ public class ClueManager : UnityEngine.MonoBehaviour
 
     public void SetClue(string clue)
     {
-        ShowClue();
         clueText.text = clue;
+        ShowClue();
     }
     public void ShowClue()
     {
