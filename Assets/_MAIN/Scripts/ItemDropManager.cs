@@ -97,7 +97,7 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
         if (correctTask >= PASS_TASK_COUNT)
         { 
             CheckTaskCount(correctTask);
-            audioManager.PlayWiningAudio();
+            audioManager.PlayWinningAudio();
             coinManager.AddCoins(BONUS_COIN * correctTask);
             mainMenuController.LoadNextChapter(sceneName);
         }

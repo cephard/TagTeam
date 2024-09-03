@@ -43,7 +43,7 @@ public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
     {
         if (EXPECTED_ERRORS == ValidatePlayerAnswers())
         {
-            audioManager.PlayWiningAudio();
+            audioManager.PlayWinningAudio();
             clueManager.ShowWinOrLooseClue("Congratulations! You Rock!");
             mainMenuController.LoadNextChapter(sceneName);
         }

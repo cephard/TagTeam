@@ -1,12 +1,11 @@
-/*
-Class that takes care of all the characters in the game
-*/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AvatarManager : UnityEngine.MonoBehaviour
+/// <summary>
+/// Manages all the character avatars in the game, including NPCs and player characters.
+/// </summary>
+public class AvatarManager : MonoBehaviour
 {
     [SerializeField] private GameObject ceoAvatar;
     [SerializeField] private GameObject managerAvatar;
@@ -21,37 +20,48 @@ public class AvatarManager : UnityEngine.MonoBehaviour
 
     private Dictionary<string, GameObject> nonPlayCharacters;
 
-    //initialising all the NPCs
-    public void InitiliseAvatar()
+    /// <summary>
+    /// Initializes all the non-player characters (NPCs) and the player avatar based on the selected gender.
+    /// </summary>
+    public void InitializeAvatar()
     {
-        nonPlayCharacters = new Dictionary<string, GameObject>{
-            {"Dylan", ceoAvatar},
-            {"Stacy",managerAvatar},
-            {"Warren",associate1Avatar},
-            {"Ann",associate2Avatar},
-            {"Player",SelectedPlayer()},
-            {"", info },
-            {"Task",task },
-            {"Feedback",feedback }
+        nonPlayCharacters = new Dictionary<string, GameObject>
+        {
+            { "Dylan", ceoAvatar },
+            { "Stacy", managerAvatar },
+            { "Warren", associate1Avatar },
+            { "Ann", associate2Avatar },
+            { "Player", SelectedPlayer() },
+            { "", info },
+            { "Task", task },
+            { "Feedback", feedback }
         };
     }
 
+    /// <summary>
+    /// Sets the gender for the player character.
+    /// </summary>
+    /// <param name="gender">True for female, false for male.</param>
     public void SetGender(bool gender)
     {
         AvatarManager.gender = gender;
     }
 
-    //switch players based on the choice they made
+    /// <summary>
+    /// Selects the player avatar based on the chosen gender and deactivates the other gender avatar.
+    /// </summary>
+    /// <returns>The selected player avatar game object.</returns>
     public GameObject SelectedPlayer()
     {
         maleAvatar.SetActive(false);
         femaleAvatar.SetActive(false);
         return AvatarManager.gender ? femaleAvatar : maleAvatar;
-
     }
 
-
-    // Activates the relevant avatar based on the name and deactivates others
+    /// <summary>
+    /// Activates the specified avatar by name and deactivates all other avatars to avoid overlaps.
+    /// </summary>
+    /// <param name="avatarName">The name of the avatar to activate.</param>
     public void ActivateAvatar(string avatarName)
     {
         DeactivateAvatars();
@@ -62,7 +72,9 @@ public class AvatarManager : UnityEngine.MonoBehaviour
         }
     }
 
-    // Deactivating avatars to ensure no overlays
+    /// <summary>
+    /// Deactivates all avatars to ensure no overlays are present.
+    /// </summary>
     public void DeactivateAvatars()
     {
         foreach (var avatar in nonPlayCharacters.Values)

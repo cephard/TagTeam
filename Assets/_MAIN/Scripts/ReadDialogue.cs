@@ -56,7 +56,7 @@ public class ReadDialogue : MonoBehaviour
     private void Start()
     {
         InitializeCustomObjects();
-        avatarManager.InitiliseAvatar();
+        avatarManager.InitializeAvatar();
         avatarManager.DeactivateAvatars();
         LoadDialogueForScene();
         clueManager.OverRideClueOnStart(playerResponse);
