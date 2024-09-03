@@ -3,13 +3,18 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 
+/// <summary>
+/// Manages the tracking and reporting of events using PlayFab analytics.
+/// </summary>
 public class AnalyticsManager : MonoBehaviour
 {
     private const int ONE_EVENT = 1;
     private Dictionary<string, int> eventCallCounts = new Dictionary<string, int>();
-    
 
-    // Call this method to track an event occurrence
+    /// <summary>
+    /// Tracks an event occurrence by incrementing the event count and sending the data to PlayFab.
+    /// </summary>
+    /// <param name="eventName">The name of the event to track.</param>
     public void TrackEvent(string eventName)
     {
         if (eventCallCounts.ContainsKey(eventName))
@@ -28,13 +33,19 @@ public class AnalyticsManager : MonoBehaviour
         SendEventCountsToPlayFab(eventName);
     }
 
+    /// <summary>
+    /// Logs the current count of the specified event to the Unity console.
+    /// </summary>
+    /// <param name="eventName">The name of the event whose count is to be logged.</param>
     private void LogEventCount(string eventName)
     {
         Debug.Log($"Event: {eventName}, Event Occurrence Count: {eventCallCounts[eventName]}");
     }
 
-
-    // Send event counts to PlayFab
+    /// <summary>
+    /// Sends the event counts to PlayFab.
+    /// </summary>
+    /// <param name="eventName">The name of the event being reported to PlayFab.</param>
     private void SendEventCountsToPlayFab(string eventName)
     {
         foreach (var kvp in eventCallCounts)
@@ -57,13 +68,19 @@ public class AnalyticsManager : MonoBehaviour
         }
     }
 
-    // Callback for successful event sending
+    /// <summary>
+    /// Callback invoked when an event is successfully sent to PlayFab.
+    /// </summary>
+    /// <param name="response">The response received from PlayFab.</param>
     private void OnEventSent(WriteEventResponse response)
     {
         Debug.Log("Event successfully logged");
     }
 
-    // Callback for failed event sending
+    /// <summary>
+    /// Callback invoked when there is an error sending an event to PlayFab.
+    /// </summary>
+    /// <param name="error">The error information received from PlayFab.</param>
     private void OnEventSendError(PlayFabError error)
     {
         Debug.LogError($"Error logging event: {error.GenerateErrorReport()}");
