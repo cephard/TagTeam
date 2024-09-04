@@ -1703,7 +1703,7 @@ MonoBehaviour:
   registrationEmail: {fileID: 2061888593}
   registrationName: {fileID: 1708491600}
   registrationPassword: {fileID: 865266459}
-  confrimationPassword: {fileID: 390522709}
+  confirmationPassword: {fileID: 390522709}
   loginMail: {fileID: 2122211792}
   loginPassword: {fileID: 2102251721}
   authenticationType: {fileID: 1966259950}
