@@ -4,34 +4,52 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
+/// <summary>
+/// Manages the drag-and-drop functionality for tasks, comparing dropped tasks to the target slots and providing feedback based on the result.
+/// </summary>
+public class ItemDropManager : MonoBehaviour, IDropHandler
 {
     [SerializeField] private Text slotText;
     [SerializeField] private Text motivationText;
+
     private const int COMPLETE_TASK = 7;
     private const int PASS_TASK_COUNT = 4;
     private const int BONUS_COIN = 10;
     private const int MAXIMUM_WRONG_TASKS = 3;
     private const int NO_TASK = 0;
+
     private static int correctTask = NO_TASK;
+    private static int wrongTask = NO_TASK;
+
     private MainMenuController mainMenuController;
     private CoinManager coinManager;
     private AudioManager audioManager;
     private ClueManager clueManager;
-    private static int wrongTask;
+
     private Stack<DroppedTaskManager> actionStack = new Stack<DroppedTaskManager>();
 
-
-    public void Start()
+    private void InitializeGenericManagers()
     {
-        correctTask = NO_TASK;
-        wrongTask = NO_TASK;
         audioManager = FindAnyObjectByType<AudioManager>();
         mainMenuController = GetComponent<MainMenuController>();
         coinManager = GetComponent<CoinManager>();
         clueManager = GetComponent<ClueManager>();
     }
+    /// <summary>
+    /// Initializes the ItemDropManager, setting initial values and getting required components.
+    /// </summary>
+    public void Start()
+    {
+        correctTask = NO_TASK;
+        wrongTask = NO_TASK;
+        InitializeGenericManagers();
+    }
 
+    /// <summary>
+    /// Checks if the maximum number of wrong tasks has been reached and loads the next scene if so.
+    /// </summary>
+    /// <param name="sceneName">The name of the scene to load.</param>
+    /// <returns>Returns false to indicate no further action is required from this check.</returns>
     protected bool CheckWrongTask(string sceneName)
     {
         if (wrongTask == MAXIMUM_WRONG_TASKS)
@@ -42,10 +60,10 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
         return false;
     }
 
-    private string GetCorrectTaskCount(int taskCount)
-    {
-        return taskCount.ToString();
-    }
+    /// <summary>
+    /// Handles the drop event when an ftask is dropped onto a slot. Compares the dropped task to the expected task.
+    /// </summary>
+    /// <param name="eventData">PointerEventData related to the drag-and-drop action.</param>
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
@@ -55,6 +73,10 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
         CompareTask(eventData);
     }
 
+    /// <summary>
+    /// Compares the dropped task with the expected task in the slot and updates the task state accordingly.
+    /// </summary>
+    /// <param name="eventData">PointerEventData containing the details of the dropped item.</param>
     private void CompareTask(PointerEventData eventData)
     {
         Text draggedText = eventData.pointerDrag.GetComponentInChildren<Text>();
@@ -65,25 +87,48 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
         }
     }
 
+    /// <summary>
+    /// Updates the game state when a correct task is completed. Plays a sound and updates the UI accordingly.
+    /// </summary>
+    private void DetectCorrectTask()
+    {
+        audioManager.PlayGainCoinAudio();
+        SetCompleteBackground(Color.blue);
+        motivationText.text = "Correct task!";
+        correctTask++;
+    }
+
+    /// <summary>
+    /// Updates the game state when a wrong task is detected. Plays a sound and updates the UI accordingly.
+    /// </summary>
+    private void DetectWrongTask()
+    {
+        audioManager.PlayWrongAnswerAudio();
+        SetCompleteBackground(Color.red);
+        motivationText.text = "Wrong task!";
+        wrongTask++;
+    }
+
+    /// <summary>
+    /// Changes the task state based on whether the dropped item matches the expected task.
+    /// </summary>
+    /// <param name="draggedText">The text from the dropped item.</param>
     private void ChangeTaskState(Text draggedText)
     {
         if (draggedText.text == slotText.text)
         {
-            audioManager.PlayGainCoinAudio();
-            SetCompleteBackground(Color.blue);
-            motivationText.text = "Correct task !";
-            correctTask++;
+            DetectCorrectTask();
         }
         else
         {
-            audioManager.PlayWrongAnswerAudio();
-            SetCompleteBackground(Color.red);
-            motivationText.text = "Wrong task !";
-            wrongTask++;
+            DetectWrongTask();
         }
     }
 
-    //Helper method for player to differentiate between completed and incomplete task
+    /// <summary>
+    /// Changes the background color of the task to indicate whether the task was completed correctly or incorrectly.
+    /// </summary>
+    /// <param name="color">The color to set as the background, indicating task state.</param>
     private void SetCompleteBackground(Color color)
     {
         Image imageComponent = GetComponent<Image>();
@@ -91,11 +136,14 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
         motivationText.color = color;
     }
 
-    //Allows player to load next scene only sfter all tasks are complete
+    /// <summary>
+    /// Proceeds to the next chapter if the player has completed enough correct tasks. Otherwise, shows a clue for retrying.
+    /// </summary>
+    /// <param name="sceneName">The name of the scene to load next.</param>
     public void Proceed(string sceneName)
     {
         if (correctTask >= PASS_TASK_COUNT)
-        { 
+        {
             CheckTaskCount(correctTask);
             audioManager.PlayWinningAudio();
             coinManager.AddCoins(BONUS_COIN * correctTask);
@@ -108,15 +156,19 @@ public class ItemDropManager : UnityEngine.MonoBehaviour, IDropHandler
         Debug.Log(correctTask.ToString());
     }
 
+    /// <summary>
+    /// Displays a clue based on the number of correct tasks completed.
+    /// </summary>
+    /// <param name="checkCorrectTask">The number of correct tasks completed by the player.</param>
     private void CheckTaskCount(int checkCorrectTask)
     {
         if (checkCorrectTask == COMPLETE_TASK)
         {
-            clueManager.ShowWinOrLoseClue("Perfect Eye for Detail !");
+            clueManager.ShowWinOrLoseClue("Perfect Eye for Detail!");
         }
         else
         {
-            clueManager.ShowWinOrLoseClue("Nice Try !");
+            clueManager.ShowWinOrLoseClue("Nice Try!");
         }
     }
 }
