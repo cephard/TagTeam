@@ -58,25 +58,36 @@ public static class PlayFabDataManager
         GetUserData(
             onSuccessResult =>
             {
-                StringBuilder responseBuilder = new StringBuilder();
-                int partIndex = 0;
-
-                // Loop over the chunked data and reconstruct the full response string.
-                // Continues appending until it no longer finds a valid chunk key.
-                while (true)
-                {
-                    string chunkKey = $"{key}_part_{partIndex}";
-                    if (!onSuccessResult.Data.ContainsKey(chunkKey))  // Stop if no chunk with this part index exists
-                        break;
-
-                    responseBuilder.Append(onSuccessResult.Data[chunkKey].Value);
-                    partIndex++;
-                }
-
-                // Return the fully reconstructed response.
-                onSuccess(responseBuilder.ToString());
+                string reconstructedResponse = ReconstructResponse(onSuccessResult.Data, key);
+                onSuccess(reconstructedResponse);
             },
             onFail);
+    }
+
+    /// <summary>
+    /// Reconstructs a long response by fetching chunks stored in the data dictionary.
+    /// </summary>
+    /// <param name="data">The dictionary containing the chunked data.</param>
+    /// <param name="key">The base key for retrieving the response chunks.</param>
+    /// <returns>The fully reconstructed response string.</returns>
+    private static string ReconstructResponse(Dictionary<string, UserDataRecord> data, string key)
+    {
+        StringBuilder responseBuilder = new StringBuilder();
+        int partIndex = 0;
+
+        // Loop over the chunked data and reconstruct the full response string.
+        // Continues appending until it no longer finds a valid chunk key.
+        while (true)
+        {
+            string chunkKey = $"{key}_part_{partIndex}";
+            if (!data.ContainsKey(chunkKey))  // Stop if no chunk with this part index exists
+                break;
+
+            responseBuilder.Append(data[chunkKey].Value);
+            partIndex++;
+        }
+
+        return responseBuilder.ToString();
     }
 
     /// <summary>
@@ -95,24 +106,35 @@ public static class PlayFabDataManager
         },
         successResult =>
         {
+            // Update the local cache if userData exists
             if (userData != null)
             {
-                // Loop through the saved data and update the local userData cache.
-                foreach (var key in data.Keys)
-                {
-                    UserDataRecord value = new() { Value = data[key] };
-
-                    // Either update an existing record or add a new one to the cache.
-                    if (userData.ContainsKey(key))
-                        userData[key] = value;
-                    else
-                        userData.Add(key, value);
-                }
+                UpdateLocalCopy(data, userData);
             }
 
             onSuccess(successResult);
         },
         onFail);
+    }
+
+    /// <summary>
+    /// Updates the local copy of user data with the new data.
+    /// </summary>
+    /// <param name="data">The dictionary containing the new data to be saved locally.</param>
+    /// <param name="userData">The local cache of user data to be updated.</param>
+    private static void UpdateLocalCopy(Dictionary<string, string> data, Dictionary<string, UserDataRecord> userData)
+    {
+        // Loop through the saved data and update the local userData cache.
+        foreach (var key in data.Keys)
+        {
+            UserDataRecord value = new() { Value = data[key] };
+
+            // Either update an existing record or add a new one to the cache.
+            if (userData.ContainsKey(key))
+                userData[key] = value;
+            else
+                userData.Add(key, value);
+        }
     }
 
     /// <summary>
