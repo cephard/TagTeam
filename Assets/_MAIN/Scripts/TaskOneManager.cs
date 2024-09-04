@@ -24,9 +24,6 @@ public class TaskOneManager : ItemDropManager
     private const int TIME_REQUIRED_FOR_TASK = 60;
     private const string TASK_ONE_NAME = "TaskOne";
 
-   // protected int timeRequiredForTask = 60;
-   // private string taskOne = "TaskOne";
-
 
     new void Start()
     {
