@@ -70,6 +70,7 @@ public class FeedBackManager : MonoBehaviour
         {
             starsToShow = ONE_STAR;
         }
+        ShowStars(starsToShow);
     }
 
     /// <summary>
@@ -86,7 +87,6 @@ public class FeedBackManager : MonoBehaviour
             int starsToShow = ZERO_STARS;
             UpdateArchievedScore(availableGem);
             DetermineStarsToAward(availableGem, requiredGems, starsToShow);
-            ShowStars(starsToShow);
         }
     }
 
