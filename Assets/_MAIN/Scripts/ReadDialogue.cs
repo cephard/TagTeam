@@ -15,16 +15,6 @@ public class ReadDialogue : MonoBehaviour
     private const int THIRD_OPTION = 3;
     private const int FOURTH_OPTION = 4;
     private const int PLAYER_OPTIONS = 4;
-    private const float TYPEWRITER_SPEED = 0.05f;
-
-    [SerializeField] private TextMeshProUGUI dialogue;
-    [SerializeField] private TextMeshProUGUI avatarName;
-    [SerializeField] private GameObject avatarDialogue;
-    [SerializeField] private GameObject playerResponse;
-    [SerializeField] private Text playerReponseOne;
-    [SerializeField] private Text playerReponseTwo;
-    [SerializeField] private Text playerReponseThree;
-    [SerializeField] private Text playerReponseFour;
 
     private CoinManager coinManager;
     private TaskProgressManager taskProgressManager;
@@ -36,6 +26,8 @@ public class ReadDialogue : MonoBehaviour
     private ClueManager clueManager;
     private AnalyticsManager analyticsManager;
     private TypeWritterEffectManager typeWritter;
+    private ConversationUIManager conversationUIManager;
+    private PlayerResponseManager playerResponceManager;
 
     private int playerChoice;
     private static int currentLine = INITIAL_LINE_INDEX;
@@ -54,6 +46,8 @@ public class ReadDialogue : MonoBehaviour
         feedBackManager = GetComponent<FeedBackManager>();
         analyticsManager = GetComponent<AnalyticsManager>();
         typeWritter = GetComponent<TypeWritterEffectManager>();
+        conversationUIManager = GetComponent<ConversationUIManager>();
+        playerResponceManager = GetComponent<PlayerResponseManager>();
     }
 
     private void Start()
@@ -62,7 +56,6 @@ public class ReadDialogue : MonoBehaviour
         avatarManager.InitializeAvatar();
         avatarManager.DeactivateAvatars();
         LoadDialogueForScene();
-        clueManager.OverRideClueOnStart(playerResponse);
     }
 
     private void Update()
@@ -70,18 +63,14 @@ public class ReadDialogue : MonoBehaviour
         HandleInput();
     }
 
-    private bool IsPlayerSpeaking()
-    {
-        return String.Equals("Player", avatarName.text);
-    }
-
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !IsPlayerSpeaking())
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !conversationUIManager.IsPlayerSpeaking())
         {
             NextLine();
         }
     }
+
     public void LoadDialogueForScene()
     {
         currentLine = taskProgressManager.GetTaskProgress(mainMenuController.GetSceneName());
@@ -91,10 +80,11 @@ public class ReadDialogue : MonoBehaviour
     public void LoadScript(string scriptName)
     {
         TextAsset textAsset = Resources.Load<TextAsset>(scriptName);
-        playerResponse.SetActive(false);
+        //playerResponse.SetActive(false);
+        conversationUIManager.HidePlayerResponce();
         if (textAsset == null)
         {
-            dialogue.text = "Oops! Sorry I'll get back to you soon I have an urgent meeting!";
+            conversationUIManager.SetDialogueText("Oops! Sorry I'll get back to you soon I have an urgent meeting!");
             return;
         }
 
@@ -123,7 +113,7 @@ public class ReadDialogue : MonoBehaviour
         }
         else
         {
-            SwitchActiveObject(avatarDialogue, playerResponse);
+            conversationUIManager.SwitchActiveObject(conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
         }
     }
 
@@ -139,8 +129,8 @@ public class ReadDialogue : MonoBehaviour
     {
         if (lines == null || lineIndex >= lines.Length)
         {
-            avatarName.text = "Office";
-            dialogue.text = "There is no one in the office!";
+            conversationUIManager.SetAvatarName("Office");
+            conversationUIManager.SetDialogueText("There is no one in the office!");
         }
     }
 
@@ -149,67 +139,71 @@ public class ReadDialogue : MonoBehaviour
         typeWritter.StopTypeWritter();
         if (sentenceParts.Length == DIVIDE_LINE)
         {
-            avatarName.text = sentenceParts[INITIAL_LINE_INDEX].Trim();
+            conversationUIManager.SetAvatarName(sentenceParts[INITIAL_LINE_INDEX].Trim());
             LoadTaskScene(sentenceParts);
             InovkeResponse();
-            chapterManager.IntroduceChapter(avatarName.text, sentenceParts[LINE_INCREMENT].Trim());
-            avatarManager.ActivateAvatar(avatarName.text);
-            typeWritter.StartTypeWritter(sentenceParts[LINE_INCREMENT].Trim(), dialogue);
+            chapterManager.IntroduceChapter(conversationUIManager.GetAvatarName(), sentenceParts[LINE_INCREMENT].Trim());
+            avatarManager.ActivateAvatar(conversationUIManager.GetAvatarName());
+            typeWritter.StartTypeWritter(sentenceParts[LINE_INCREMENT].Trim(), conversationUIManager.GetDialogue());
         }
         else
         {
-            typeWritter.StartTypeWritter(line, dialogue);
+            typeWritter.StartTypeWritter(line, conversationUIManager.GetDialogue());
+
         }
 
     }
 
     public void LoadTaskScene(string[] sentenceParts)
     {
-        if (String.Equals("Task", avatarName.text))
+        if (String.Equals("Task", conversationUIManager.GetAvatarName()))
         {
-            dialogue.text = sentenceParts[LINE_INCREMENT].Trim();
+            conversationUIManager.SetDialogueText(sentenceParts[LINE_INCREMENT].Trim());
             SaveNextLine();
-            taskProgressManager.SetTaskProgress(dialogue.text, currentLine);
-            mainMenuController.LoadNextScene(dialogue.text);
+            taskProgressManager.SetTaskProgress(conversationUIManager.GetDialogueText(), currentLine);
+            mainMenuController.LoadNextScene(conversationUIManager.GetDialogueText());
         }
     }
 
     public void InovkeResponse()
     {
-        if (String.Equals("Player", avatarName.text))
+        if (String.Equals("Player", conversationUIManager.GetAvatarName()))
         {
-            SwitchActiveObject(avatarDialogue, playerResponse);
+            conversationUIManager.SwitchActiveObject(conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
             LoadPlayerResponses(currentLine + LINE_INCREMENT);
         }
     }
 
-    private void LoadPlayerResponses(int startLine)
+
+    public void LoadPlayerResponses(int startLine)
     {
         if (startLine < lines.Length)
         {
-            playerReponseOne.text = GetLine(startLine);
-            playerReponseTwo.text = GetLine(startLine + LINE_INCREMENT);
-            playerReponseThree.text = GetLine(startLine + SECOND_OPTION);
-            playerReponseFour.text = GetLine(startLine + THIRD_OPTION);
+            conversationUIManager.SetPlayerResponceOne(GetLine(startLine));
+            conversationUIManager.SetPlayerResponceTwo(GetLine(startLine + FIRST_OPTION));
+            conversationUIManager.SetPlayerResponceThree(GetLine(startLine + SECOND_OPTION));
+            conversationUIManager.SetPlayerResponceFour(GetLine(startLine + THIRD_OPTION));
         }
         else
         {
-            playerResponse.SetActive(false);
+
+            conversationUIManager.HidePlayerResponce();
         }
     }
+
 
     public void PlayerDecision(int playerChoice)
     {
         currentLine += playerChoice;
         int nextLine = SkipRemainingChoice(currentLine, playerChoice);
-        playerDecisionManager.SeekAdvice(GetLine(currentLine), GetLine(nextLine), avatarDialogue, playerResponse);
+        playerDecisionManager.SeekAdvice(GetLine(currentLine), GetLine(nextLine), conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
         PlayerReport.UpdateDecisions(GetLine(currentLine));
         PlayFabDataManager.SavePlayerResponse(GetLine(currentLine), currentLine);
         coinManager.ExtractExpenditure(GetLine(currentLine));
         playerDecisionManager.GetPlayerChoice(GetLine(currentLine));
         currentLine = nextLine;
         feedBackManager.AwardStar(coinManager.GetChapterGem());
-        SwitchActiveObject(avatarDialogue, playerResponse);
+        conversationUIManager.SwitchActiveObject(conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
         NextLine();
     }
 
@@ -222,12 +216,5 @@ public class ReadDialogue : MonoBehaviour
     {
         PlayerPrefs.SetInt("CurrentLine", currentLine += SECOND_OPTION);
         PlayerPrefs.Save();
-    }
-
-    private void SwitchActiveObject(GameObject avatarDialogue, GameObject playerResponse)
-    {
-        bool isAvatarDialogueActive = avatarDialogue.activeSelf;
-        avatarDialogue.SetActive(!isAvatarDialogueActive);
-        playerResponse.SetActive(isAvatarDialogueActive);
     }
 }
