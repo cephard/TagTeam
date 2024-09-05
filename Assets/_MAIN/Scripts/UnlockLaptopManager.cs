@@ -4,7 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnlockLaptopManager : UnityEngine.MonoBehaviour
+/// <summary>
+/// Manages the process of unlocking a laptop using clues and a password input. 
+/// Handles updating the clue display, validating input, and loading the next scene.
+/// </summary>
+public class UnlockLaptopManager : MonoBehaviour
 {
     private const string CURRENT_EVENT_NAME = "Unlock Laptop";
     private const string MAIN_CLUE = "mainClue";
@@ -27,6 +31,9 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
     private char[] passwordCharacters = { 'E', 'n', '4', 't', 'e', '@', '#', 'r' };
     private AnalyticsManager analyticsManager;
 
+    /// <summary>
+    /// Initializes references to other game managers and tracks the event using analytics.
+    /// </summary>
     private void Start()
     {
         clueManager = GetComponent<ClueManager>();
@@ -36,6 +43,11 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
         analyticsManager.TrackEvent(CURRENT_EVENT_NAME);
     }
 
+    /// <summary>
+    /// Updates the clue displayed to the player based on the provided clue string.
+    /// If the clue is not found, it displays the main clue.
+    /// </summary>
+    /// <param name="clue">The clue identifier to display.</param>
     public void UpdateClue(string clue)
     {
         if (clueText == null)
@@ -54,6 +66,10 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if the player's input matches the expected password. If correct, it adds coins and loads the next scene.
+    /// If incorrect, it shows a wrong input message.
+    /// </summary>
     public void UnlockLaptop()
     {
         if (string.Equals(hiddenEntry.text, EXPECTED_INPUT, StringComparison.OrdinalIgnoreCase))
@@ -69,5 +85,4 @@ public class UnlockLaptopManager : UnityEngine.MonoBehaviour
 
         Debug.Log(hiddenEntry.text);
     }
-
 }
