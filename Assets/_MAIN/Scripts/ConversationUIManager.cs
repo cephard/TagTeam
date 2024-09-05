@@ -1,18 +1,108 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
-public class ConversationUIManager : MonoBehaviour
+public class ConversationUIManager : ReadDialogue
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private TextMeshProUGUI dialogue;
+    [SerializeField] private TextMeshProUGUI avatarName;
+    [SerializeField] private GameObject avatarDialogue;
+    [SerializeField] private GameObject playerResponse;
+    [SerializeField] private Text playerReponseOne;
+    [SerializeField] private Text playerReponseTwo;
+    [SerializeField] private Text playerReponseThree;
+    [SerializeField] private Text playerReponseFour;
+
+
+    private ClueManager clueManager;
+
+
+
+    private void Start()
     {
-        
+        clueManager = GetComponent<ClueManager>();
+        clueManager.OverRideClueOnStart(playerResponse);
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsPlayerSpeaking()
     {
-        
+        return String.Equals("Player", avatarName.text);
+    }
+
+    public void HidePlayerResponce()
+    {
+        playerResponse.SetActive(false);
+    }
+
+    public void SetDialogueText(string newDialogue)
+    {
+        dialogue.text = newDialogue;
+    }
+
+    public void SetAvatarName(string newAvatarName)
+    {
+        avatarName.text = newAvatarName;
+    }
+
+    public void SwitchActiveObject(GameObject avatarDialogue, GameObject playerResponse)
+    {
+        bool isAvatarDialogueActive = avatarDialogue.activeSelf;
+        avatarDialogue.SetActive(!isAvatarDialogueActive);
+        playerResponse.SetActive(isAvatarDialogueActive);
+    }
+
+
+
+
+
+    public void SetPlayerResponceOne(string newResponse)
+    {
+        playerReponseOne.text = newResponse;
+    }
+
+    public void SetPlayerResponceTwo(string newResponse)
+    {
+        playerReponseTwo.text = newResponse;
+    }
+
+    public void SetPlayerResponceThree(string newResponse)
+    {
+        playerReponseThree.text = newResponse;
+    }
+
+    public void SetPlayerResponceFour(string newResponse)
+    {
+        playerReponseFour.text = newResponse;
+    }
+
+    public GameObject GetAvatarDialogue()
+    {
+        return avatarDialogue;
+    }
+
+
+    public GameObject GetPlayerResponse()
+    {
+        return playerResponse;
+    }
+
+    public string GetAvatarName()
+    {
+        return avatarName.text;
+    }
+
+    public string GetDialogueText()
+    {
+        return dialogue.text;
+    }
+
+    public TextMeshProUGUI GetDialogue()
+    {
+        return dialogue;
     }
 }
