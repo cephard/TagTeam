@@ -35,6 +35,8 @@ public class ReadDialogue : MonoBehaviour
     private FeedBackManager feedBackManager;
     private ClueManager clueManager;
     private AnalyticsManager analyticsManager;
+    private TypeWritterEffectManager typeWritter;
+
     private int playerChoice;
     private static int currentLine = INITIAL_LINE_INDEX;
     private string[] lines;
@@ -51,6 +53,7 @@ public class ReadDialogue : MonoBehaviour
         clueManager = GetComponent<ClueManager>();
         feedBackManager = GetComponent<FeedBackManager>();
         analyticsManager = GetComponent<AnalyticsManager>();
+        typeWritter = GetComponent<TypeWritterEffectManager>();
     }
 
     private void Start()
@@ -99,7 +102,7 @@ public class ReadDialogue : MonoBehaviour
         SetNameAndDialogue(currentLine);
     }
 
-    private string GetLine(int lineIndex)
+    public string GetLine(int lineIndex)
     {
         if (lines == null || lineIndex >= lines.Length)
         {
@@ -143,7 +146,7 @@ public class ReadDialogue : MonoBehaviour
 
     public void SplitSentence(string line, string[] sentenceParts)
     {
-        StopTypeWritterEffect();
+        typeWritter.StopTypeWritter();
         if (sentenceParts.Length == DIVIDE_LINE)
         {
             avatarName.text = sentenceParts[INITIAL_LINE_INDEX].Trim();
@@ -151,21 +154,13 @@ public class ReadDialogue : MonoBehaviour
             InovkeResponse();
             chapterManager.IntroduceChapter(avatarName.text, sentenceParts[LINE_INCREMENT].Trim());
             avatarManager.ActivateAvatar(avatarName.text);
-            typingCoroutine = StartCoroutine(TypeSentence(sentenceParts[LINE_INCREMENT].Trim()));
+            typeWritter.StartTypeWritter(sentenceParts[LINE_INCREMENT].Trim(), dialogue);
         }
         else
         {
-            typingCoroutine = StartCoroutine(TypeSentence(line));
+            typeWritter.StartTypeWritter(line, dialogue);
         }
 
-    }
-
-    private void StopTypeWritterEffect()
-    {
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-        }
     }
 
     public void LoadTaskScene(string[] sentenceParts)
@@ -234,17 +229,5 @@ public class ReadDialogue : MonoBehaviour
         bool isAvatarDialogueActive = avatarDialogue.activeSelf;
         avatarDialogue.SetActive(!isAvatarDialogueActive);
         playerResponse.SetActive(isAvatarDialogueActive);
-    }
-
-    private Coroutine typingCoroutine;
-
-    private IEnumerator TypeSentence(string sentence)
-    {
-        dialogue.text = "";
-        foreach (char letter in sentence.ToCharArray())
-        {
-            dialogue.text += letter;
-            yield return new WaitForSeconds(TYPEWRITER_SPEED);
-        }
     }
 }

@@ -1,18 +1,48 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TypeWritterEffectManager : ReadDialogue
+/// <summary>
+/// Manages the typewriter effect for displaying dialogue letter by letter.
+/// Inherits from ReadDialogue.
+/// </summary>
+public class TypeWritterEffectManager : MonoBehaviour
 {
     private const float TYPING_SPEED = 0.05f;
+    private const string EMPTY_TEXT = "";
+    private Coroutine typingCoroutine;
 
-    public IEnumerator TypeWritterEffect(string sentence, Text dialogueText)
+    /// <summary>
+    /// Displays the given sentence in the Text component letter by letter, with a delay between each letter.
+    /// </summary>
+    /// <param name="sentence">The sentence to be displayed with the typewriter effect.</param>
+    /// <param name="dialogueText">The UI Text component where the sentence will be displayed.</param>
+    /// <returns>IEnumerable for coroutine handling.</returns>
+    public IEnumerator TypeSentence(string sentence, TextMeshProUGUI dialogue)
     {
-        dialogueText.text = "";
+        dialogue.text = EMPTY_TEXT;
         foreach (char letter in sentence.ToCharArray())
         {
-            dialogueText.text += letter;
+            dialogue.text += letter;
             yield return new WaitForSeconds(TYPING_SPEED);
         }
     }
+
+
+    public void StartTypeWritter(string currentLine, TextMeshProUGUI dialogue)
+    {
+
+        typingCoroutine = StartCoroutine(TypeSentence(currentLine, dialogue));
+
+    }
+
+    public void StopTypeWritter()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+    }
+
 }
