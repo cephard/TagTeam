@@ -21,7 +21,10 @@ public class ConversationUIManager : ReadDialogue
 
     private ClueManager clueManager;
 
-
+    public void Awake()
+    {
+        HidePlayerResponce();
+    }
 
     private void Start()
     {
@@ -49,16 +52,13 @@ public class ConversationUIManager : ReadDialogue
         avatarName.text = newAvatarName;
     }
 
-    public void SwitchActiveObject(GameObject avatarDialogue, GameObject playerResponse)
+    public void SwitchActiveObject()
     {
+        //GameObject avatarDialogue, GameObject playerResponse
         bool isAvatarDialogueActive = avatarDialogue.activeSelf;
         avatarDialogue.SetActive(!isAvatarDialogueActive);
         playerResponse.SetActive(isAvatarDialogueActive);
     }
-
-
-
-
 
     public void SetPlayerResponceOne(string newResponse)
     {
@@ -85,7 +85,6 @@ public class ConversationUIManager : ReadDialogue
         return avatarDialogue;
     }
 
-
     public GameObject GetPlayerResponse()
     {
         return playerResponse;
@@ -105,4 +104,18 @@ public class ConversationUIManager : ReadDialogue
     {
         return dialogue;
     }
+
+    public void ReportEmptyStoryLine(TextAsset storyLine)
+    {
+
+        if (storyLine == null)
+        {
+            SetDialogueText("Oops! It seems like you the is no storyline!");
+            return;
+        }
+    }
+
+
+
+
 }
