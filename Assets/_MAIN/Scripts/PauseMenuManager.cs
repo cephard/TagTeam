@@ -8,7 +8,9 @@ using UnityEngine.UI;
 /// </summary>
 public class PauseMenuManager : MonoBehaviour
 {
+    private const int CHAPTER_SCENES = 6;
     [SerializeField] private GameObject audioGameObject;
+    [SerializeField] private GameObject[] Chapters = new GameObject[CHAPTER_SCENES];
 
     private CoinManager coinManager;
     private AudioManager audioManager;
@@ -38,4 +40,11 @@ public class PauseMenuManager : MonoBehaviour
             audioGameObject.SetActive(true);
         }
     }
+
+
+
+
+
+
+
 }

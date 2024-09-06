@@ -28,10 +28,12 @@ public class ReadDialogue : MonoBehaviour
     private TypeWritterEffectManager typeWritter;
     private ConversationUIManager conversationUIManager;
     private PlayerResponseManager playerResponceManager;
+    private LoadDialogueManager loadDialogueManager;
+    private DialogueManager dialogueManager;
+    private CurrentLineManager currentLineManager;
 
     private int playerChoice;
-    private static int currentLine = INITIAL_LINE_INDEX;
-    private string[] lines;
+
     private bool clueHidden = false;
 
     private void InitializeCustomObjects()
@@ -48,6 +50,9 @@ public class ReadDialogue : MonoBehaviour
         typeWritter = GetComponent<TypeWritterEffectManager>();
         conversationUIManager = GetComponent<ConversationUIManager>();
         playerResponceManager = GetComponent<PlayerResponseManager>();
+        loadDialogueManager = GetComponent<LoadDialogueManager>();
+        dialogueManager = GetComponent<DialogueManager>();
+        currentLineManager = GetComponent<CurrentLineManager>();
     }
 
     private void Start()
@@ -56,6 +61,8 @@ public class ReadDialogue : MonoBehaviour
         avatarManager.InitializeAvatar();
         avatarManager.DeactivateAvatars();
         LoadDialogueForScene();
+        currentLineManager.SetCurrentLine(taskProgressManager.GetTaskProgress(mainMenuController.GetSceneName()));
+
     }
 
     private void Update()
@@ -71,67 +78,40 @@ public class ReadDialogue : MonoBehaviour
         }
     }
 
+
     public void LoadDialogueForScene()
     {
-        currentLine = taskProgressManager.GetTaskProgress(mainMenuController.GetSceneName());
-        LoadScript("Story");
-    }
 
-    public void LoadScript(string scriptName)
-    {
-        TextAsset textAsset = Resources.Load<TextAsset>(scriptName);
-        //playerResponse.SetActive(false);
-        conversationUIManager.HidePlayerResponce();
-        if (textAsset == null)
-        {
-            conversationUIManager.SetDialogueText("Oops! Sorry I'll get back to you soon I have an urgent meeting!");
-            return;
-        }
+        currentLineManager.SetCurrentLine(taskProgressManager.GetTaskProgress(mainMenuController.GetSceneName()));
+        dialogueManager.SetLines(loadDialogueManager.LoadScript("Story"));
 
-        lines = textAsset.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-        SetNameAndDialogue(currentLine);
-    }
+        SetNameAndDialogue(currentLineManager.GetCurrentLine());
 
-    public string GetLine(int lineIndex)
-    {
-        if (lines == null || lineIndex >= lines.Length)
-        {
-            mainMenuController.LoadNextScene("PlayerStatistics");
-            return "The End";
-        }
-        return lines[lineIndex];
+
     }
 
     public void NextLine()
     {
-        if (lines != null && currentLine < lines.Length - LINE_INCREMENT)
+        if (dialogueManager.GetLines() != null && currentLineManager.GetCurrentLine() < dialogueManager.GetLinesLength() - LINE_INCREMENT)
         {
-            currentLine++;
+
+            currentLineManager.IncrementCurrentLine();
             coinManager.RefreshCoinState();
-            string coins = coinManager.GetCoins().ToString();
-            SetNameAndDialogue(currentLine);
+            //string coins = coinManager.GetCoins().ToString();
+            SetNameAndDialogue(currentLineManager.GetCurrentLine());
         }
         else
         {
-            conversationUIManager.SwitchActiveObject(conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
+            conversationUIManager.SwitchActiveObject();
         }
     }
 
-    private void SetNameAndDialogue(int lineIndex)
+    public void SetNameAndDialogue(int lineIndex)
     {
-        PlaceHolderDialogue(lineIndex);
-        string line = lines[lineIndex];
+        dialogueManager.PlaceHolderDialogue(lineIndex);
+        string line = dialogueManager.GetLine(lineIndex);
         string[] sentenceParts = line.Split(new[] { ':' }, DIVIDE_LINE);
         SplitSentence(line, sentenceParts);
-    }
-
-    private void PlaceHolderDialogue(int lineIndex)
-    {
-        if (lines == null || lineIndex >= lines.Length)
-        {
-            conversationUIManager.SetAvatarName("Office");
-            conversationUIManager.SetDialogueText("There is no one in the office!");
-        }
     }
 
     public void SplitSentence(string line, string[] sentenceParts)
@@ -140,8 +120,9 @@ public class ReadDialogue : MonoBehaviour
         if (sentenceParts.Length == DIVIDE_LINE)
         {
             conversationUIManager.SetAvatarName(sentenceParts[INITIAL_LINE_INDEX].Trim());
-            LoadTaskScene(sentenceParts);
-            InovkeResponse();
+            taskProgressManager.LoadTaskScene(sentenceParts, currentLineManager.GetCurrentLine());
+            playerResponceManager.InovkePlayerResponse(currentLineManager.GetCurrentLine());
+
             chapterManager.IntroduceChapter(conversationUIManager.GetAvatarName(), sentenceParts[LINE_INCREMENT].Trim());
             avatarManager.ActivateAvatar(conversationUIManager.GetAvatarName());
             typeWritter.StartTypeWritter(sentenceParts[LINE_INCREMENT].Trim(), conversationUIManager.GetDialogue());
@@ -151,70 +132,31 @@ public class ReadDialogue : MonoBehaviour
             typeWritter.StartTypeWritter(line, conversationUIManager.GetDialogue());
 
         }
-
     }
-
-    public void LoadTaskScene(string[] sentenceParts)
-    {
-        if (String.Equals("Task", conversationUIManager.GetAvatarName()))
-        {
-            conversationUIManager.SetDialogueText(sentenceParts[LINE_INCREMENT].Trim());
-            SaveNextLine();
-            taskProgressManager.SetTaskProgress(conversationUIManager.GetDialogueText(), currentLine);
-            mainMenuController.LoadNextScene(conversationUIManager.GetDialogueText());
-        }
-    }
-
-    public void InovkeResponse()
-    {
-        if (String.Equals("Player", conversationUIManager.GetAvatarName()))
-        {
-            conversationUIManager.SwitchActiveObject(conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
-            LoadPlayerResponses(currentLine + LINE_INCREMENT);
-        }
-    }
-
-
-    public void LoadPlayerResponses(int startLine)
-    {
-        if (startLine < lines.Length)
-        {
-            conversationUIManager.SetPlayerResponceOne(GetLine(startLine));
-            conversationUIManager.SetPlayerResponceTwo(GetLine(startLine + FIRST_OPTION));
-            conversationUIManager.SetPlayerResponceThree(GetLine(startLine + SECOND_OPTION));
-            conversationUIManager.SetPlayerResponceFour(GetLine(startLine + THIRD_OPTION));
-        }
-        else
-        {
-
-            conversationUIManager.HidePlayerResponce();
-        }
-    }
-
 
     public void PlayerDecision(int playerChoice)
     {
-        currentLine += playerChoice;
-        int nextLine = SkipRemainingChoice(currentLine, playerChoice);
-        playerDecisionManager.SeekAdvice(GetLine(currentLine), GetLine(nextLine), conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
-        PlayerReport.UpdateDecisions(GetLine(currentLine));
-        PlayFabDataManager.SavePlayerResponse(GetLine(currentLine), currentLine);
-        coinManager.ExtractExpenditure(GetLine(currentLine));
-        playerDecisionManager.GetPlayerChoice(GetLine(currentLine));
-        currentLine = nextLine;
+        currentLineManager.AddUpCurrentLine(playerChoice);
+
+        int nextLine = SkipRemainingChoice(currentLineManager.GetCurrentLine(), playerChoice);
+        playerDecisionManager.SeekAdvice(dialogueManager.GetLine(currentLineManager.GetCurrentLine()), dialogueManager.GetLine(nextLine), conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
+        playerResponceManager.SavePlayerChoice(currentLineManager.GetCurrentLine());
+
+
+        coinManager.ExtractExpenditure(dialogueManager.GetLine(currentLineManager.GetCurrentLine()));
+
+        playerDecisionManager.GetPlayerChoice(dialogueManager.GetLine(currentLineManager.GetCurrentLine()));
+
+
+        currentLineManager.SetCurrentLine(nextLine);
         feedBackManager.AwardStar(coinManager.GetChapterGem());
-        conversationUIManager.SwitchActiveObject(conversationUIManager.GetAvatarDialogue(), conversationUIManager.GetPlayerResponse());
+        conversationUIManager.SwitchActiveObject();
         NextLine();
     }
 
-    private int SkipRemainingChoice(int currentLine, int playerChoice)
+    public int SkipRemainingChoice(int currentLine, int playerChoice)
     {
         return currentLine += (PLAYER_OPTIONS - playerChoice);
     }
-
-    public void SaveNextLine()
-    {
-        PlayerPrefs.SetInt("CurrentLine", currentLine += SECOND_OPTION);
-        PlayerPrefs.Save();
-    }
 }
+

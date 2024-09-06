@@ -9,6 +9,8 @@ using UnityEngine;
 /// </summary>
 public class TaskProgressManager : MonoBehaviour
 {
+    private const int LINE_INCREMENT = 1;
+
     // Constants representing the starting points or triggers for various tasks.
     private const int NO_PROGRESS = 0;
     private const int PAUSE_MENU_TRIGGER = 0;
@@ -18,15 +20,27 @@ public class TaskProgressManager : MonoBehaviour
     private const int TASK_TWO_TRIGGER = 111;
     private const int UNLOCK_LAPTOP_TRIGGER = 130;
 
+    private ConversationUIManager conversationUIManager;
+    private MainMenuController mainMenuController;
+    private CurrentLineManager currentLineManager;
+
     // Dictionary to store task progress for each task or scene by name.
     private Dictionary<string, int> taskProgress;
 
+
+    private void InitializeCustomObjects()
+    {
+        conversationUIManager = GetComponent<ConversationUIManager>();
+        mainMenuController = GetComponent<MainMenuController>();
+        currentLineManager = GetComponent<CurrentLineManager>();
+    }
     /// <summary>
     /// Initializes the taskProgress dictionary with predefined values
     /// for different tasks and their associated triggers.
     /// </summary>
     private void Awake()
     {
+        InitializeCustomObjects();
         taskProgress = new Dictionary<string, int>
         {
             { "pause", PAUSE_MENU_TRIGGER },
@@ -67,5 +81,17 @@ public class TaskProgressManager : MonoBehaviour
     public void SetTaskProgress(string dialogue, int currentLine)
     {
         taskProgress[dialogue] = currentLine;
+    }
+
+    public void LoadTaskScene(string[] sentenceParts, int currentLine)
+    {
+        if (String.Equals("Task", conversationUIManager.GetAvatarName()))
+        {
+            conversationUIManager.SetDialogueText(sentenceParts[LINE_INCREMENT].Trim());
+            currentLineManager.SaveNextLine();
+            SetTaskProgress(conversationUIManager.GetDialogueText(), currentLine);
+            Debug.Log(currentLine);
+            mainMenuController.LoadNextScene(conversationUIManager.GetDialogueText());
+        }
     }
 }

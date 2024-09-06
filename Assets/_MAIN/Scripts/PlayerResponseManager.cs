@@ -15,25 +15,50 @@ public class PlayerResponseManager : ReadDialogue
 
 
     private ConversationUIManager conversationUIManager;
+    private DialogueManager dialogueManager;
 
-    private void Start()
+    private void Awake()
     {
         conversationUIManager = GetComponent<ConversationUIManager>();
+        dialogueManager = GetComponent<DialogueManager>();
     }
-    public void LoadPlayerResponses(int startLine, int sentenceLength)
+
+    public void InovkePlayerResponse(int currentLine)
     {
-        if (startLine < sentenceLength)
+        if (String.Equals("Player", conversationUIManager.GetAvatarName()))
         {
-            conversationUIManager.SetPlayerResponceOne("#GetLine(startLine)");
-            conversationUIManager.SetPlayerResponceTwo("GetLine(startLine + FIRST_OPTION)");
-            conversationUIManager.SetPlayerResponceThree("GetLine(startLine + SECOND_OPTION)");
-            conversationUIManager.SetPlayerResponceFour("GetLine(startLine + THIRD_OPTION)");
+            conversationUIManager.SwitchActiveObject();
+            LoadPlayerResponses(currentLine + 1);
+        }
+    }
+
+    public void LoadPlayerResponses(int startLine)
+    {
+        if (startLine < dialogueManager.GetLinesLength())
+        {
+            conversationUIManager.SetPlayerResponceOne(dialogueManager.GetLine(startLine));
+            conversationUIManager.SetPlayerResponceTwo(dialogueManager.GetLine(startLine + FIRST_OPTION));
+            conversationUIManager.SetPlayerResponceThree(dialogueManager.GetLine(startLine + SECOND_OPTION));
+            conversationUIManager.SetPlayerResponceFour(dialogueManager.GetLine(startLine + THIRD_OPTION));
         }
         else
         {
 
             conversationUIManager.HidePlayerResponce();
         }
+    }
+
+    //descision between 1 to 4
+    public int GetPlayerResponse(int playerChoice)
+    {
+        return playerChoice;
+    }
+
+    public void SavePlayerChoice(int currentLine)
+    {
+        PlayerReport.UpdateDecisions(dialogueManager.GetLine(currentLine));
+        PlayFabDataManager.SavePlayerResponse(dialogueManager.GetLine(currentLine), currentLine);
+
     }
 
 }

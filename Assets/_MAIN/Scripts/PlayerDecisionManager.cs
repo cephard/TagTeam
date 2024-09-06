@@ -30,7 +30,7 @@ public class PlayerDecisionManager : MonoBehaviour
         {"Thanks for the offer, but I need to check on Ann to see if she needs help.", 5},
         {"A cappuccino will do. Please see what is taking Ann so long.", 1},
         {"I will have it later, but first, can you assist Ann with her duties?", 2},
-        {"Subcontract it to a third party: 200", -2},
+        {"Subcontract it to a third party: 200", 0},
         {"Replace the printer yourself.", -1},
         {"Call the maintenance guy to come over: 30", 5},
         {"[Ask Stacy for advice.]", 0},
@@ -129,9 +129,17 @@ public class PlayerDecisionManager : MonoBehaviour
     /// </summary>
     /// <param name="playerChoice">The player's decision.</param>
     /// <returns>The player's decision as a string.</returns>
-    public string GetPlayerChoice(string playerChoice)
+    public void GetPlayerChoice(string playerChoice)
     {
+        coinManager.ExtractExpenditure(playerChoice);
         CheckPoorFeedBack(playerChoice);
-        return playerChoice;
+       // return playerChoice;
+    }
+
+    public void CapturePlayerDecision(int currentLine, string decision)
+    {
+        Debug.Log(decision);
+        PlayerReport.UpdateDecisions(decision);
+        PlayFabDataManager.SavePlayerResponse(decision, currentLine);
     }
 }

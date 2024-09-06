@@ -4068,9 +4068,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1567436740}
+  - component: {fileID: 1567436759}
   - component: {fileID: 1567436754}
+  - component: {fileID: 1567436758}
   - component: {fileID: 1567436753}
   - component: {fileID: 1567436741}
+  - component: {fileID: 1567436757}
   - component: {fileID: 1567436752}
   - component: {fileID: 1567436742}
   - component: {fileID: 1567436744}
@@ -4082,6 +4085,7 @@ GameObject:
   - component: {fileID: 1567436749}
   - component: {fileID: 1567436750}
   - component: {fileID: 1567436751}
+  - component: {fileID: 1567436755}
   m_Layer: 5
   m_Name: Dialogue Layers
   m_TagString: Untagged
@@ -4121,7 +4125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3fdfe3589645047b3ed831f404be23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversationUIManager: {fileID: 0}
 --- !u!114 &1567436742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4294,7 +4297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b20afabe8dc9f4bb68bbeff5796f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversationUIManager: {fileID: 0}
 --- !u!114 &1567436754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4307,7 +4309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c4362f58f86254080646c0ef218e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversationUIManager: {fileID: 0}
   dialogue: {fileID: 750536283}
   avatarName: {fileID: 1464805937}
   avatarDialogue: {fileID: 337301436}
@@ -4316,6 +4317,54 @@ MonoBehaviour:
   playerReponseTwo: {fileID: 586225821647009637}
   playerReponseThree: {fileID: 586225821647009636}
   playerReponseFour: {fileID: 586225821647009635}
+--- !u!114 &1567436755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567436739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93911e5c649ac184fa5ed30153e503e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1567436757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567436739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6924dad3e8130f04bb9b57e1e7b6a84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1567436758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567436739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f226df66296d04e83b9446ec529224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1567436759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567436739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8377833f6aef974381ef47077939914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1570239838
 GameObject:
   m_ObjectHideFlags: 0
