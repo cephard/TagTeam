@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Manages the typewriter effect for displaying dialogue letter by letter.
-/// Inherits from ReadDialogue.
 /// </summary>
 public class TypeWritterEffectManager : MonoBehaviour
 {
-    private const float TYPING_SPEED = 0.05f;
+    [SerializeField]
+    private float TYPING_SPEED;
     private const string EMPTY_TEXT = "";
     private Coroutine typingCoroutine;
 
@@ -28,7 +28,6 @@ public class TypeWritterEffectManager : MonoBehaviour
             yield return new WaitForSeconds(TYPING_SPEED);
         }
     }
-
 
     public void StartTypeWritter(string currentLine, TextMeshProUGUI dialogue)
     {

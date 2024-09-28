@@ -3952,7 +3952,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830587556}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7160954dafa66e84caade8dbcc436c00, type: 3}
   m_Name: 
@@ -4308,18 +4308,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1314759190}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: LoadNextScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Conversation
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1314759195}
         m_TargetAssemblyTypeName: EmailTaskManager, Assembly-CSharp
         m_MethodName: CheckCorrectResponse
@@ -4344,10 +4332,22 @@ MonoBehaviour:
           m_StringArgument: Ann'sTask
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1314759194}
+        m_TargetAssemblyTypeName: AnalyticsManager, Assembly-CSharp
+        m_MethodName: TrackEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ANN_EMAIL_SUBMIT_BUTTON
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1314759190}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: LoadNextScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

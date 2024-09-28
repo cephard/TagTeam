@@ -119,7 +119,7 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (taskdetail != null)
         {
-            taskdetail.SetActive(false);
+           taskdetail.SetActive(false);
             detailText.text = HOVER_TEXT;
         }
     }

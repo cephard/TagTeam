@@ -6,19 +6,18 @@ public class DialogueManager : MonoBehaviour
 {
 
     private const int LINE_INCREMENT = 1;
-
+    private CurrentLineManager lineManager;
     private CoinManager coinManager;
     private ConversationUIManager conversationUIManager;
-    private ReadDialogue readDialogue;
     private MainMenuController mainMenuController;
 
     private string[] lines;
 
-    private void Start()
+    private void Awake()
     {
+        lineManager = GetComponent<CurrentLineManager>();
         coinManager = GetComponent<CoinManager>();
         conversationUIManager = GetComponent<ConversationUIManager>();
-        readDialogue = GetComponent<ReadDialogue>();
         mainMenuController = GetComponent<MainMenuController>();
     }
 
@@ -53,19 +52,21 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    public void NextLine(int currentLinee)
+    public void NextLine()
     {
-        if (lines != null && currentLinee < lines.Length - LINE_INCREMENT)
+        if (GetLines() != null && lineManager.GetCurrentLine() < GetLinesLength() - LINE_INCREMENT)
         {
-            currentLinee++;
+            lineManager.IncrementCurrentLine();
             coinManager.RefreshCoinState();
-            string coins = coinManager.GetCoins().ToString();
-            readDialogue.SetNameAndDialogue(currentLinee);
+           // SetNameAndDialogue(currentLineManager.GetCurrentLine());
         }
         else
         {
             conversationUIManager.SwitchActiveObject();
         }
+
+
+
     }
 
     public void PlaceHolderDialogue(int lineIndex)

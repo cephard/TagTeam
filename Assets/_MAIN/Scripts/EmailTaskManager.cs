@@ -71,14 +71,13 @@ public class EmailTaskManager : MonoBehaviour
     /// Checks if the user's selected response is valid, shows the corresponding feedback,
     /// and transitions to the next scene if correct.
     /// </summary>
-    public async void CheckCorrectResponse()
+    public void CheckCorrectResponse()
     {
         if (responseFeedback.ContainsKey(responseName))
         {
             clueManager.ShowWinOrLoseClue(responseFeedback[responseName]);
             computer.SetActive(false);
-            await Task.Delay(10000);
-            mainMenuController.LoadNextScene("Conversation");
+            //mainMenuController.LoadNextScene("Conversation");
         }
         else
         {
