@@ -23,7 +23,7 @@ public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
     private PlayerChanceManager playerChanceManager;
     private ClueManager clueManager;
     private TimerManager timerManager;
-    private int timeRequiredForTask = 60;
+    private const int TIME_REQUIRED_FOR_TASK= 60;
     private AnalyticsManager analyticsManager;
 
     // Get required components for task management.
@@ -40,9 +40,10 @@ public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
     /// <summary>
     /// Initializes the task by setting up timers, loading remaining player chances, and tracking the event.
     /// </summary>
-    private void Start()
+    public void Start()
     {
-        timerManager.SetTimer(timeRequiredForTask);
+        InitializeCustomObjects();
+        timerManager.SetTimer(TIME_REQUIRED_FOR_TASK);
         playerChanceManager.LoadRemainingChance();
         analyticsManager.TrackEvent("Printer Serial Task");
     }
@@ -52,7 +53,7 @@ public class PrinterSerialNumberManager : UnityEngine.MonoBehaviour
     /// </summary>
     void Update()
     {
-        mainMenuController.RefreshScene(timerManager.GetTimer(), "PrinterSerial", timeRequiredForTask);
+        mainMenuController.RefreshScene(timerManager.GetTimer(), "PrinterSerial", TIME_REQUIRED_FOR_TASK);
     }
 
     /// <summary>

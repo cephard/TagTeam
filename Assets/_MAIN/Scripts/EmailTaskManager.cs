@@ -11,12 +11,14 @@ public class EmailTaskManager : MonoBehaviour
 {
     private const int TIME_REQUIRED_FOR_TASK = 180;
     private const string TASK_NAME = "Ann'sTask";
+    private const int BONUS_COIN = 10;
 
     [SerializeField] private GameObject computer;
 
     private MainMenuController mainMenuController;
     private ClueManager clueManager;
     private TimerManager timerManager;
+    private CoinManager coinManager;
     private string responseName;
 
     // Dictionary to hold predefined feedback messages based on user choice.
@@ -26,10 +28,11 @@ public class EmailTaskManager : MonoBehaviour
     /// Initializes components and sets up task requirements.
     /// </summary>
     void Start()
-    { 
+    {
         mainMenuController = GetComponent<MainMenuController>();
         clueManager = GetComponent<ClueManager>();
         timerManager = GetComponent<TimerManager>();
+        coinManager = GetComponent<CoinManager>();
         timerManager.SetTimer(TIME_REQUIRED_FOR_TASK);
         computer.SetActive(false);
 
@@ -71,17 +74,19 @@ public class EmailTaskManager : MonoBehaviour
     /// Checks if the user's selected response is valid, shows the corresponding feedback,
     /// and transitions to the next scene if correct.
     /// </summary>
-    public async void CheckCorrectResponse()
+    public void CheckCorrectResponse(string sceneName)
     {
         if (responseFeedback.ContainsKey(responseName))
         {
             clueManager.ShowWinOrLoseClue(responseFeedback[responseName]);
             computer.SetActive(false);
-            await Task.Delay(10000);
-            mainMenuController.LoadNextScene("Conversation");
+            clueManager.PauseGame();
+            coinManager.AddCoins(BONUS_COIN);
+            mainMenuController.LoadNextChapter(sceneName);
         }
         else
         {
+            clueManager.ShowWinOrLoseClue("Unknown response name: !");
             Debug.LogWarning("Unknown response name: " + responseName);
         }
         Debug.Log(responseName);

@@ -92,18 +92,9 @@ public class ReadDialogue : MonoBehaviour
 
     public void NextLine()
     {
-        if (dialogueManager.GetLines() != null && currentLineManager.GetCurrentLine() < dialogueManager.GetLinesLength() - LINE_INCREMENT)
-        {
 
-            currentLineManager.IncrementCurrentLine();
-            coinManager.RefreshCoinState();
-            //string coins = coinManager.GetCoins().ToString();
-            SetNameAndDialogue(currentLineManager.GetCurrentLine());
-        }
-        else
-        {
-            conversationUIManager.SwitchActiveObject();
-        }
+        dialogueManager.NextLine();
+        SetNameAndDialogue(currentLineManager.GetCurrentLine());
     }
 
     public void SetNameAndDialogue(int lineIndex)
@@ -117,14 +108,19 @@ public class ReadDialogue : MonoBehaviour
     public void SplitSentence(string line, string[] sentenceParts)
     {
         typeWritter.StopTypeWritter();
+
+
         if (sentenceParts.Length == DIVIDE_LINE)
         {
             conversationUIManager.SetAvatarName(sentenceParts[INITIAL_LINE_INDEX].Trim());
+
             taskProgressManager.LoadTaskScene(sentenceParts, currentLineManager.GetCurrentLine());
+
             playerResponceManager.InovkePlayerResponse(currentLineManager.GetCurrentLine());
 
             chapterManager.IntroduceChapter(conversationUIManager.GetAvatarName(), sentenceParts[LINE_INCREMENT].Trim());
             avatarManager.ActivateAvatar(conversationUIManager.GetAvatarName());
+
             typeWritter.StartTypeWritter(sentenceParts[LINE_INCREMENT].Trim(), conversationUIManager.GetDialogue());
         }
         else

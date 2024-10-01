@@ -40,11 +40,4 @@ public class PauseMenuManager : MonoBehaviour
             audioGameObject.SetActive(true);
         }
     }
-
-
-
-
-
-
-
 }
