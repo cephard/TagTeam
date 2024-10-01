@@ -31,7 +31,7 @@ public class TaskOneManager : ItemDropManager
     protected TimerManager timerManager;
     protected PlayerChanceManager playerChanceManager;
 
-    private const int TIME_REQUIRED_FOR_TASK = 60;
+    private const int TIME_REQUIRED_FOR_TASK = 90;
     private const string TASK_ONE_NAME = "TaskOne";
 
     /// <summary>
@@ -81,7 +81,7 @@ public class TaskOneManager : ItemDropManager
         Text slotTextFour = GetTextComponent(SlotFour);
         Text slotTextFive = GetTextComponent(SlotFive);
         Text slotTextSix = GetTextComponent(SlotSix);
-        Text slotTextSeven = GetTextComponent(SlotSeven);
+        
 
         // Get the Text components of task UI elements
         Text taskTextOne = GetTextComponent(TaskOne);
@@ -91,8 +91,6 @@ public class TaskOneManager : ItemDropManager
         Text taskTextFive = GetTextComponent(TaskFive);
         Text taskTextSix = GetTextComponent(TaskSix);
         Text taskTextSeven = GetTextComponent(TaskSeven);
-
-        // Perform comparison logic here (to be implemented as per the game design)
     }
 
     /// <summary>

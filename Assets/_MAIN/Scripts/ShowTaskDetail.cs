@@ -94,9 +94,9 @@ public class ShowTaskDetail : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     /// </summary>
     public void SetDetailText()
     {
-        detailText.text = taskName + "\n"
-            + taskDuration + "\n"
-            + taskDeadline + "\n"
+        detailText.text = taskName + "\n\n"
+            + taskDuration + "\n\n"
+            + taskDeadline + "\n\n"
             + taskPriority;
     }
 

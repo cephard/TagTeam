@@ -11,9 +11,9 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
 {
     [SerializeField] private Text slotText;
     [SerializeField] private Text motivationText;
-
-    private const int COMPLETE_TASK = 7;
-    private const int PASS_TASK_COUNT = 4;
+    [SerializeField]  private int completeTaskCount;
+    
+    private const int PASS_TASK_COUNT = 3;
     private const int BONUS_COIN = 10;
     private const int MAXIMUM_WRONG_TASKS = 3;
     private const int NO_TASK = 0;
@@ -22,6 +22,7 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     private static int wrongTask = NO_TASK;
 
     private MainMenuController mainMenuController;
+    private PlayerChanceManager playerChanceManager;
     private CoinManager coinManager;
     private AudioManager audioManager;
     private ClueManager clueManager;
@@ -32,6 +33,7 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     {
         audioManager = FindAnyObjectByType<AudioManager>();
         mainMenuController = GetComponent<MainMenuController>();
+        playerChanceManager = GetComponent<PlayerChanceManager>();
         coinManager = GetComponent<CoinManager>();
         clueManager = GetComponent<ClueManager>();
     }
@@ -151,7 +153,7 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
         }
         else
         {
-            clueManager.ShowWinOrLoseClue("Please Try Again!");
+            clueManager.ShowWinOrLoseClue("You missed the mark this time. The task assignments could have been better distributed, and some deadlines were too tight, which affected the team's performance. Remember, successful leadership involves careful planning, effective delegation, and clear communication. Focus on improving your organizational skills for next time.!");
         }
         Debug.Log(correctTask.ToString());
     }
@@ -162,13 +164,13 @@ public class ItemDropManager : MonoBehaviour, IDropHandler
     /// <param name="checkCorrectTask">The number of correct tasks completed by the player.</param>
     private void CheckTaskCount(int checkCorrectTask)
     {
-        if (checkCorrectTask == COMPLETE_TASK)
+        if (checkCorrectTask == completeTaskCount)
         {
-            clueManager.ShowWinOrLoseClue("Perfect Eye for Detail!");
+            clueManager.ShowWinOrLoseClue("Great work! You demonstrated excellent time management and leadership skills by assigning tasks efficiently and ensuring that the team had enough time to complete them. Your ability to balance delegation and follow-up shows a solid understanding of teamwork and communication. Keep it up!");
         }
-        else
+        else if(checkCorrectTask >= PASS_TASK_COUNT/2)
         {
-            clueManager.ShowWinOrLoseClue("Nice Try!");
+            clueManager.ShowWinOrLoseClue("Nice effort! You showed a good grasp of delegation and task management. While the timing wasn’t perfect for every task, you still demonstrated strong decision-making skills. With a bit more attention to deadlines, you’ll be able to lead the team more effectively. Keep learning and improving!");
         }
     }
 }

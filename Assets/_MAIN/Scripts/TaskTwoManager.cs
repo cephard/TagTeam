@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class TaskTwoManager : TaskOneManager
 {
-    private const int TIME_REQUIRED_FOR_TASK = 60;
+    private const int TIME_REQUIRED_FOR_TASK = 120;
     private const string TASK_TWO_NAME = "TaskTwo";
 
     private AnalyticsManager analyticsManager;

@@ -4618,10 +4618,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1811928545}
   - component: {fileID: 1811928546}
+  - component: {fileID: 1811928553}
   - component: {fileID: 1811928547}
   - component: {fileID: 1811928548}
   - component: {fileID: 1811928550}
-  - component: {fileID: 1811928549}
   - component: {fileID: 1811928551}
   - component: {fileID: 1811928552}
   m_Layer: 0
@@ -4695,19 +4695,6 @@ MonoBehaviour:
   - {fileID: 860340527}
   - {fileID: 1396126817}
   - {fileID: 1792552405}
---- !u!114 &1811928549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811928544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3387c15e2783c1428c47a024003938d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 1376940365}
 --- !u!114 &1811928550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4743,6 +4730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotText: {fileID: 0}
   motivationText: {fileID: 0}
+  completeTaskCount: 0
 --- !u!114 &1811928552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4755,6 +4743,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bfd587604d4ab4e89ead72d669a477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1811928553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811928544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3387c15e2783c1428c47a024003938d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 1376940365}
 --- !u!1 &1815627224
 GameObject:
   m_ObjectHideFlags: 0

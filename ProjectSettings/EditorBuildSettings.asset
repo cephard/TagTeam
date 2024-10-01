@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/_MAIN/Scenes/PrinterSerial.unity
     guid: c00a2d267ac2509419d3d9b5c886c57f
   - enabled: 1
-    path: Assets/_MAIN/Scenes/TaskTwo.unity
+    path: Assets/_MAIN/Scenes/TaskTwoooo.unity
     guid: cb61ccda94ef5ad419d4d578c3ddaf76
   - enabled: 1
     path: Assets/_MAIN/Scenes/PauseMenu.unity
@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_MAIN/Scenes/Tutorial2.unity
     guid: 04448fd2d4ded3348b000bd536fc7f7d
+  - enabled: 1
+    path: Assets/_MAIN/Scenes/TaskTwo.unity
+    guid: 4b3d84c17405c8b43b0f60868f65ebbc
   m_configObjects: {}
